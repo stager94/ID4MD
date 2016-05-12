@@ -1,0 +1,26 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: id4md
+  pool: 10
+  username: postgres
+  password: 
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: id4md
+  pool: 10
+  username: db_admin
+  password: qpwoeiruty
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: id4md_test
+  pool: 10
+  username: postgres
+  password: 
