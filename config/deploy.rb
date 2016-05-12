@@ -32,6 +32,7 @@ set :sidekiq_timeout,    10
 set :sidekiq_role,       :app
 set :sidekiq_processes,  1
 
+after 'deploy:finalize_update', 'deploy:run_after_finalize_update'
 
 namespace :deploy do
   desc "Start the application"
@@ -47,6 +48,11 @@ namespace :deploy do
   desc "Restart the application"
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn_rails -c #{unicorn_conf} -E #{rails_env} -D; fi"
+  end
+
+  desc "Copy production database configuration"
+  task :run_after_finalize_update, :roles => [:app, :db, :web] do
+    run "cp #{deploy_to}/shared/database.yml #{release_path}/config/database.yml"
   end
 
 end
