@@ -15,8 +15,4 @@
 /log/*
 !/log/.keep
 /tmp
-config/database.yaml
-
-~/.bashrc 
-~/.profile
-~/.bash_profile
+config/database.yml
