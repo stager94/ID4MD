@@ -32,7 +32,7 @@ set :sidekiq_timeout,    10
 set :sidekiq_role,       :app
 set :sidekiq_processes,  1
 
-after 'deploy:finalize_update', 'deploy:run_after_finalize_update'
+# after 'deploy:finalize_update', 'deploy:run_after_finalize_update'
 
 namespace :deploy do
   desc "Start the application"
