@@ -14,7 +14,7 @@ set :using_rvm, true
 set :rvm_ruby_string, 'ruby-2.2.4'
 set :rvm_type, :system
 
-set :application, "id4md"
+set :application, "pdmapp"
 set :app_name, application
 set :deploy_to, "/var/www/#{application}"
 set :user,        'root'
