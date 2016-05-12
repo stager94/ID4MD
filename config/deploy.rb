@@ -32,7 +32,7 @@ set :sidekiq_timeout,    10
 set :sidekiq_role,       :app
 set :sidekiq_processes,  1
 
-# after 'deploy:finalize_update', 'deploy:run_after_finalize_update'
+after 'deploy:finalize_update', 'deploy:run_after_finalize_update'
 
 namespace :deploy do
   desc "Start the application"
@@ -55,4 +55,12 @@ namespace :deploy do
     run "cp #{deploy_to}/shared/database.yml #{release_path}/config/database.yml"
   end
 
+  namespace :assets do
+    task :precompile, :roles => assets_role, :except => { :no_release => true } do
+      run <<-CMD.compact
+        cd -- #{latest_release.shellescape} &&
+        #{rake} RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} assets:precompile
+      CMD
+    end
+  end
 end
