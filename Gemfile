@@ -6,7 +6,7 @@ gem 'rails', '5.0.0.beta1'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
-# gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -33,8 +33,8 @@ group :development, :test do
   # RSpec for Rails-3+
 	gem 'rspec-rails'
 
-	gem 'capistrano', '2.15.4'
-  gem 'rvm-capistrano', '1.5.1', require: false
+	gem 'capistrano', '2.14.2'
+  gem 'rvm-capistrano', '1.4.1', require: false
   gem 'capistrano_colors', '0.5.4', require: false
   gem 'capistrano-ext', '1.2.1', require: false
 end
