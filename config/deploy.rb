@@ -11,7 +11,7 @@ ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 
 set :using_rvm, true
-set :rvm_ruby_string, 'ruby-2.3.0'
+set :rvm_ruby_string, 'ruby-2.2.2'
 set :rvm_type, :system
 
 set :application, "id4md"
