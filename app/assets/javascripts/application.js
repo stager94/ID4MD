@@ -16,5 +16,5 @@
 
 
 $(function() {
-	$("donotscrollme").on("touchmove", false);
+	$(".noscroll").on("touchmove", false);
 })
