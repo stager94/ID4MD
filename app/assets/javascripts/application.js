@@ -13,3 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+
+
+$(function() {
+	$("donotscrollme").on("touchmove", false);
+})
