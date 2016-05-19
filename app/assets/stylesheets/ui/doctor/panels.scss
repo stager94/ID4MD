@@ -1,9 +1,50 @@
 .panel {
+	position: relative;
+
 	display: table;
 	width: 100%;
+	padding: 10px;
 
 	background-color: white;
 	color: #333;
 	@include border-radius(5px);
 	@include box-shadow(0 0 3px rgba(0, 0, 0, 0.3));
+
+	&.with-pills {
+		padding-bottom: 52px;
+	}
+
+	.nav-pills {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+
+		display: block;
+		width: 100%;
+		padding-bottom: 22px;
+
+		font-size: 0;
+		text-align: center;
+
+		> span {
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			margin: 0 6px;
+			vertical-align: middle;
+
+			background-color: $grey_color;
+			@include border-radius(4px);
+
+			&.active {
+				background-color: $blue_color;
+			}
+		}
+	}
+
+	p {
+		font-size: 14px;
+		line-height: 25px;
+		padding: 0px 40px;
+	}
 }
