@@ -1,0 +1,32 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin box-shadow($rule) {
+  -webkit-box-shadow: $rule;
+     -moz-box-shadow: $rule;
+          box-shadow: $rule;
+}
+
+@mixin user-select($rule) {
+  -webkit-user-select: $rule;
+     -moz-user-select: $rule;
+      -ms-user-select: $rule;
+          user-select: $rule;
+}
+
+
+@mixin touch-action($rule) {
+  -ms-touch-action: $rule;
+      touch-action: $rule;
+}
+
+@mixin transition($rule) {
+  -webkit-transition: $rule;
+     -moz-transition: $rule;
+       -o-transition: $rule;
+          transition: $rule;
+}

@@ -1,0 +1,27 @@
+.btn {
+	display: inline-block;
+	padding: 0 35px;
+
+	line-height: 50px;
+	font-size: 14px;
+	font-weight: normal;
+
+	border-radius: 25px;
+	text-decoration: none;
+	background-color: $grey_color;
+	color: #333;
+	text-align: center;
+
+	cursor: pointer;
+	@include user-select(none);
+	@include touch-action(manipulation);
+	@include transition(background-color 200ms ease-out);
+
+	&.btn-blue {
+		background-color: $blue_color;
+		color: white;
+		&:hover, &:active, &:focus {
+			background-color: lighten($blue_color, 10%);
+		}
+	}
+}
