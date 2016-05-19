@@ -1,4 +1,4 @@
-.btn {
+.btn-ellipse, .btn-link {
 	display: inline-block;
 	padding: 0 35px;
 
@@ -6,15 +6,19 @@
 	font-size: 14px;
 	font-weight: normal;
 
-	border-radius: 25px;
 	text-decoration: none;
-	background-color: $grey_color;
 	color: #333;
 	text-align: center;
 
 	cursor: pointer;
 	@include user-select(none);
 	@include touch-action(manipulation);
+}
+
+.btn-ellipse {
+	border-radius: 25px;
+	background-color: $grey_color;
+
 	@include transition(background-color 200ms ease-out);
 
 	&.btn-blue {
@@ -24,4 +28,21 @@
 			background-color: lighten($blue_color, 10%);
 		}
 	}
+}
+
+.btn-link {
+	@include transition(color 200ms ease-out);
+
+	&.btn-blue {
+		color: $blue_color;
+
+		&:hover, &:active, &:focus {
+			color: darken($blue_color, 20%);
+		}
+	}
+}
+
+.btn-sm {
+	font-size: 12px;
+	line-height: 40px;
 }

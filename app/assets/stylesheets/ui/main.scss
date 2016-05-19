@@ -3,6 +3,7 @@ html, body {
 	padding: 0;
 	width: 100%;
 	height: 100%;
+	display: table;
 }
 
 html {
@@ -17,11 +18,14 @@ html {
 }
 
 .doctor {
-	@import 'doctor/vars';
-	@import 'doctor/mixins';
-	@import 'doctor/helpers';
-	
-	@import 'doctor/background';
-	@import 'doctor/panels';
-	@import 'doctor/buttons';
+	@import 'ui/doctor/vars';
+	@import 'ui/shared/mixins';
+	@import 'ui/shared/gutters';
+	@import 'ui/shared/helpers';
+
+	@import 'ui/doctor/background';
+	@import 'ui/doctor/panels';
+	@import 'ui/doctor/buttons';
+
+	@import 'ui/shared/test';
 }

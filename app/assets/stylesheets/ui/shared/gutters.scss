@@ -1,0 +1,22 @@
+$start: 0;
+$end: 120;
+$gap: 5;
+
+@while $start <= $end {
+	.gutter-top-#{$start} { margin-top: #{$start}px !important; }
+	.gutter-right-#{$start} { margin-right: #{$start}px !important; }
+	.gutter-bottom-#{$start} { margin-bottom: #{$start}px !important; }
+	.gutter-left-#{$start} { margin-left: #{$start}px !important; }
+
+	.padding-top-#{$start} { padding-top: #{$start}px !important; }
+	.padding-right-#{$start} { padding-right: #{$start}px !important; }
+	.padding-bottom-#{$start} { padding-bottom: #{$start}px !important; }
+	.padding-left-#{$start} { padding-left: #{$start}px !important; }
+
+	.gutter-top--#{$start} { margin-top: -#{$start}px !important; }
+	.gutter-right--#{$start} { margin-right: -#{$start}px !important; }
+	.gutter-bottom--#{$start} { margin-bottom: -#{$start}px !important; }
+	.gutter-left--#{$start} { margin-left: -#{$start}px !important; }
+
+	$start: $start + $gap;
+}
