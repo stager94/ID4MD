@@ -1,5 +1,10 @@
 .fullscreen {
-	height: 100%;
-	width: 100%;
-	display: table;
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+
+.noscroll{
+  position: fixed;
+  overflow: hidden;
 }
