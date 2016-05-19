@@ -17,15 +17,15 @@ html {
   box-sizing: border-box;
 }
 
+@import 'ui/shared/mixins';
+@import 'ui/shared/gutters';
+@import 'ui/shared/helpers';
+@import 'ui/shared/test';
+
 .doctor {
 	@import 'ui/doctor/vars';
-	@import 'ui/shared/mixins';
-	@import 'ui/shared/gutters';
-	@import 'ui/shared/helpers';
 
 	@import 'ui/doctor/background';
 	@import 'ui/doctor/panels';
 	@import 'ui/doctor/buttons';
-
-	@import 'ui/shared/test';
 }
