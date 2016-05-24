@@ -1,0 +1,42 @@
+img.demo {
+	border: 0;
+	float: left;
+	width: 320px;
+	margin-bottom: 30px;
+}
+
+hr {
+	margin: 30px 0;
+}
+
+.test-iphone6 {
+	background: asset-url('demo/iphone6_background.png') no-repeat 0 0;
+	background-size: 370px 751.5px;
+	width: 370px;
+	height: 751.5px;
+	padding-top: 91.5px;
+	margin: 0 auto;
+	box-sizing: border-box;
+
+	._container {
+		width: 320px;
+		height: 571px;
+		margin: 0 auto;
+		background: white;
+		display: block;
+		border: 0;
+		&.grey {
+			background: #e9ecf5;
+		}
+	}
+}
+
+pre {
+	white-space: pre-wrap;
+	margin-left: 330px;
+	font-size: 12px;
+}
+
+hr {
+	clear: both;
+}

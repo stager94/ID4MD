@@ -22,6 +22,7 @@ html {
 @import 'ui/shared/gutters';
 @import 'ui/shared/helpers';
 @import 'ui/shared/test';
+@import 'ui/shared/body';
 
 .doctor {
 	@import 'ui/doctor/vars';
@@ -29,4 +30,6 @@ html {
 	@import 'ui/doctor/background';
 	@import 'ui/doctor/panels';
 	@import 'ui/doctor/buttons';
+	@import 'ui/doctor/headers';
 }
+

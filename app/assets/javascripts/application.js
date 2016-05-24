@@ -12,9 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ui/main
 //= require turbolinks
 
 
+var $document = $($document);
+
 $(function() {
 	$(".noscroll").on("touchmove", false);
+
+	$('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+
+  Page.onResize();
 })
+
+
+$(window).on('resize', Page.onResize);

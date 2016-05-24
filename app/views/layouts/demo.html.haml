@@ -1,0 +1,20 @@
+!!!
+%html
+	%head
+		%title ID4MD
+
+		%link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic,600,600italic' rel='stylesheet' type='text/css')
+		
+		= stylesheet_link_tag 'demo', media: 'all'
+		%link(rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/railscasts.min.css")
+		%script(src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js")
+		%meta(name='apple-mobile-web-app-capable' content='yes')
+		%meta(name='apple-mobile-web-app-status-bar-style' content='black')
+		%meta(http-equiv='X-UA-Compatible' content='IE=edge,chrome=1')
+		%meta(name='viewport' content='initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
+		%meta(name="application-name" content="ID4MD")
+
+		= csrf_meta_tags	
+	%body
+		= yield
+		= javascript_include_tag 'application'

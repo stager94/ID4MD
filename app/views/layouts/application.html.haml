@@ -3,7 +3,7 @@
 	%head
 		%title ID4MD
 
-		%link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic,600,600italic' rel='stylesheet' type='text/css')
+		%link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,400italic,700italic,600,600italic' rel='stylesheet' type='text/css')
 		
 		= stylesheet_link_tag 'application', media: 'all'
 
@@ -36,6 +36,6 @@
 
 		= csrf_meta_tags
 	
-	%body.doctor.noscroll
-		= yield
+	%body.doctor.noscroll.bg-gray
+		.mobile-wrapper= yield
 		= javascript_include_tag 'application'
