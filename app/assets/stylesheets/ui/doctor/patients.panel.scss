@@ -40,4 +40,30 @@
 			}
 		}
 	}
+
+	.patient-last-message {
+		@include flex;
+		margin-top: 15px;
+
+		color: $black_text_color;
+
+		.message {
+			white-space: nowrap;
+			max-width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			vertical-align: middle;
+			line-height: 16px;
+			padding-left: 40px;
+			padding-right: 25px;
+			font-weight: 300;
+		}
+
+		.message-time {
+			line-height: 16px;
+			padding-left: 11px;
+			color: $light_text_color;
+			font-size: 11px;
+		}
+	}
 }

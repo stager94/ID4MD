@@ -19,6 +19,7 @@
 	vertical-align: middle;
 
 	img {
+		display: block;
 		width: 30px;
 		height: 30px;
 
@@ -29,7 +30,7 @@
 		&::before {
 			position: absolute;
 			right: -2px;
-			top: 18px;
+			top: 20px;
 
 			display: block;
 			width: 10px;
