@@ -1,22 +1,36 @@
-<header>
-	<a href="#" class="action action-left">
-		<%= image_tag 'ui/icons/back@2x.png' %>
-	</a>
+<div class="fixed-header">
+	<header>
+		<a href="#" class="action action-left">
+			<%= image_tag 'ui/icons/back@2x.png' %>
+		</a>
 
-	<span><%= image_tag 'ui/logo@2x.png', class: "logo" %></span>
+		<span><%= image_tag 'ui/logo@2x.png', class: "logo" %></span>
 
-	<a href="#" class="action action-right">
-		<%= image_tag 'ui/icons/sign_out@2x.png' %>
-	</a>
-</header>
+		<a href="#" class="action action-right">
+			<%= image_tag 'ui/icons/sign_out@2x.png' %>
+		</a>
+	</header>
 
-<div class="header-filters">
-	<div>
-		<span>Все пациенты</span><i class="caret"></i>
+	<div class="header-filters">
+		<div>
+			<span>Все пациенты</span><i class="caret"></i>
+		</div>
+		<ul class="filter-variants">
+			<li class="active"><a href="#">Все пациенты</a></li>
+			<li><a href="#">Непрочитанные</a></li>
+			<li><a href="#">Скоро визит</a></li>
+		</ul>
 	</div>
-	<ul class="filter-variants">
-		<li class="active"><a href="#">Все пациенты</a></li>
-		<li><a href="#">Непрочитанные</a></li>
-		<li><a href="#">Скоро визит</a></li>
-	</ul>
+</div>
+
+<div class="container list scrollable">
+	<% 20.times do %>
+		<div class="patients-panel">
+			<div class="patient-information">
+				<div class="avatar online"><%= image_tag 'demo/avatar.jpg' %></div>
+				<h4>Alexander Nevzorov<small>Shorten identity information...</small></h4>
+			</div>
+		</div>
+		
+	<% end %>
 </div>

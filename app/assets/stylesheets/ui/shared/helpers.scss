@@ -8,3 +8,38 @@
   position: fixed;
   overflow: hidden;
 }
+
+.avatar {
+	position: relative;
+
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+
+	vertical-align: middle;
+
+	img {
+		width: 30px;
+		height: 30px;
+
+		border-radius: 15px;
+	}
+
+	&.online {
+		&::before {
+			position: absolute;
+			right: -2px;
+			top: 18px;
+
+			display: block;
+			width: 10px;
+			height: 10px;
+			
+			background: #6761ed;
+			border-radius: 10px;
+			border: 2px solid #fff;
+			
+			content: ' ';
+		}
+	}
+}

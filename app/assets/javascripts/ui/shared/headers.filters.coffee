@@ -9,10 +9,12 @@ window.HeadersFilters =
 				return
 
 		$('.header-filters ul').removeClass 'opened'
+		Page.checkScroll()
 		$(document).unbind 'click touchstart', HeadersFilters.closeMenus
 
 	showMenuFor: ($header) ->
 		$header.find('ul').addClass 'opened'
+		$('.fixed-header').removeClass 'with-border'
 		$(document).on 'click touchstart', HeadersFilters.closeMenus
 
 	changeCurrentFilter: ($header, $newFilter) ->

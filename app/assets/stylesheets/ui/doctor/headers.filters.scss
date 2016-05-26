@@ -44,6 +44,7 @@
 		top: 0;
 		left: 0;
 		right: 0;
+		z-index: 9;
 
 		display: none;
 		width: 100%;
@@ -51,6 +52,7 @@
 		padding: 0;
 
 		background: $white_color;
+		box-shadow: 0px 1px rgba(43, 49, 62, 0.1);
 
 		list-style-type: none;
 
@@ -68,7 +70,7 @@
 
 				color: $grey_text_color;
 
-				@include transition(color $animation_duration $animation_type);
+				@include transition(color $animation-duration $animation-type);
 
 				&:hover, &:active, &:focus {
 					color: $black_text_color;

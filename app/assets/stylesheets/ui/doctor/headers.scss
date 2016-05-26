@@ -90,39 +90,13 @@ header {
 			font-weight: 300;
 		}
 	}
+}
 
-	.avatar {
-		position: relative;
+.fixed-header {
+	position: fixed;
+	z-index: 8;
 
-		display: inline-block;
-		width: 30px;
-		height: 30px;
-
-		vertical-align: middle;
-
-		img {
-			width: 30px;
-			height: 30px;
-
-			border-radius: 15px;
-		}
-
-		&.online {
-			&::before {
-				position: absolute;
-				right: -2px;
-				bottom: -2px;
-
-				display: block;
-				width: 10px;
-				height: 10px;
-				
-				background: #6761ed;
-				border-radius: 10px;
-				border: 2px solid #fff;
-				
-				content: ' ';
-			}
-		}
+	&.with-border {
+		outline: 1px solid rgba(43, 49, 62, 0.1);
 	}
 }

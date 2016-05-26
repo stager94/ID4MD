@@ -1,0 +1,43 @@
+.patients-panel {
+	padding: 15px;
+	margin-bottom: 5px;
+
+	border-radius: $border-radius;
+	background-color: $white_color;
+
+	cursor: pointer;
+
+	.patient-information {
+		display: table;
+		width: 100%;
+		table-layout: fixed;
+
+		.avatar {
+			display: table-cell;
+		}
+
+		h4 {
+			width: 100%;
+			vertical-align: middle;
+			font-size: 15px;
+			line-height: 16px;
+			font-weight: normal;
+			color: rgb(43, 49, 62);
+			display: table-cell;
+			padding: 0 0 0 10px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+
+			small {
+				color: rgba(43, 49, 62, 0.5);
+				display: block;
+				vertical-align: top;
+				font-size: 12px;
+				font-weight: 300;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		}
+	}
+}

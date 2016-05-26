@@ -13,14 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require ui/main
-//= require turbolinks
+//= require inobounce
 
 
 var $document = $($document);
 
 $(function() {
-	$(".noscroll").on("touchmove", false);
-
 	$('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
@@ -30,3 +28,7 @@ $(function() {
 
 
 $(window).on('resize', Page.onResize);
+
+$('.scrollable').scroll(function(){
+	Page.checkScroll();
+})
