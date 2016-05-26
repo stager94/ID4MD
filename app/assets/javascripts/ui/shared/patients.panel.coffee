@@ -35,7 +35,8 @@ window.SwipedPatientsPanels =
 		SwipedPatientsPanels.moveTo delta
 
 	moveTo: (delta) ->
-		console.log "move to", delta, this
+		if this.element == undefined
+			return
 
 		if delta < 0
 			delta = 0
@@ -47,8 +48,17 @@ window.SwipedPatientsPanels =
 			'transform': "translate(-#{delta}px, 0)"
 			'transform': "translate3d(-#{delta}px, 0, 0)"
 
+	closeAllPanels: ->
+		SwipedPatientsPanels.moveTo 0
+		this.element = undefined
+		SwipedPatientsPanels.started = false
+		SwipedPatientsPanels.detecting = false
+
 	onTouchStart: (event) ->
 		e = event.originalEvent
+
+		if $(e.target).parents('.actions').length > 0
+			return
 
 		SwipedPatientsPanels.element = $(this)
 
@@ -69,6 +79,9 @@ window.SwipedPatientsPanels =
 		if !SwipedPatientsPanels.started and !SwipedPatientsPanels.detecting
 			return
 
+		if $(e.target).parents('.actions').length > 0
+			return
+
 		if SwipedPatientsPanels.detecting
 			SwipedPatientsPanels.detect(e)
 
@@ -78,8 +91,12 @@ window.SwipedPatientsPanels =
 	onTouchEnd: (event) ->
 		e = event.originalEvent
 
+		if $(e.target).parents('.actions').length > 0
+			return
+
 		newX = e.pageX
 		delta = newX - SwipedPatientsPanels.coordinates.x
+		
 		if delta < -(SwipedPatientsPanels.threshold * SwipedPatientsPanels.minDeltaPercent)
 			delta = SwipedPatientsPanels.threshold
 		else
@@ -92,6 +109,7 @@ window.SwipedPatientsPanels =
 
 
 $ ->
-	$('.patients-panel.ready-to-swipe').on 'touchstart', SwipedPatientsPanels.onTouchStart
-	$('.patients-panel.ready-to-swipe').on 'touchmove', SwipedPatientsPanels.onTouchMove
-	$('.patients-panel.ready-to-swipe').on 'touchend', SwipedPatientsPanels.onTouchEnd
+	$('.patients-panel').on 'touchstart', SwipedPatientsPanels.onTouchStart
+	$('.patients-panel').on 'touchmove', SwipedPatientsPanels.onTouchMove
+	$('.patients-panel').on 'touchend', SwipedPatientsPanels.onTouchEnd
+	$('.patients-panel .actions a').on 'click', SwipedPatientsPanels.closeAllPanels
