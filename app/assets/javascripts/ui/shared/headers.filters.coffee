@@ -9,11 +9,11 @@ window.HeadersFilters =
 				return
 
 		$('.header-filters ul').removeClass 'opened'
-		document.removeEventListener 'click', HeadersFilters.closeMenus
+		$(document).unbind 'click touchstart', HeadersFilters.closeMenus
 
 	showMenuFor: ($header) ->
 		$header.find('ul').addClass 'opened'
-		document.addEventListener 'click', HeadersFilters.closeMenus
+		$(document).on 'click touchstart', HeadersFilters.closeMenus
 
 	changeCurrentFilter: ($header, $newFilter) ->
 		$header.find("div > span").text $newFilter.text()
