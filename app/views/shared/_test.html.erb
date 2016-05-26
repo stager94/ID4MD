@@ -25,7 +25,7 @@
 
 <div class="container list scrollable">
 	<% 20.times do %>
-		<div class="patients-panel">
+		<div class="patients-panel ready-to-swipe">
 			<div class="patient-information">
 				<div class="avatar online"><%= image_tag 'demo/avatar.jpg' %></div>
 				<h4>Alexander Nevzorov<small>Shorten identity information...</small></h4>
@@ -34,6 +34,10 @@
 				<div class="message">Incomming message Incomming message Incomming message</div>
 				<div><span class="badge badge-green">28</span></div>
 				<div class="message-time">hh:mm</div>
+			</div>
+
+			<div class="actions">
+				<a href="#" onclick="alert('Works!')">M</a>
 			</div>
 		</div>
 		

@@ -1,4 +1,6 @@
 .patients-panel {
+	position: relative;
+
 	padding: 15px;
 	margin-bottom: 5px;
 
@@ -6,6 +8,8 @@
 	background-color: $white_color;
 
 	cursor: pointer;
+
+	@include transition(transform $animation-duration $animation-type);
 
 	.patient-information {
 		display: table;
@@ -42,7 +46,7 @@
 	}
 
 	.patient-last-message {
-		@include flex;
+		@include display-flex;
 		margin-top: 15px;
 
 		color: $black_text_color;
@@ -57,6 +61,7 @@
 			padding-left: 40px;
 			padding-right: 25px;
 			font-weight: 300;
+			@include flex(1);
 		}
 
 		.message-time {
@@ -64,6 +69,22 @@
 			padding-left: 11px;
 			color: $light_text_color;
 			font-size: 11px;
+		}
+	}
+
+	.actions {
+		position: absolute;
+		top: 50%;
+		margin-top: -17.5px;
+		right: -65px;
+
+		a {
+			display: block;
+			width: 35px;
+			height: 35px;
+			border-radius: 35px;
+			background: $blue_color;
+			font-size: 0;
 		}
 	}
 }

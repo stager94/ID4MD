@@ -15,7 +15,6 @@
 //= require ui/main
 //= require inobounce
 
-
 var $document = $($document);
 
 $(function() {

@@ -39,3 +39,6 @@
 	%body.doctor.bg-gray
 		= yield
 		= javascript_include_tag 'application'
+		:javascript
+			$(document).bind("mobileinit", function(){$.extend(  $.mobile , {autoInitializePage: false})});
+		= javascript_include_tag 'jquery.mobile'
