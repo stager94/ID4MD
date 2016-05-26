@@ -1,2 +1,17 @@
-$blue_color: #2196f3;
+$corporate_color: #f24360;
+
+$blue_color: #3da4f4;
+$dark_blue_color: #323d4c;
 $grey_color: #e5e5e5;
+$green_color: #4ee2a9;
+$red_color: $corporate_color;
+$white_color: #fff;
+
+$blue_text_color: $blue_color;
+$grey_text_color: #9aa1b2;
+$black_text_color: #2b313e;
+
+
+// Animations
+$animation_duration: 200ms;
+$animation_type: ease-out;

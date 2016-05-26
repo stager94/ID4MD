@@ -2,32 +2,39 @@ header {
 	display: table;
 	width: 100%;
 	height: 65px;
-  table-layout: fixed;
-
-	background: white;
-	// border-bottom: 1px solid #eee;
 
 	font-size: 15px;
 	text-align: center;
 
+	background: white;
+
+	table-layout: fixed;
+
 	.action, span {
 		display: table-cell;
+
 		vertical-align: middle;
 	}
 
 	span {
 		display: block;
 		width: 100%;
-		color: #2b313e;
+		
 		white-space: nowrap;
-		overflow: hidden;
 		text-overflow: ellipsis;
+
+		color: #2b313e;
+		overflow: hidden;
+		
 		small {
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
 			display: block;
+
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			
+			overflow: hidden;
 			color: #95989e;
+
 			img {
 				width: 9px;
 				margin-right: 2px;
@@ -37,8 +44,10 @@ header {
 
 	span {
 		display: table-cell;
-		vertical-align: middle;
+		
 		text-align: center;
+
+		vertical-align: middle;
 	}
 	.action {
 		display: table-cell;
@@ -51,15 +60,18 @@ header {
 		img {
 			height: 17px;
 			width: auto;
+
 			vertical-align: middle;
 		}
 
 		&.action-left {
 			padding-left: 15px;
+
 			text-align: left;
 		}
 		&.action-right {
 			padding-right: 15px;
+
 			text-align: right;
 		}
 	}
@@ -68,6 +80,7 @@ header {
 		width: 25px;
 		height: 25px;
 		margin: 0 auto;
+
 		vertical-align: middle;
 	}
 
@@ -79,30 +92,36 @@ header {
 	}
 
 	.avatar {
+		position: relative;
+
 		display: inline-block;
 		width: 30px;
 		height: 30px;
+
 		vertical-align: middle;
-		position: relative;
 
 		img {
 			width: 30px;
 			height: 30px;
+
 			border-radius: 15px;
 		}
 
 		&.online {
 			&::before {
-				content: ' ';
+				position: absolute;
+				right: -2px;
+				bottom: -2px;
+
+				display: block;
 				width: 10px;
 				height: 10px;
-				bottom: -2px;
-				right: -2px;
+				
 				background: #6761ed;
 				border-radius: 10px;
-				display: block;
-				position: absolute;
 				border: 2px solid #fff;
+				
+				content: ' ';
 			}
 		}
 	}

@@ -1,69 +1,22 @@
-<% example = 4 %>
-<% show_all = true %>
+<header>
+	<a href="#" class="action action-left">
+		<%= image_tag 'ui/icons/back@2x.png' %>
+	</a>
 
-<% if example == 1 || show_all %>
-	<header class="gutter-bottom-10">
-			<a href="#" class="action action-left">
-				<%= image_tag 'ui/icons/back@2x.png' %>
-			</a>
+	<span><%= image_tag 'ui/logo@2x.png', class: "logo" %></span>
 
-			<span>Место работы</span>
+	<a href="#" class="action action-right">
+		<%= image_tag 'ui/icons/sign_out@2x.png' %>
+	</a>
+</header>
 
-			<a href="#" class="action action-right">
-				<%= image_tag 'ui/icons/sign_out@2x.png' %>
-			</a>
-	</header>
-<% end %>
-
-<% if example == 2 || show_all %>
-	<header  class="gutter-bottom-10">
-		<a href="#" class="action action-left">
-			<%= image_tag 'ui/icons/back@2x.png' %>
-		</a>
-
-		<span><%= image_tag 'logo@2x', class: "logo" %></span>
-
-		<a href="#" class="action action-right">
-			<%= image_tag 'ui/icons/sign_out@2x.png' %>
-		</a>
-	</header>
-<% end %>
-
-<% if example == 3 || show_all %>
-	<header  class="gutter-bottom-10">
-		<a href="#" class="action action-left">
-			<%= image_tag 'ui/icons/back@2x.png' %>
-		</a>
-
-		<span>
-			Профиль
-			<small>
-				<%= image_tag 'logo@2x', class: "logo2" %> ID 00002		
-			</small>
-		</span>
-
-		<a href="#" class="action action-right">
-			<%= image_tag 'ui/icons/sign_out@2x.png' %>
-		</a>
-	</header>
-<% end %>
-
-<% if example == 4 || show_all %>
-	<header class="conversation">
-		<a href="#" class="action action-left">
-			<%= image_tag 'ui/icons/back@2x.png' %>
-		</a>
-
-		<span>
-			Александр Салтыков-Щедрин
-			<small>Ранний альтсгеймер</small>
-		</span>
-
-		<a href="#" class="action action-right">
-			<div class="avatar online">
-				<%= image_tag 'demo/avatar.jpg', size: '30x30' %>
-			</div>
-		</a>
-		
-	</header>
-<% end %>
+<div class="header-filters">
+	<div>
+		<span>Все пациенты</span><i class="caret"></i>
+	</div>
+	<ul class="filter-variants">
+		<li class="active"><a href="#">Все пациенты</a></li>
+		<li><a href="#">Непрочитанные</a></li>
+		<li><a href="#">Скоро визит</a></li>
+	</ul>
+</div>
