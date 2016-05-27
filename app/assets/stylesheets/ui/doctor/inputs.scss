@@ -1,0 +1,43 @@
+.input-block {
+	position: relative;
+	[class^="id4md-"], &[class*=" id4md-"] {
+		position: absolute;
+		top: 0;
+		left: 10px;
+		font-size: 15px;
+		line-height: 30px;
+	}
+}
+
+.search-input {
+	display: block;
+	height: 30px;
+	width: 100%;
+	padding: 0 35px;
+	margin-bottom: 12px;
+
+	line-height: 30px;
+	color: $black_text_color;
+
+	background-color: #c3c7d0;
+	border: 0;
+	@include border-radius($border-radius);
+	@include placeholder {
+		text-transform: uppercase;
+		text-align: center;
+		color: rgba(#fff, 0.7);
+		// padding-right: 25px;
+		font-weight: 300;
+	}
+
+	&:focus {
+		// padding-right: 10px;
+		@include placeholder {
+			color: transparent;
+		}
+	}
+
+	+ span {
+		color: rgba(#fff, 0.7);
+	}
+}

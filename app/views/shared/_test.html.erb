@@ -1,13 +1,13 @@
 <div class="fixed-header">
 	<header>
 		<a href="#" class="action action-left">
-			<%= image_tag 'ui/icons/back@2x.png' %>
+			<i class="id4md-sandwich"></i>
 		</a>
 
 		<span><%= image_tag 'ui/logo@2x.png', class: "logo" %></span>
 
 		<a href="#" class="action action-right">
-			<%= image_tag 'ui/icons/sign_out@2x.png' %>
+			<i class="id4md-adduser"></i>
 		</a>
 	</header>
 
@@ -23,7 +23,12 @@
 	</div>
 </div>
 
-<div class="container list scrollable">
+<div class="container scrollable">
+	<div class="input-block">
+		<input type="text" name="search" class="search-input" placeholder="Search for Name or identity">
+		<span class="id4md-search-l"></span>
+	</div>
+
 	<% 20.times do %>
 		<div class="patients-panel ready-to-swipe">
 			<div class="patient-information">
