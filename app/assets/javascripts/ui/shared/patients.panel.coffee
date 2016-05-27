@@ -88,6 +88,7 @@ window.SwipedPatientsPanels =
 			'transform': "translate3d(0, 0, 0)"
 
 	onTouchMove: (event) ->
+
 		if SwipedPatientsPanels.started == true and SwipedPatientsPanels.clickDisabled == false
 			SwipedPatientsPanels.clickDisabled = true
 			$(SwipedPatientsPanels.panelsSelector).off 'click', PatientsPanels.onClick
@@ -95,6 +96,9 @@ window.SwipedPatientsPanels =
 		e = event.originalEvent
 
 		if !SwipedPatientsPanels.started and !SwipedPatientsPanels.detecting
+			return
+
+		if SwipedPatientsPanels.element.hasClass("opened")
 			return
 
 		if SwipedPatientsPanels.detecting
@@ -130,7 +134,9 @@ window.SwipedPatientsPanels =
 		if delta == 0
 			SwipedPatientsPanels.clickDisabled = false
 
-		SwipedPatientsPanels.moveTo delta
+
+		if !SwipedPatientsPanels.element.hasClass("opened")
+			SwipedPatientsPanels.moveTo delta
 
 		SwipedPatientsPanels.element = undefined
 		SwipedPatientsPanels.started = false
