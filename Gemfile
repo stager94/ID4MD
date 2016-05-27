@@ -40,6 +40,7 @@ group :development, :test do
   gem 'rvm-capistrano', '1.4.1', require: false
   gem 'capistrano_colors', '0.5.4', require: false
   gem 'capistrano-ext', '1.2.1', require: false
+  gem 'faker'
 end
 
 
