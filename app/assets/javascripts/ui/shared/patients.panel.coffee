@@ -1,4 +1,7 @@
 window.SwipedPatientsPanels =
+	panelsSelector: ".patients-panel"
+	actionsSelector: ".actions"
+	actionSelector: ".patients-panel .actions a"
 	threshold: 80
 	minDeltaPercent: 0.5
 	detecting: false
@@ -8,6 +11,9 @@ window.SwipedPatientsPanels =
 	coordinates:
 		x: undefined
 		y: undefined
+
+	minSwipeDistance: ->
+		this.threshold * this.minDeltaPercent
 
 	detect: (e) ->
 		if e.changedTouches and e.changedTouches[0] != SwipedPatientsPanels.touch
@@ -61,7 +67,7 @@ window.SwipedPatientsPanels =
 	onMouseDown: (event) ->		
 		e = event.originalEvent
 
-		if $(e.target).parents('.actions').length > 0
+		if $(e.target).parents(SwipedPatientsPanels.actionsSelector).length > 0
 			return
 
 		SwipedPatientsPanels.element = $(this)
@@ -72,7 +78,7 @@ window.SwipedPatientsPanels =
 		SwipedPatientsPanels.detecting = true
 		SwipedPatientsPanels.coordinates.x = e.pageX
 		SwipedPatientsPanels.coordinates.y = e.pageY
-		$('.patients-panel').css
+		$(SwipedPatientsPanels.panelsSelector).css
 			'transform': "translate(0, 0)"
 			'transform': "translate3d(0, 0, 0)"
 		return
@@ -91,7 +97,7 @@ window.SwipedPatientsPanels =
 	onTouchStart: (event) ->
 		e = event.originalEvent
 
-		if $(e.target).parents('.actions').length > 0
+		if $(e.target).parents(SwipedPatientsPanels.actionsSelector).length > 0
 			return
 
 		SwipedPatientsPanels.element = $(this)
@@ -103,7 +109,7 @@ window.SwipedPatientsPanels =
 		SwipedPatientsPanels.touch = e.changedTouches[0]
 		SwipedPatientsPanels.coordinates.x = SwipedPatientsPanels.touch.pageX
 		SwipedPatientsPanels.coordinates.y = SwipedPatientsPanels.touch.pageY
-		$('.patients-panel').css
+		$(SwipedPatientsPanels.panelsSelector).css
 			'transform': "translate(0, 0)"
 			'transform': "translate3d(0, 0, 0)"
 
@@ -113,7 +119,7 @@ window.SwipedPatientsPanels =
 		if !SwipedPatientsPanels.started and !SwipedPatientsPanels.detecting
 			return
 
-		if $(e.target).parents('.actions').length > 0
+		if $(e.target).parents(SwipedPatientsPanels.actionsSelector).length > 0
 			return
 
 		if SwipedPatientsPanels.detecting
@@ -125,7 +131,7 @@ window.SwipedPatientsPanels =
 	onTouchEnd: (event) ->
 		e = event.originalEvent
 
-		if $(e.target).parents('.actions').length > 0
+		if $(e.target).parents(SwipedPatientsPanels.actionsSelector).length > 0
 			return
 
 		newX = e.pageX
@@ -140,16 +146,19 @@ window.SwipedPatientsPanels =
 
 		SwipedPatientsPanels.started = false
 		SwipedPatientsPanels.detecting = false
-
 	#
 
+	initialize: ->
+		$(this.panelsSelector).on 'touchstart', this.onTouchStart
+		$(this.panelsSelector).on 'touchmove mousemove', this.onTouchMove
+		$(this.panelsSelector).on 'touchend', this.onTouchEnd
+
+		$(this.panelsSelector).on 'mousedown', this.onMouseDown
+		$(this.panelsSelector).on 'mousemove', this.onMouseMove
+		$(this.panelsSelector).on 'mouseup', this.onMouseUp
+
+		$(this.actionSelector).on 'click', this.closeAllPanels
+
+
 $ ->
-	$('.patients-panel').on 'touchstart', SwipedPatientsPanels.onTouchStart
-	$('.patients-panel').on 'touchmove mousemove', SwipedPatientsPanels.onTouchMove
-	$('.patients-panel').on 'touchend', SwipedPatientsPanels.onTouchEnd
-
-	$('.patients-panel').on 'mousedown', SwipedPatientsPanels.onMouseDown
-	$('.patients-panel').on 'mousemove', SwipedPatientsPanels.onMouseMove
-	$('.patients-panel').on 'mouseup', SwipedPatientsPanels.onMouseUp
-
-	$('.patients-panel .actions a').on 'click', SwipedPatientsPanels.closeAllPanels
+	SwipedPatientsPanels.initialize()
