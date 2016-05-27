@@ -21,3 +21,5 @@ window.Page =
 	device:
 		ios: ->
 			['iPad', 'iPhone', 'iPod'].indexOf(navigator.platform) >= 0
+		mobile: ->
+			/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)

@@ -47,7 +47,7 @@
 		}
 	}
 
-	.patient-last-message {
+	.patient-message {
 		@include display-flex;
 		margin-top: 15px;
 
@@ -77,20 +77,134 @@
 	.actions {
 		position: absolute;
 		top: 50%;
-		margin-top: -17.5px;
+		margin-top: -22.5px;
 		right: -65px;
 
 		a {
 			display: block;
-			width: 35px;
-			height: 35px;
-			border-radius: 35px;
-			background: $blue_color;
-			font-size: 20px;
-			color: white;
-			line-height: 38px;
+			width: 45px;
+			height: 45px;
+
+			font-size: 25px;
 			text-decoration: none;
 			text-align: center;
+			line-height: 47px;
+
+			border-radius: 35px;
+			background: $blue_color;
+			color: white;
 		}
+	}
+
+	.collapse-panel {
+		position: absolute;
+		top: 8px;
+		right: 10px;
+
+		display: none;
+
+		text-decoration: none;
+		font-size: 22px;
+		line-height: 22px;
+		color: #9aa1b2;
+
+		&:focus, &:active, &:hover {
+			color: darken(#9aa1b2, 20);
+		}
+	}
+
+	.patient-menu {
+		display: none;
+		margin: 15px 0 -15px;
+		padding: 0;
+		list-style-type: none;
+		li {
+			margin: -1px -15px 0;
+			a {
+				position: relative;
+				line-height: 58px;
+				height: 60px;
+				display: block;
+				color: #2b313e;
+				text-decoration: none;
+				font-size: 14px;
+				font-weight: 300;
+				padding: 0 15px;
+
+				.icon {
+					display: inline-block;
+					width: 40px;
+					line-height: 58px;
+					text-align: center;
+					font-size: 22px;
+					vertical-align: top;
+					color: #9aa1b2;
+					float: left;
+				}
+
+				.counter {
+					float: right;
+					display: block;
+					margin-right: 20px;
+					font-style: normal;
+					color: #95989e;
+				}
+
+				&::before {
+					display: block;
+					content: " ";
+					height: 1px;
+					background: #f4f4f5;
+					margin-left: 40px;
+				}
+
+				&.with-arrow {
+					&::after {
+						position: absolute;
+						right: 7px;
+						top: 0;
+						font-family: 'id4md';
+						font-size: 24px;
+						display: block;
+						content: "\e901";
+						color: #9aa1b2;
+						line-height: 61px;
+					}
+				}
+
+				&:active {
+					background: #f4f4f5;
+				}
+			}
+		}
+	}
+
+	&.opened {
+		.patient-last-message {
+			display: none;
+		}
+		.collapse-panel {
+			display: block;
+		}
+		.patient-menu {
+			display: block;	
+		}
+	}
+}
+
+.message-flex {
+	display: flex;
+	.message {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		@include flex(1);
+		padding-right: 30px;
+	}
+	.message-time {
+		padding-left: 11px;
+		color: $light_text_color;
+		font-size: 11px;
+		font-weight: 400;
 	}
 }
