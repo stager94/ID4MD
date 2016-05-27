@@ -137,7 +137,7 @@ window.SwipedPatientsPanels =
 		newX = e.pageX
 		delta = newX - SwipedPatientsPanels.coordinates.x
 		
-		if delta < -(SwipedPatientsPanels.minSwipeDistance)
+		if delta < -(SwipedPatientsPanels.minSwipeDistance())
 			delta = SwipedPatientsPanels.threshold
 		else
 			delta = 0
