@@ -13,10 +13,12 @@
 
 @mixin user-select($rule) {
   -webkit-user-select: $rule;
+   -khtml-user-select: $rule;
      -moz-user-select: $rule;
       -ms-user-select: $rule;
           user-select: $rule;
 }
+
 
 
 @mixin touch-action($rule) {

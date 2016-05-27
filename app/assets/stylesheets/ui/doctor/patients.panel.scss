@@ -9,6 +9,8 @@
 
 	cursor: pointer;
 
+	@include user-select(none);
+
 	@include transition(transform $animation-duration $animation-type);
 
 	.patient-information {

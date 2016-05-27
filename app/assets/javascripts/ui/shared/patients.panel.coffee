@@ -10,7 +10,7 @@ window.SwipedPatientsPanels =
 		y: undefined
 
 	detect: (e) ->
-		if e.changedTouches[0] != SwipedPatientsPanels.touch
+		if e.changedTouches and e.changedTouches[0] != SwipedPatientsPanels.touch
 			return
 
 		newX = e.pageX
@@ -26,7 +26,7 @@ window.SwipedPatientsPanels =
 	draw: (e) ->
 		e.preventDefault()
 
-		if e.changedTouches[0] != SwipedPatientsPanels.touch
+		if e.changedTouches and e.changedTouches[0] != SwipedPatientsPanels.touch
 			return
 
 		newX = e.pageX
@@ -54,6 +54,40 @@ window.SwipedPatientsPanels =
 		SwipedPatientsPanels.started = false
 		SwipedPatientsPanels.detecting = false
 
+
+	# ============
+	# Mouse events
+	# ============
+	onMouseDown: (event) ->		
+		e = event.originalEvent
+
+		if $(e.target).parents('.actions').length > 0
+			return
+
+		SwipedPatientsPanels.element = $(this)
+		
+		if SwipedPatientsPanels.started
+			return
+
+		SwipedPatientsPanels.detecting = true
+		SwipedPatientsPanels.coordinates.x = e.pageX
+		SwipedPatientsPanels.coordinates.y = e.pageY
+		$('.patients-panel').css
+			'transform': "translate(0, 0)"
+			'transform': "translate3d(0, 0, 0)"
+		return
+
+	onMouseMove: (event) ->
+		SwipedPatientsPanels.onTouchMove event
+		return
+
+	onMouseUp: (event) ->
+		SwipedPatientsPanels.onTouchEnd event
+		return
+
+	# ============
+	# Touch events
+	# ============
 	onTouchStart: (event) ->
 		e = event.originalEvent
 
@@ -107,9 +141,15 @@ window.SwipedPatientsPanels =
 		SwipedPatientsPanels.started = false
 		SwipedPatientsPanels.detecting = false
 
+	#
 
 $ ->
 	$('.patients-panel').on 'touchstart', SwipedPatientsPanels.onTouchStart
-	$('.patients-panel').on 'touchmove', SwipedPatientsPanels.onTouchMove
+	$('.patients-panel').on 'touchmove mousemove', SwipedPatientsPanels.onTouchMove
 	$('.patients-panel').on 'touchend', SwipedPatientsPanels.onTouchEnd
+
+	$('.patients-panel').on 'mousedown', SwipedPatientsPanels.onMouseDown
+	$('.patients-panel').on 'mousemove', SwipedPatientsPanels.onMouseMove
+	$('.patients-panel').on 'mouseup', SwipedPatientsPanels.onMouseUp
+
 	$('.patients-panel .actions a').on 'click', SwipedPatientsPanels.closeAllPanels
