@@ -28,6 +28,7 @@ gem 'sprockets-rails', github: "rails/sprockets-rails"
 gem 'sprockets', github: "rails/sprockets"
 
 gem 'haml'
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -40,7 +41,6 @@ group :development, :test do
   gem 'rvm-capistrano', '1.4.1', require: false
   gem 'capistrano_colors', '0.5.4', require: false
   gem 'capistrano-ext', '1.2.1', require: false
-  gem 'faker'
 end
 
 
