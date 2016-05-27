@@ -17,3 +17,7 @@ window.Page =
 			$('.fixed-header').addClass 'with-border'
 		else
 			$('.fixed-header').removeClass 'with-border'
+
+	device:
+		ios: ->
+			['iPad', 'iPhone', 'iPod'].indexOf(navigator.platform) >= 0
