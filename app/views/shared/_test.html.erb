@@ -1,93 +1,13 @@
 <div class="fixed-header">
-	<header>
-		<a href="#" class="action action-left">
-			<i class="id4md-sandwich"></i>
-		</a>
-
-		<span><%= image_tag 'ui/logo@2x.png', class: "logo" %></span>
-
-		<a href="#" class="action action-right">
-			<i class="id4md-adduser"></i>
-		</a>
-	</header>
-
-	<div class="header-filters">
-		<div>
-			<span>Все пациенты</span><i class="caret"></i>
-		</div>
-		<ul class="filter-variants">
-			<li class="active"><a href="#">Все пациенты</a></li>
-			<li><a href="#">Непрочитанные</a></li>
-			<li><a href="#">Скоро визит</a></li>
-		</ul>
-	</div>
+	<%= render 'shared/elements/header' %>
+	<%= render 'shared/elements/header_tabs' %>
 </div>
 
 <div class="container scrollable">
-	<div class="input-block">
-		<input type="text" name="search" class="search-input" placeholder="Search for Name or identity">
-		<span class="id4md-search-l"></span>
-	</div>
+	<%= render 'shared/elements/search_input' %>
 
 	<% 20.times do %>
-		<div class="patients-panel">
-			<div class="patient-information">
-				<div class="avatar online"><%= image_tag Faker::Avatar.image(Faker::Lorem.characters(10), "60x60", "png", "set1", "bg1") %></div>
-				<h4><%= Faker::Superhero.name %><small><%= Faker::Superhero.power %></small></h4>
-
-				<a href="" class="collapse-panel">
-					<span class="id4md-up-l"></span>
-				</a>
-
-			</div>
-			
-			<div class="patient-message patient-last-message">
-				<div class="message"><%= Faker::Hipster.paragraph %></div>
-				<div><span class="badge badge-green"><%= Faker::Number.between(1, 30) %></span></div>
-				<div class="message-time">hh:mm</div>
-			</div>
-
-			<ul class="patient-menu">
-				<li>
-					<a href="#" class="messages-link">
-						<span class="icon id4md-message-s"></span>
-
-						<div class="message-flex">
-							<div class="message"><%= Faker::Hipster.paragraph %></div>
-							<div><span class="badge badge-green"><%= Faker::Number.between(1, 30) %></span></div>
-							<div class="message-time">hh:mm</div>	
-						</div>
-
-						</a>
-				</li>
-				<li>
-					<a href="#" class="with-arrow">
-						<span class="icon id4md-flag-s"></span>
-						Назначения
-						<i class="counter">3</i>
-						</a>
-				</li>
-				<li>
-					<a href="#" class="with-arrow">
-						<span class="icon id4md-research-s"></span>
-						Направления
-						<i class="counter">2</i>
-					</a>
-				</li>
-				<li>
-					<a href="#" class="with-arrow">
-						<span class="icon id4md-pin-s"></span>
-						Визит
-						<i class="counter">28.06.2016</i>
-					</a>
-				</li>
-			</ul>
-
-			<div class="actions">
-				<a href="#" onclick="alert('Works!')"><span class="id4md-message-s"></span></a>
-			</div>
-		</div>
-		
+		<%= render 'shared/elements/patient_panel' %>		
 	<% end %>
 
 </div>
