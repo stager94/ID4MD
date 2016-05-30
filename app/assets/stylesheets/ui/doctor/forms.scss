@@ -1,0 +1,12 @@
+.form-block {
+	margin-left: -$horizontal-gutters;
+	margin-right: -$horizontal-gutters;
+	padding: 20px $horizontal-gutters;
+
+	background: white;
+	
+	.form-container {
+		display: table;
+		width: 100%;
+	}
+}

@@ -1,0 +1,121 @@
+.form-block {
+    .floated-labels {
+        &:first-child {
+            margin-top: 0 !important;
+        }
+    }    
+}
+
+.floated-labels {
+    position: relative;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.floated-labels input, .floated-labels textarea {
+    background: none;
+    z-index: 2;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: #f4f4f5;
+    border-radius: 0;
+    position: relative;
+    outline: none !important;
+}
+
+.floated-labels small {
+    display: block;
+    margin-top: 4px;
+    line-height: 14px;
+}
+
+.floated-labels input, .floated-labels textarea {
+    font-size: 14px;
+    line-height: 16px;
+    color: $black_text_color;
+    padding: 0px 0px 11px;
+    width: 100%;
+    display: block;
+    font-weight: 300;
+}
+.floated-labels label {
+    display: block;
+    width: 100%;
+    line-height: 12px;
+    text-align: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include transform(translate(0, 0));
+    @include transform(translate3d(0, 0, 0));
+    z-index: 1;
+    // @include transition(transform 200ms ease-in);
+    // @include transition(transform 200ms linear, font-size 200ms linear);
+    pointer-events: none;
+    -webkit-font-smoothing: antialiased;
+    text-transform: uppercase;
+    color: #95989e;
+    font-weight: 300;
+    font-size: 12px;
+    padding: 0px 0px 15px;
+}
+
+.floated-labels.floated label {
+    @include transform(translate(0, -20px));
+    @include transform(translate3d(0, -20px, 0));
+    font-size: 10px;
+}
+// .floated-labels.focused label {
+//     color: #FAAB2B !important;
+// }
+.floated-labels.success label {
+    color: #999;
+}
+.floated-labels.invalid label {
+    color: #f00;
+}
+.floated-labels small {
+    color: #f00;
+    font-size: 13px;
+}
+
+.floated-labels .floated-wrapper {
+    position: relative;
+}
+
+.floated-labels .floated-wrapper:after, .floated-labels .floated-wrapper:before {
+    display: block;
+    content: " ";
+    height: 2px;
+    position: absolute;
+    bottom: -1px;
+    width: 0;
+    background: $blue_color;
+    z-index: 3;
+    // @include transition('transform 200ms ease-in, font-size 200mss ease-in');
+}
+// .floated-labels.focused .floated-wrapper:after, .floated-labels.focused .floated-wrapper:before {
+//     background: #FAAB2B !important;
+// }
+
+.floated-labels .floated-wrapper:after {
+    left: 50%;
+}
+.floated-labels .floated-wrapper:before {
+    right: 50%;
+}
+.floated-labels.floated .floated-wrapper:before, .floated-labels.floated .floated-wrapper:after {
+    width: 50%;
+}
+.floated-labels.success .floated-wrapper:before, .floated-labels.success .floated-wrapper:after {
+    // background: green;
+    width: 0;
+}
+.floated-labels.invalid .floated-wrapper:before, .floated-labels.invalid .floated-wrapper:after {
+    background: #f00;
+}
+
+[text-area-adjust] {
+    overflow: hidden;
+    resize: none;
+}

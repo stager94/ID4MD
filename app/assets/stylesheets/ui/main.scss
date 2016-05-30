@@ -42,16 +42,16 @@ html {
 	overflow-x: hidden;
 }
 
+@import 'ui/doctor/vars';
 @import 'ui/shared/fonts';
 @import 'ui/shared/mixins';
 @import 'ui/shared/gutters';
 @import 'ui/shared/helpers';
 @import 'ui/shared/test';
 @import 'ui/shared/body';
+@import 'ui/shared/floated-labels';
 
 .doctor {
-	@import 'ui/doctor/vars';
-
 	@import 'ui/doctor/background';
 	@import 'ui/doctor/panels';
 	@import 'ui/doctor/buttons';
@@ -63,5 +63,6 @@ html {
 	@import 'ui/doctor/patients.panel';
 
 	@import 'ui/doctor/inputs';
+	@import 'ui/doctor/forms';
 }
 

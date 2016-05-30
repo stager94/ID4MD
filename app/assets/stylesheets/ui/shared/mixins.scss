@@ -26,11 +26,18 @@
       touch-action: $rule;
 }
 
-@mixin transition($rule) {
-  -webkit-transition: $rule;
-     -moz-transition: $rule;
-       -o-transition: $rule;
-          transition: $rule;
+@mixin transition($rules...) {
+  -webkit-transition: $rules;
+     -moz-transition: $rules;
+       -o-transition: $rules;
+          transition: $rules;
+}
+
+@mixin transform($rules...) {
+  -webkit-transform: $rules;
+     -moz-transform: $rules;
+       -o-transform: $rules;
+          transform: $rules;
 }
 
 @mixin display-flex {
