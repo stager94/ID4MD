@@ -1,11 +1,3 @@
-.form-block {
-    .floated-labels {
-        &:first-child {
-            margin-top: 0 !important;
-        }
-    }    
-}
-
 .floated-labels {
     position: relative;
     margin-top: 20px;
@@ -41,7 +33,7 @@
 .floated-labels label {
     display: block;
     width: 100%;
-    line-height: 12px;
+    line-height: 16px;
     text-align: left;
     position: absolute;
     top: 0;
@@ -118,4 +110,58 @@
 [text-area-adjust] {
     overflow: hidden;
     resize: none;
+}
+
+
+.floated-labels {
+    &.select {
+        label {
+            @include transform(translate(0, -20px));
+            @include transform(translate3d(0, -20px, 0));
+            font-size: 10px;            
+        }
+        select {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            min-height: 100%;
+            height: 3em;
+            max-height: 100%;
+            outline: 0px none;
+            border-radius: inherit;
+            -moz-appearance: none;
+            cursor: pointer;
+            opacity: 0;
+            z-index: 2;
+            font-size: 14px;
+            line-height: 16px;
+            color: rgb(43, 49, 62);
+            padding: 0px 0px 11px;
+            display: block;
+            font-weight: 300;
+        }
+        span {
+            position: relative;
+            width: 100%;
+            display: block;
+            font-size: 14px;
+            line-height: 16px;
+            color: rgb(43, 49, 62);
+            padding: 0px 0px 11px;
+            font-weight: 300;
+            border-bottom: 1px solid #f4f4f5;
+            &::after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                display: block;
+                content: "\e923";
+                font-family: 'id4md' !important;
+                text-align: right;
+                font-size: 20px;
+                color: #9aa1b2;
+            }
+        }
+    }
 }

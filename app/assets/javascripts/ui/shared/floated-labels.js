@@ -1,8 +1,17 @@
-$(function() {
-    var floatedOptions = {
+var floatedOptions = {
         baseClass: ".floated-labels",
         inputSelector: ".floated-labels input, .floated-labels textarea"
     };
+
+$(function() {
+
+    $(".floated-labels").each(function(index, block){
+        $input = $("input, textarea", block);
+        if ($input.val()) {
+            blurInput($input);
+        }
+    });
+
 
     $(document).delegate(floatedOptions.inputSelector, "focus", function(e) {
         $(e.target).closest(floatedOptions.baseClass).addClass("floated focused");
@@ -10,39 +19,7 @@ $(function() {
 
     $(document).delegate(floatedOptions.inputSelector, "blur", function(e) {
         $targetInput = $(e.target);
-        $targetBlock = $targetInput.closest(floatedOptions.baseClass);
-        $errorBlock = $targetBlock.find("small");
-
-        var val = $targetInput.val();
-
-        var valid = isValidInput($targetInput);
-
-        if (valid == true) {
-            $errorBlock.remove();
-
-            if (val != '') {
-                $targetBlock.addClass("success");
-            }
-            $targetBlock.removeClass("invalid");
-
-        } else {
-            $targetBlock.addClass("invalid").removeClass("success");
-            if ( $errorBlock.length > 0 ) {
-                $errorBlock.text(valid);
-            } else {
-                $targetBlock.append("<small class='text-danger'>" + valid +"</small>");
-            }
-            $targetBlock.animo( { animation: "shake" } );
-
-        }
-
-        if (val.length == 0 && needValidatePresence($targetInput) == false) {
-            $targetBlock.removeClass("floated");
-            setTimeout(function() {
-                $targetBlock.removeClass("invalid success");
-            }, 200);
-        }
-        $targetBlock.removeClass("focused");
+        blurInput($targetInput);
     });
 
     $(document).delegate("[text-area-adjust]", "keyup", function(e) {
@@ -51,6 +28,42 @@ $(function() {
         o.style.height = (o.scrollHeight)+"px";
     });
 });
+
+function blurInput($targetInput) {
+    $targetBlock = $targetInput.closest(floatedOptions.baseClass);
+    $errorBlock = $targetBlock.find("small");
+
+    var val = $targetInput.val();
+
+    var valid = isValidInput($targetInput);
+
+    if (valid == true) {
+        $errorBlock.remove();
+
+        if (val != '') {
+            $targetBlock.addClass("success floated");
+        }
+        $targetBlock.removeClass("invalid");
+
+    } else {
+        $targetBlock.addClass("invalid").removeClass("success");
+        if ( $errorBlock.length > 0 ) {
+            $errorBlock.text(valid);
+        } else {
+            $targetBlock.append("<small class='text-danger'>" + valid +"</small>");
+        }
+        $targetBlock.animo( { animation: "shake" } );
+
+    }
+
+    if (val.length == 0 && needValidatePresence($targetInput) == false) {
+        $targetBlock.removeClass("floated");
+        setTimeout(function() {
+            $targetBlock.removeClass("invalid success");
+        }, 200);
+    }
+    $targetBlock.removeClass("focused");
+}
 
 function isValidInput($input) {
     if ( needValidateEmail($input) ) {
