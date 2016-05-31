@@ -33,8 +33,6 @@ gem 'devise', '4.1.1'
 gem 'devise_invitable', '1.6.0'
 gem 'active_model_serializers', '~> 0.10.0'
 
-gem "letter_opener", group: :development
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '9.0.0'
@@ -42,6 +40,7 @@ group :development, :test do
 
   # RSpec for Rails-3+
 	gem 'rspec-rails', '3.1.0'
+  gem 'rspec-core'
 
 	gem 'capistrano', '2.14.2'
   gem 'rvm-capistrano', '1.4.1', require: false
@@ -53,8 +52,15 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  gem 'letter_opener'
 end
 
 group :production do
   gem 'unicorn', '4.8.2'
+end
+
+group :test do
+  gem 'webmock', '~> 1.11.0'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
 end
