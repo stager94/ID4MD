@@ -59,6 +59,7 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.4.0)
     arel (7.0.0)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
@@ -115,6 +116,10 @@ GEM
       railties (>= 3.1.0)
     json (1.8.3)
     kgio (2.10.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     libv8 (3.16.14.15)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -251,6 +256,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails (= 4.1.1)
   jquery_mobile_rails (= 1.4.5)
+  letter_opener
   pg (= 0.18.4)
   pry
   puma (~> 3.0)

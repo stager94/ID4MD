@@ -1,6 +1,7 @@
 class API::V1::Doctors::SessionsController < Devise::SessionsController
   include API::RequestHelper
   include API::ExceptionsTriggering
+  include API::RequestRestrictions
 
   respond_to :json
 
@@ -27,28 +28,6 @@ class API::V1::Doctors::SessionsController < Devise::SessionsController
   end
 
 private
-
-  def require_authentication
-    return if doctor_signed_in?
-    raise ::PdmApp::Exceptions::NotAuthorized.new
-  end
-
-  def require_no_authentication
-    assert_is_devise_resource!
-    return unless is_navigational_format?
-    no_input = devise_mapping.no_input_strategies
-
-    authenticated = if no_input.present?
-      args = no_input.dup.push scope: resource_name
-      warden.authenticate?(*args)
-    else
-      warden.authenticated?(resource_name)
-    end
-
-    if authenticated && resource = warden.user(resource_name)
-      raise ::PdmApp::Exceptions::AlreadyAuthorized.new
-    end
-  end
 
   def auth_options
     { scope: resource_name, recall: "#{controller_path}#failure" }
