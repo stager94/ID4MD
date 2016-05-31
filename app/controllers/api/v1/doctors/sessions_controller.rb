@@ -3,8 +3,8 @@ class API::V1::Doctors::SessionsController < Devise::SessionsController
   include API::ExceptionsTriggering
 
   respond_to :json
+
   skip_before_action :verify_signed_out_user, only: :destroy
-  # skip_before_action :require_no_authentication, only: :create
   before_action :require_authentication, only: :get_current_user
 
   def create
