@@ -7,7 +7,7 @@ module PdmApp
 			end
 
 			def message
-				"500 AlreadyAuthorized"				
+				"500 AlreadyAuthorized"
 			end
 
 		end

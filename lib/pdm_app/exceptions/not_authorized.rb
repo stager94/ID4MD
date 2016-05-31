@@ -7,7 +7,7 @@ module PdmApp
 			end
 
 			def message
-				"401 Unauthorized"				
+				"401 Unauthorized"
 			end
 
 		end
