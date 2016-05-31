@@ -13,6 +13,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
+# Use Puma as the app server
+gem 'puma', '~> 3.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.1.1'
@@ -27,12 +29,15 @@ gem 'sprockets', github: "rails/sprockets"
 
 gem 'haml', '4.0.7'
 gem 'faker', '1.6.3'
-gem 'devise', '4.1.1'
+# gem 'devise', '4.1.1'
+gem 'devise', :github => 'plataformatec/devise', :branch => 'master'
 gem 'devise_invitable', '1.6.0'
+gem 'responders'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '9.0.0'
+  gem 'pry'
 
   # RSpec for Rails-3+
 	gem 'rspec-rails', '3.1.0'

@@ -7,6 +7,20 @@ Rails.application.routes.draw do
   get 'iphone6' => 'application#iphone6'
   get 'demo' => 'application#demo'
 
+  scope :api, defaults: {format: :json} do
+    scope :v1 do
+      scope :doctors do
+        devise_for :doctor, path: '', controllers: {
+          sessions: 'api/v1/doctors/sessions'
+        }
+        devise_scope :doctor do
+          get 'current_user' => 'api/v1/doctors/sessions#get_current_user'
+        end
+
+      end
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

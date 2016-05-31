@@ -26,5 +26,7 @@ module Id4md
     config.active_record.raise_in_transactional_callbacks = true
 
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
+    config.autoload_paths += Dir["#{config.root}/lib/"]
+
   end
 end
