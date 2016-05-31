@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530162527) do
+ActiveRecord::Schema.define(version: 20160531200007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,34 @@ ActiveRecord::Schema.define(version: 20160530162527) do
     t.index ["invitations_count"], name: "index_doctors_on_invitations_count", using: :btree
     t.index ["invited_by_id"], name: "index_doctors_on_invited_by_id", using: :btree
     t.index ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.string   "invited_by_type"
+    t.integer  "invited_by_id"
+    t.integer  "invitations_count",      default: 0
+    t.index ["email"], name: "index_patients_on_email", unique: true, using: :btree
+    t.index ["invitation_token"], name: "index_patients_on_invitation_token", unique: true, using: :btree
+    t.index ["invitations_count"], name: "index_patients_on_invitations_count", using: :btree
+    t.index ["invited_by_id"], name: "index_patients_on_invited_by_id", using: :btree
+    t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true, using: :btree
   end
 
 end

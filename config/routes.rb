@@ -10,3 +10,4 @@ Rails.application.routes.draw do
 end
 
 load Rails.root.join 'config/routes/api/doctors.rb'
+load Rails.root.join 'config/routes/api/patients.rb'

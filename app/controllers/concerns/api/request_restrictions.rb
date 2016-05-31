@@ -3,8 +3,13 @@ module API::RequestRestrictions
 
 protected
 
-	def require_authentication
+	def require_doctor_authentication
     return if doctor_signed_in?
+    raise ::PdmApp::Exceptions::NotAuthorized.new
+  end
+
+  def require_patient_authentication
+    return if patient_signed_in?
     raise ::PdmApp::Exceptions::NotAuthorized.new
   end
 

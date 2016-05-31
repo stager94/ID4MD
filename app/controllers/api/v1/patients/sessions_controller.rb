@@ -6,12 +6,12 @@ class API::V1::Doctors::SessionsController < Devise::SessionsController
   respond_to :json
 
   skip_before_action :verify_signed_out_user, only: :destroy
-  before_action :require_doctor_authentication, only: :get_current_user
+  before_action :require_patient_authentication, only: :get_current_user
 
   def create
     resource = warden.authenticate! auth_options
     sign_in resource_name, resource
-    render json_success("Logged in", { user: DoctorSerializer.new(current_doctor) })
+    render json_success("Logged in", { user: PatientSerializer.new(current_doctor) })
   end
 
   def destroy
@@ -24,7 +24,7 @@ class API::V1::Doctors::SessionsController < Devise::SessionsController
   end
 
   def get_current_user
-    render json_success("Current user", { user: DoctorSerializer.new(current_doctor) })
+    render json_success("Current user", { user: PatientSerializer.new(current_patient) })
   end
 
 private
