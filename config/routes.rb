@@ -10,11 +10,13 @@ Rails.application.routes.draw do
   scope :api, defaults: {format: :json} do
     scope :v1 do
       scope :doctors do
+        get '/test' => 'api/v1/doctors/test#index'
+
         devise_for :doctor, path: '', controllers: {
           sessions: 'api/v1/doctors/sessions'
         }
         devise_scope :doctor do
-          get 'current_user' => 'api/v1/doctors/sessions#get_current_user'
+          get '/current_user' => 'api/v1/doctors/sessions#get_current_user'
         end
 
       end

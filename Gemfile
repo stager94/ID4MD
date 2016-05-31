@@ -29,10 +29,9 @@ gem 'sprockets', github: "rails/sprockets"
 
 gem 'haml', '4.0.7'
 gem 'faker', '1.6.3'
-# gem 'devise', '4.1.1'
-gem 'devise', :github => 'plataformatec/devise', :branch => 'master'
+gem 'devise', '4.1.1'
 gem 'devise_invitable', '1.6.0'
-gem 'responders'
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
