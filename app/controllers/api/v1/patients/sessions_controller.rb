@@ -1,4 +1,4 @@
-class API::V1::Doctors::SessionsController < Devise::SessionsController
+class API::V1::Patients::SessionsController < Devise::SessionsController
   include API::RequestHelper
   include API::ExceptionsTriggering
   include API::RequestRestrictions
@@ -11,7 +11,7 @@ class API::V1::Doctors::SessionsController < Devise::SessionsController
   def create
     resource = warden.authenticate! auth_options
     sign_in resource_name, resource
-    render json_success("Logged in", { user: PatientSerializer.new(current_doctor) })
+    render json_success("Logged in", { patient: PatientSerializer.new(current_patient) })
   end
 
   def destroy
@@ -24,7 +24,7 @@ class API::V1::Doctors::SessionsController < Devise::SessionsController
   end
 
   def get_current_user
-    render json_success("Current user", { user: PatientSerializer.new(current_patient) })
+    render json_success("Current user", { patient: PatientSerializer.new(current_patient) })
   end
 
 private
