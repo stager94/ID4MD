@@ -11,7 +11,7 @@ class API::V1::Doctors::SessionsController < Devise::SessionsController
   def create
     resource = warden.authenticate! auth_options
     sign_in resource_name, resource
-    render json_success("Logged in", { user: DoctorSerializer.new(current_doctor) })
+    render json_success("Logged in", { doctor: DoctorSerializer.new(current_doctor) })
   end
 
   def destroy
@@ -24,7 +24,7 @@ class API::V1::Doctors::SessionsController < Devise::SessionsController
   end
 
   def get_current_user
-    render json_success("Current user", { user: DoctorSerializer.new(current_doctor) })
+    render json_success("Current user", { doctor: DoctorSerializer.new(current_doctor) })
   end
 
 private
