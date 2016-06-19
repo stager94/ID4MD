@@ -24,15 +24,22 @@
 
 var $document = $($document);
 
+$(document).ready(function(){
+  SwipedPatientsPanels.initialize();
+});
+
+
 var reloadFunction = function() {
 	$('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
 
   Page.onResize();
-  SwipedPatientsPanels.initialize();
   HeadersFilters.initialize();
   floatedOptions.initialize();
+  $('.scrollable').scroll(function(){
+		Page.checkScroll();
+	})
 }
 
 $(reloadFunction);
@@ -40,7 +47,3 @@ $(document).on('ngready', reloadFunction);
 
 
 $(window).on('resize', Page.onResize);
-
-$('.scrollable').scroll(function(){
-	Page.checkScroll();
-})

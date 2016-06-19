@@ -1,4 +1,4 @@
-App.controller('Doctors.PatientsCtrl', ['$scope', '$rootScope', 'security', '$state', '$http', ($scope, $rootScope, security, $state, http) ->
+App.controller('Doctors.PatientsInvitationCtrl', ['$scope', '$rootScope', 'security', '$state', '$http', ($scope, $rootScope, security, $state, $http) ->
 	$scope.patient = {
 		invited: false
 	}

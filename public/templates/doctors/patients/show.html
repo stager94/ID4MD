@@ -1,0 +1,50 @@
+<div class="fixed-header">
+	<header>
+			<a ui-sref="profile" class="action action-left">
+				<img src='/ui/icons/back@2x.png' >
+			</a>
+
+			<span>
+				{{ patient.name }}
+				<small>{{ patient.diagnosis }}</small>
+			</span>
+
+			<div class="action action-left"></div>
+			
+	</header>
+
+	<div class="header-tabs">
+		<ul>
+			<li ui-sref-active="active"><a ui-sref='patients_show({id: patient.id})' >Профиль</a></li>
+			<li ui-sref-active="active"><a href='#'>Чат<span class="badge badge-green">{{ patient.unread_messages_count }}</span></a></li>
+			<li ui-sref-active="active"><a href='#'>Назначения<span class="badge badge-grey">{{ patient.appointments_count }}</span></a></li>
+			<li ui-sref-active="active"><a href='#'>Направления<span class="badge badge-grey">{{ patient.diagnosises_count }}</span></a></li>
+			<li ui-sref-active="active"><a href='#'>Визиты<span class="badge badge-grey">{{ patient.visits_count }}</span></a></li>
+		</ul>
+	</div>
+
+
+</div>
+	
+<div class="container scrollable">
+
+	<form ng-submit="invitePatient()" class="gutter-bottom-10">
+		<div class="form-block with-delimiter gutter-top--15">
+			<div class="form-container">
+				<div ng-repeat="field in patientsFields">
+					<ng-include src="field.templateUrl"></ng-include>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-picker with-delimiter">
+			Специальная отметка
+		</div>
+
+		<div>
+			<input type="submit" name="submit" value="Сохранить" class="btn btn-blue gutter-top-20">
+		</div>
+		
+	</form>
+
+</div>

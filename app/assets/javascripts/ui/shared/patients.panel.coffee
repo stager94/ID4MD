@@ -92,7 +92,7 @@ window.SwipedPatientsPanels =
 
 		if SwipedPatientsPanels.started == true and SwipedPatientsPanels.clickDisabled == false
 			SwipedPatientsPanels.clickDisabled = true
-			$(SwipedPatientsPanels.panelsSelector).off 'click', PatientsPanels.onClick
+			$(document).undelegate SwipedPatientsPanels.panelsSelector, 'click', PatientsPanels.onClick
 
 		e = event.originalEvent
 
@@ -114,7 +114,7 @@ window.SwipedPatientsPanels =
 		if SwipedPatientsPanels.clickDisabled
 			SwipedPatientsPanels.clickDisabled = false
 			setTimeout -> 
-				$(SwipedPatientsPanels.panelsSelector).on 'click', PatientsPanels.onClick
+				$(document).delegate SwipedPatientsPanels.panelsSelector, 'click', PatientsPanels.onClick
 			SwipedPatientsPanels.finishMoving event
 			
 
@@ -146,14 +146,11 @@ window.SwipedPatientsPanels =
 
 	initialize: ->
 		if Page.device.mobile()
-			$(this.panelsSelector).on 'touchstart', this.onTouchStart
+			$(document).delegate this.panelsSelector, 'touchstart', this.onTouchStart
 			$(document).on 'touchend', this.onTouchEnd
 		else
-			$(this.panelsSelector).on 'mousedown', this.onTouchStart
+			$(document).delegate this.panelsSelector, 'mousedown', this.onTouchStart
 			$(document).on 'mouseup', this.onTouchEnd
 
-		$(this.actionSelector).off 'click', this.closeAllPanels
-		$(this.panelsSelector).off 'click', PatientsPanels.onClick
-
-		$(this.actionSelector).on 'click', this.closeAllPanels
-		$(this.panelsSelector).on 'click', PatientsPanels.onClick
+		$(document).delegate this.actionSelector, "click", this.closeAllPanels
+		$(document).delegate this.panelsSelector, "click", PatientsPanels.onClick

@@ -1,6 +1,6 @@
 class PatientSerializer < ActiveModel::Serializer
 	attributes :id, :email, :first_name, :last_name, :gender, :diagnosis, :phone, 
-						 :last_message, :unread_messages_count,
+						 :name, :last_message, :unread_messages_count, :visits_count,
 						 :appointments_count, :diagnosises_count, :next_visit_date
 
 	def last_message
@@ -22,8 +22,16 @@ class PatientSerializer < ActiveModel::Serializer
 		0
 	end
 
+	def visits_count
+		0
+	end
+
 	def next_visit_date
 		Time.now
+	end
+
+	def name
+		[object.first_name, object.last_name].join " "
 	end
 
 end

@@ -25,11 +25,11 @@
 
 <div class="container scrollable">
 	<div class="input-block">
-		<input type="text" name="search" class="search-input" placeholder="Search for Name or identity">
+		<input type="text" name="search" class="search-input" placeholder="Искать по имени или по диагнозу" ng-model="query">
 		<span class="id4md-search-l"></span>
 	</div>
 	
-	<div ng-repeat="patient in patients">
+	<div ng-repeat="patient in patients | filter: search">
 		<ng-include src="'/templates/doctors/ui/patients/panel.html'"></ng-include>
 	</div>
 </div>

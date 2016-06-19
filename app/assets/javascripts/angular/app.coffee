@@ -26,6 +26,12 @@ App.config ($stateProvider, $urlRouterProvider, $locationProvider) ->
   ).state('patients_new',
     url: '/patients/new',
     templateUrl: 'templates/doctors/patients/new.html',
+    controller: 'Doctors.PatientsInvitationCtrl',
+    data:
+      needDoctor: true
+  ).state('patients_show',
+    url: '/patients/:id',
+    templateUrl: 'templates/doctors/patients/show.html',
     controller: 'Doctors.PatientsCtrl',
     data:
       needDoctor: true
@@ -53,7 +59,6 @@ angular.module("pdmapp").run (security, $rootScope, $state) ->
   us = security.requestCurrentUser()
   $rootScope.$on '$stateChangeStart', (e, to) ->
     setTimeout ->
-      $(document).trigger "ngready"
       if (to.data && to.data.needDoctor && !security.isAuthenticated())
         e.preventDefault()
         $state.go "login"
@@ -62,6 +67,11 @@ angular.module("pdmapp").run (security, $rootScope, $state) ->
         $state.go "profile"
     , 100
 
+  $rootScope.$on '$stateChangeSuccess', (e, to) ->
+    setTimeout ->
+      $(document).trigger "ngready"
+    , 1
+
 
 App.directive 'ngBindModel', ($compile) ->
   { compile: (tEl, tAtr) ->
@@ -69,7 +79,6 @@ App.directive 'ngBindModel', ($compile) ->
     (scope) ->
       tEl[0].setAttribute 'ng-model', scope.$eval(tAtr.ngBindModel)
       $compile(tEl[0]) scope
-      console.info 'new compiled element:', tEl[0]
       return
  }
 
