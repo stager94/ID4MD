@@ -12,13 +12,18 @@ class API::V1::Doctors::PatientsController < API::V1::BaseController
 	end
 
 	def update
-		@patient.update params[:patient]
+		@patient.update permitted_params
+		if @patient.valid?
+			render json_success("User's profile", patient: PatientSerializer.new(@patient))
+		else
+			render json_failed("Bad request", { errors: @patient.errors.full_messages, message: @patient.errors.full_messages.join("\n") })
+		end
 	end
 
 private
 
   def permitted_params
-    params[:patint].permit!
+    params[:patient].permit(:first_name, :last_name, :email, :diagnosis, :gender, :phone)
   end
 
 
