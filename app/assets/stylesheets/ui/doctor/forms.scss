@@ -4,9 +4,29 @@
 	padding: 20px $horizontal-gutters;
 
 	background: white;
+
+	vertical-align: top;
 	
 	.form-container {
 		display: table;
 		width: 100%;
+		vertical-align: top !important;
 	}
+
+	&.with-delimiter {
+		border-bottom: 10px solid #e9ecf5;
+	}
+}
+
+.form-picker {
+	margin: 0 -15px;
+	padding: 0 15px;
+	font-size: 14px;
+	line-height: 60px;
+	color: #2b313e;
+	font-weight: 100;
+
+	&.with-delimiter {
+		border-bottom: 10px solid #e9ecf5;
+	}	
 }

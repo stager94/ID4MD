@@ -1,32 +1,33 @@
 var floatedOptions = {
         baseClass: ".floated-labels",
-        inputSelector: ".floated-labels input, .floated-labels textarea"
+        inputSelector: ".floated-labels input, .floated-labels textarea",
+        initialize: function() {
+            $(".floated-labels").each(function(index, block){
+                $input = $("input, textarea", block);
+                if ($input.val()) {
+                    blurInput($input);
+                }
+            });
+
+            $(document).delegate(floatedOptions.inputSelector, "focus", function(e) {
+                $(e.target).closest(floatedOptions.baseClass).addClass("floated focused");
+            });
+
+            $(document).delegate(floatedOptions.inputSelector, "blur", function(e) {
+                $targetInput = $(e.target);
+                blurInput($targetInput);
+            });
+
+            $(document).delegate("[text-area-adjust]", "keyup", function(e) {
+                o = e.target;
+                o.style.height = "1px";
+                o.style.height = (o.scrollHeight)+"px";
+            });
+        }
     };
 
 $(function() {
-
-    $(".floated-labels").each(function(index, block){
-        $input = $("input, textarea", block);
-        if ($input.val()) {
-            blurInput($input);
-        }
-    });
-
-
-    $(document).delegate(floatedOptions.inputSelector, "focus", function(e) {
-        $(e.target).closest(floatedOptions.baseClass).addClass("floated focused");
-    });
-
-    $(document).delegate(floatedOptions.inputSelector, "blur", function(e) {
-        $targetInput = $(e.target);
-        blurInput($targetInput);
-    });
-
-    $(document).delegate("[text-area-adjust]", "keyup", function(e) {
-        o = e.target;
-        o.style.height = "1px";
-        o.style.height = (o.scrollHeight)+"px";
-    });
+    floatedOptions.initialize();
 });
 
 function blurInput($targetInput) {

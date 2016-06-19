@@ -1,0 +1,37 @@
+<div class="fixed-header">
+	<header>
+		<a href="#" class="action action-left">
+			<i class="id4md-sandwich"></i>
+		</a>
+
+		<span><img src="ui/logo@2x.png" class="logo"></span>
+
+		<a ui-sref="patients_new" class="action action-right">
+			<i class="id4md-adduser"></i>
+		</a>
+	</header>
+
+	<div class="header-filters">
+		<div>
+			<span>Все пациенты</span><i class="caret"></i>
+		</div>
+		<ul class="filter-variants">
+			<li class="active"><a href="#">Все пациенты</a></li>
+			<li><a href="#">Непрочитанные</a></li>
+			<li><a href="#">Скоро визит</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="container scrollable">
+	<div class="input-block">
+		<input type="text" name="search" class="search-input" placeholder="Search for Name or identity">
+		<span class="id4md-search-l"></span>
+	</div>
+	
+	<div ng-repeat="patient in patients">
+		<ng-include src="'/templates/doctors/ui/patients/panel.html'"></ng-include>
+	</div>
+</div>
+
+<div class="bg-gray bg-abs"></div>

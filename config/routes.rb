@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'application#index'
+  root 'application#doctors'
   get 'iphone6' => 'application#iphone6'
   get 'demo' => 'application#demo'
 
+  # get '/application' => 'assets#application'
+
+  get '/doctors' => 'application#doctors'
 end
 
 load Rails.root.join 'config/routes/api/doctors.rb'

@@ -1,0 +1,45 @@
+!!!
+%html(ng-app="pdmapp")
+	%head
+		%title Doctors Dashboard
+
+		%link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700italic,600,600italic,700,300italic&subset=latin,cyrillic' rel='stylesheet' type='text/css')
+		
+		= stylesheet_link_tag 'application', media: 'all'
+
+		%meta(name='apple-mobile-web-app-capable' content='yes')
+		%meta(name='apple-mobile-web-app-status-bar-style' content='white')
+		%meta(http-equiv='X-UA-Compatible' content='IE=edge,chrome=1')
+		%meta(name='viewport' content='initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
+		%meta(name="application-name" content="ID4MD")
+
+		%meta(name="msapplication-TileColor" content="#4c835a")
+		%meta(name="msapplication-square70x70logo" content="#{root_url}i/favicon/Icon_70x70.png")
+		%meta(name="msapplication-square150x150logo" content="#{root_url}i/favicon/Icon_150x150.png")
+		/ %meta(name="msapplication-wide310x150logo" content="#{root_url}i/favicon/widetile.png")
+		%meta(name="msapplication-square310x310logo" content="#{root_url}i/favicon/Icon_310x310.png")
+
+		%link(rel="shortcut icon" href="#{root_url}i/favicon/Icon_310x310.png")
+
+		/ %link(rel="apple-touch-icon" href="#{root_url}i/favicon/apple-touch-icon.png")
+		%link(rel="apple-touch-icon" href="#{root_url}i/favicon/Icon_72x72.png" sizes="72x72")
+		%link(rel="apple-touch-icon" href="#{root_url}i/favicon/Icon_76x76.png" sizes="76x76")
+		%link(rel="apple-touch-icon" href="#{root_url}i/favicon/Icon_114x114.png" sizes="114x114")
+		%link(rel="apple-touch-icon" href="#{root_url}i/favicon/Icon_120x120.png" sizes="120x120")
+		%link(rel="apple-touch-icon" href="#{root_url}i/favicon/Icon_144x144.png" sizes="144x144")
+		%link(rel="apple-touch-icon" href="#{root_url}i/favicon/Icon_152x152.png" sizes="152x152")
+		%link(rel="apple-touch-icon" href="#{root_url}i/favicon/Icon_180x180.png" sizes="180x180")
+		%link(rel="icon" href="#{root_url}i/favicon/Icon_192x192.png" sizes="192x192" type="image/png")
+		%link(rel="icon" href="#{root_url}i/favicon/Icon_128x128.png" sizes="128x128" type="image/png")
+
+		/ %link(rel="android-touch-icon" href="#{root_url}i/favicon/smartbanner.png")
+
+		= csrf_meta_tags
+	
+	%body.doctor(ng-controller="ApplicationCtrl")
+		%div(ui-view)
+		= javascript_include_tag 'application'
+
+		/:javascript
+		/	$(document).bind("mobileinit", function(){$.extend(  $.mobile , {autoInitializePage: false})});
+		/= javascript_include_tag 'jquery.mobile'

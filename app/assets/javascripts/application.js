@@ -14,16 +14,29 @@
 //= require jquery_ujs
 //= require ui/main
 //= require inobounce
+//= require angular.min
+//= require angular-resource.min
+//= require angular-route.min
+//= require angular-sanitize.min
+//= require angular-ui-router.min
+//= require angular/app
+//= require_tree ./angular
 
 var $document = $($document);
 
-$(function() {
+var reloadFunction = function() {
 	$('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
 
   Page.onResize();
-})
+  SwipedPatientsPanels.initialize();
+  HeadersFilters.initialize();
+  floatedOptions.initialize();
+}
+
+$(reloadFunction);
+$(document).on('ngready', reloadFunction);
 
 
 $(window).on('resize', Page.onResize);

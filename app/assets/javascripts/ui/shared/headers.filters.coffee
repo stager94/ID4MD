@@ -26,11 +26,11 @@ window.HeadersFilters =
 		$newFilter.closest("li").addClass "active"
 		HeadersFilters.closeMenus()
 
-$ ->
-	$(document).delegate '.header-filters > div', 'click', ->
-		$header = $(this).closest '.header-filters'
-		HeadersFilters.showMenuFor $header
+	initialize: ->
+		$(document).delegate '.header-filters > div', 'click', ->
+			$header = $(this).closest '.header-filters'
+			HeadersFilters.showMenuFor $header
 
-	$(document).delegate '.header-filters ul.filter-variants li a', 'click', ->
-		$header = $(this).closest '.header-filters'
-		HeadersFilters.changeCurrentFilter $header, $(this)
+		$(document).delegate '.header-filters ul.filter-variants li a', 'click', ->
+			$header = $(this).closest '.header-filters'
+			HeadersFilters.changeCurrentFilter $header, $(this)

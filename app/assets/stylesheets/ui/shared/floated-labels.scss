@@ -164,4 +164,14 @@
             }
         }
     }
+
+    &.inversed {
+        label {
+            color: rgba(#fff, 0.5);
+        }
+        input {
+            border-color: rgba(#fff, 0.2);
+            color: white;
+        }
+    }
 }

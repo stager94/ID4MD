@@ -5,7 +5,7 @@ html, body {
 	height: 100%;
 }
 
-body {
+[ui-view] {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: box;
@@ -57,6 +57,7 @@ html {
 	@import 'ui/doctor/panels';
 	@import 'ui/doctor/buttons';
 	@import 'ui/doctor/badges';
+	@import 'ui/doctor/alerts';
 	@import 'ui/doctor/headers';
 	@import 'ui/doctor/headers.filters';
 	@import 'ui/doctor/headers.tabs';

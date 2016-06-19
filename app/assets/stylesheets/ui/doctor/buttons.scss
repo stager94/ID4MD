@@ -46,3 +46,50 @@
 	font-size: 12px;
 	line-height: 40px;
 }
+
+.btn-login {
+	width: 100%;
+	background: white;
+	border: none;
+	border-radius: 4px;
+	line-height: 50px;
+	padding: 0;
+	color: #3da4f4;
+	font-size: 12px;
+	font-family: 'Open Sans', sans-serif;
+	cursor: pointer;
+	outline: none;
+
+	@include transition(background-color 200ms ease-out);
+
+	&:hover, &:active, &:focus {
+		background-color: rgba(#fff, 0.9);
+	}
+}
+
+.btn {
+	display: block;
+	text-decoration: none;
+	width: 100%;
+	border-radius: 5px;
+	line-height: 50px;
+	font-size: 13px;
+	text-align: center;
+	border: none;
+	background: #ccc;
+	color: white;
+	padding: 0;
+	@include transition(background-color 200ms ease-out);
+	cursor: pointer;
+
+	&:hover, &:active, &:focus {
+		background: lighten(#ccc, 5%);
+	}
+
+	&.btn-blue {
+		background-color: #3da4f4;
+		&:hover, &:active, &:focus {
+			background: lighten(#3da4f4, 5%) !important;
+		}
+	}
+}

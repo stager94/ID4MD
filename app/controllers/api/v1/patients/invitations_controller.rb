@@ -4,11 +4,18 @@ class API::V1::Patients::InvitationsController < Devise::InvitationsController
   include API::RequestRestrictions
 
   prepend_before_action :require_doctor_authentication, only: :create
+  skip_before_action :authenticate_inviter!
+  skip_before_action :has_invitations_left?
   before_action :require_no_authentication, only: :update
 
   def create
     user = Patient.invite!(invite_params, current_doctor)
-    render json_success('Patient created', user: PatientSerializer.new(user))
+
+    if user.valid?
+      render json_success('Patient created', user: PatientSerializer.new(user))
+    else
+      render json_failed('An error occured', 422, { errors: user.errors.full_messages })
+    end
   end
 
   def update
@@ -28,11 +35,11 @@ class API::V1::Patients::InvitationsController < Devise::InvitationsController
 private
 
   def invite_params
-    params.require(:patient).permit(:email)
+    params[:patient].permit(:email, :first_name, :last_name, :diagnosis, :gender, :phone)
   end
 
   def accept_invitation_params
     params.permit(:password, :password_confirmation, :invitation_token)
   end
-	
+
 end

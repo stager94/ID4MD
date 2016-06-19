@@ -1,5 +1,6 @@
 window.PatientsPanels =
 	onClick: (event) ->
+		console.log "PatientsPanels", "click"
 		e = event.originalEvent
 		if SwipedPatientsPanels.delta > 0
 			SwipedPatientsPanels.delta = 0
@@ -151,9 +152,8 @@ window.SwipedPatientsPanels =
 			$(this.panelsSelector).on 'mousedown', this.onTouchStart
 			$(document).on 'mouseup', this.onTouchEnd
 
+		$(this.actionSelector).off 'click', this.closeAllPanels
+		$(this.panelsSelector).off 'click', PatientsPanels.onClick
+
 		$(this.actionSelector).on 'click', this.closeAllPanels
 		$(this.panelsSelector).on 'click', PatientsPanels.onClick
-
-
-$ ->
-	SwipedPatientsPanels.initialize()
