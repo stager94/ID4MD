@@ -20,8 +20,14 @@ window.newPatientFields = [
 	{
 		name: 'diagnosis'
 		templateUrl: 'templates/doctors/ui/forms/text.html'
-		ngModel: 'patient.diagnosis'
+		ngModel: 'patient.medical_profiles_attributes[0].diagnosis'
 		label: 'Диагноз/Жалобы'
+	}
+	{
+		name: 'medical_profile_id'
+		templateUrl: 'templates/doctors/ui/forms/hidden.html'
+		ngModel: 'patient.medical_profiles_attributes[0].id'
+		label: 'Идентификатор'
 	}
 	{
 		name: 'gender'

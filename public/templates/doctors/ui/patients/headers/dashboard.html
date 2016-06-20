@@ -1,0 +1,22 @@
+<header>
+	<a ui-sref="profile" class="action action-left">
+		<img src='/ui/icons/back@2x.png' >
+	</a>
+
+	<span>
+		{{ patient.name }}
+		<small>{{ patient.diagnosis }}</small>
+	</span>
+
+	<div class="action action-left"></div>
+</header>
+
+<div class="header-tabs">
+	<ul>
+		<li ui-sref-active="active"><a ui-sref='patients_show({id: patient.id})' >Профиль</a></li>
+		<li ui-sref-active="active"><a ui-sref='patients_chat({id: patient.id})'>Чат<span class="badge badge-green">{{ patient.unread_messages_count }}</span></a></li>
+		<li ui-sref-active="active"><a ui-sref='patients_appointments({id: patient.id})'>Назначения<span class="badge badge-grey">{{ patient.appointments_count }}</span></a></li>
+		<li ui-sref-active="active"><a ui-sref='patients_diagnosises({id: patient.id})'>Направления<span class="badge badge-grey">{{ patient.diagnosises_count }}</span></a></li>
+		<li ui-sref-active="active"><a ui-sref='patients_visits({id: patient.id})'>Визиты<span class="badge badge-grey">{{ patient.visits_count }}</span></a></li>
+	</ul>
+</div>

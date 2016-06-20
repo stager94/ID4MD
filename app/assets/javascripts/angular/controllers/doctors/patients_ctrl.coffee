@@ -1,9 +1,9 @@
-App.controller('Doctors.PatientsCtrl', ['$scope', '$state', '$http', ($scope, $state, $http) ->
-	$scope.patient = {}
+App.controller('Doctors.PatientsCtrl', ['$scope', '$rootScope', '$state', '$http', ($scope, $rootScope, $state, $http) ->
+	$rootScope.patient = {}
 	$scope.patientsFields = newPatientFields
 
 	$http.get("/api/v1/doctors/patients/#{$state.params.id}").success((data, status, header, config) ->
-		$scope.patient = data.patient
+		$rootScope.patient = data.patient
 		setTimeout ->
 			floatedOptions.initialize()
 		, 1
@@ -14,7 +14,7 @@ App.controller('Doctors.PatientsCtrl', ['$scope', '$state', '$http', ($scope, $s
 		$http.put("/api/v1/doctors/patients/#{$scope.patient.id}",
 			patient: $scope.patient
 		).success((data, status, header, config) ->
-			$scope.patient = data.patient
+			$rootScope.patient = data.patient
 		).error (data, status) ->
 			alert data.message
 ])

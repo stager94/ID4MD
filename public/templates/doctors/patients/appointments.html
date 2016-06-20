@@ -1,0 +1,20 @@
+<div class="fixed-header">
+	<ng-include src="'templates/doctors/ui/patients/headers/dashboard.html'"></ng-include>
+</div>
+
+<div class="container scrollable" ng-controller="Doctors.PatientsAppointmentsCtrl">
+	<ul class="list">
+		<li ng-repeat="appointment in appointments">
+			<span class="label">{{ appointment.date }}</span>
+			<div>{{ appointment.text }}</div>
+		</li>
+		<li class="action">
+			<i class="id4md-archive-s" style="margin-top:-3px;"></i>
+			Архив
+			<span class="info">
+				Пусто
+			</span>
+		</li>
+	</ul>
+</div>
+<div class="bg-gray bg-abs"></div>

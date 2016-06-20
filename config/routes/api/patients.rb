@@ -16,4 +16,17 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      namespace :patients do
+        resources :patients, path: "dashboard" do
+          member do
+            resources :appointments, only: :index
+            resources :visits, only: :index
+          end
+        end
+      end
+    end
+  end
+
 end

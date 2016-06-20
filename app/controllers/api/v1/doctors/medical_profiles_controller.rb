@@ -1,9 +1,11 @@
-class API::V1::Doctors::PatientsController < API::V1::BaseController
+class class API::V1::Doctors::MedicalProfilesController < API::V1::BaseController
 
 	before_action :find_patient, only: [:show, :update]
 
 	def index
-		patients = Patient.includes(:medical_profiles).joins(:medical_profiles).where(medical_profiles: { doctor_id: current_doctor.id })
+		patients = Patient.joins(:medical_profiles).where(medical_profiles: { doctor_id: current_doctor.id })
+		
+		# patients = Patient.where(invited_by_type: "Doctor", invited_by_id: current_doctor.id)
 		render json_success("Invited patients list", { patients: ActiveModel::Serializer::ArraySerializer.new(patients, each_serializer: PatientSerializer) })
 	end
 
@@ -23,12 +25,15 @@ class API::V1::Doctors::PatientsController < API::V1::BaseController
 private
 
   def permitted_params
-    params[:patient].permit(:first_name, :last_name, :email, :diagnosis, :gender, :phone, medical_profiles_attributes: [:diagnosis, :id])
+    params[:patient].permit(:first_name, :last_name, :email, :diagnosis, :gender, :phone)
   end
 
 
 	def find_patient
-		@patient = Patient.joins(:medical_profiles).where(medical_profiles: { doctor_id: current_doctor.id }).find params[:id]
+		@patient = Patient.find params[:id]
 	end
 
+end
+
+	
 end

@@ -12,6 +12,7 @@ class API::V1::Patients::InvitationsController < Devise::InvitationsController
     user = Patient.invite!(invite_params, current_doctor)
 
     if user.valid?
+      user.medical_profiles.create doctor_id: current_doctor.id, diagnosis: params[:patient][:medical_profiles_attributes]["0"][:diagnosis] if user.medical_profiles.count == 0
       render json_success('Patient created', user: PatientSerializer.new(user))
     else
       render json_failed('An error occured', 422, { errors: user.errors.full_messages })

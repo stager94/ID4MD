@@ -6,7 +6,7 @@ App.controller('Doctors.PatientsInvitationCtrl', ['$scope', '$rootScope', 'secur
 	$scope.patientsFields = newPatientFields
 
 	$scope.invitePatient = ->
-		http.post("api/v1/patients/invitation",
+		$http.post("api/v1/patients/invitation",
 			patient: $scope.patient
 		).success((data, status, header, config) ->
 			$scope.patient.id = data.user.id

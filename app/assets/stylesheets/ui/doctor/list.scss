@@ -1,0 +1,39 @@
+.list {
+	font-weight: light;
+	list-style-type: none;
+	background: white;
+	margin: -12px -15px;
+	padding: 0 30px;
+	font-size: 12px;
+
+	.label {
+		color: #95989e;
+		text-transform: uppercase;
+		display: block;
+		// margin-bottom: 5px;
+	}
+
+	.info {
+		float: right;
+		color: #d0d3dc;		
+	}
+
+	div {
+		color: #2b313e;
+	}
+
+	li {
+		padding: 15px 0;
+		border-bottom: 1px solid #f4f4f5;
+		i {
+			font-size: 20px;
+			vertical-align: middle;
+			margin-right: 10px;
+			color: #d2d5dc;
+			display: inline-block;
+		}
+		&.action {
+			line-height: 29px;
+		}
+	}
+}

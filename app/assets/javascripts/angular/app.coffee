@@ -35,6 +35,30 @@ App.config ($stateProvider, $urlRouterProvider, $locationProvider) ->
     controller: 'Doctors.PatientsCtrl',
     data:
       needDoctor: true
+  ).state('patients_chat',
+    url: '/patients/:id/chat',
+    templateUrl: 'templates/doctors/patients/chat.html',
+    controller: 'Doctors.PatientsCtrl'
+    data:
+      needDoctor: true
+  ).state('patients_appointments',
+    url: '/patients/:id/appointments',
+    templateUrl: 'templates/doctors/patients/appointments.html',
+    controller: 'Doctors.PatientsCtrl'
+    data:
+      needDoctor: true
+  ).state('patients_diagnosises',
+    url: '/patients/:id/diagnosises',
+    templateUrl: 'templates/doctors/patients/diagnosises.html',
+    controller: 'Doctors.PatientsCtrl'
+    data:
+      needDoctor: true
+  ).state('patients_visits',
+    url: '/patients/:id/visits',
+    templateUrl: 'templates/doctors/patients/visits.html',
+    controller: 'Doctors.PatientsCtrl'
+    data:
+      needDoctor: true
   )
 
   $locationProvider.html5Mode
@@ -59,6 +83,7 @@ angular.module("pdmapp").run (security, $rootScope, $state) ->
   us = security.requestCurrentUser()
   $rootScope.$on '$stateChangeStart', (e, to) ->
     setTimeout ->
+      reloadFunction()
       if (to.data && to.data.needDoctor && !security.isAuthenticated())
         e.preventDefault()
         $state.go "login"
