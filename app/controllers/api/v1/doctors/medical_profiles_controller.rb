@@ -1,4 +1,4 @@
-class class API::V1::Doctors::MedicalProfilesController < API::V1::BaseController
+class API::V1::Doctors::MedicalProfilesController < API::V1::BaseController
 
 	before_action :find_patient, only: [:show, :update]
 
@@ -33,7 +33,4 @@ private
 		@patient = Patient.find params[:id]
 	end
 
-end
-
-	
 end
