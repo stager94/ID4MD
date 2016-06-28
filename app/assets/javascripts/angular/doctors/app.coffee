@@ -5,7 +5,6 @@ window.App = angular.module("pdmapp", [
   "ngRoute",
   "ngSanitize",
   "security",
-  "access",
   "ui.router"
 ])
 
@@ -17,6 +16,12 @@ App.config ($stateProvider, $urlRouterProvider, $locationProvider) ->
     controller: 'HomeCtrl',
     data:
       needNoUser: true
+  ).state('profile',
+    url: '/profile',
+    templateUrl: '/templates/doctors/profile.html',
+    controller: 'Doctors.ProfileCtrl',
+    data:
+      needDoctor: true
   ).state('dashboard',
     url: '/dashboard',
     templateUrl: '/templates/doctors/dashboard.html',

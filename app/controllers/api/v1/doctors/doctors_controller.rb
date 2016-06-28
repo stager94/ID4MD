@@ -18,7 +18,7 @@ private
 	end
 
 	def permitted_params
-		params.require(:doctor).permit :availability
+		params.require(:doctor).permit :availability, :first_name, :last_name, :speciality, :phone, :password, :gender
 	end
 
 end

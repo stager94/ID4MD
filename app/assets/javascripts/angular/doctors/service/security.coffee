@@ -4,8 +4,7 @@ angular.module("security.service", []).factory "security", [
 	"$location",
 	"$http",
 	"$q",
-	"tokenHandler"
-	($location, $http, $q, $state, tokenHandler) ->
+	($location, $http, $q, $state) ->
 		redirect = (url) ->
 			url = url or "/"
 			$location.path url
@@ -25,7 +24,6 @@ angular.module("security.service", []).factory "security", [
 						password: password
 				).success((data, status, header, config) ->
 					service.current_user = data.doctor
-					#tokenHandler.set data.auth_token
 					if service.isAuthenticated() then redirect()
 				).error (data, status) ->
 					alert(data.message)
@@ -35,7 +33,6 @@ angular.module("security.service", []).factory "security", [
 					user: params
 				).success (data, status, header, config) ->
 					service.current_user = data.user
-					tokenHandler.set data.user.auth_token
 					if service.isAuthenticated() then redirect()
 
 			logout: (newState) ->
@@ -63,12 +60,13 @@ angular.module("security.service", []).factory "security", [
 			reloadCurrentUser: (successCallback, errorCallback) ->
 				$http.get("/api/v1/doctors/current_user.json").success((data, status) ->
 					service.current_user = data.doctor
-					console.log data, status
 					
 					successCallback() if typeof successCallback is 'function'
+
+					setTimeout ->
+						floatedOptions.initialize()
+					, 1
 					
-					#tokenHandler.set response.data.auth_token
-					# service.current_user.about = $.simpleFormat(service.current_user.about)
 					return service.current_user
 				).error (response) ->
 					errorCallback() if typeof errorCallback is 'function'

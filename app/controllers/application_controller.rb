@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     render layout: 'doctors', text: ""
   end
 
+  def patients
+    render layout: 'patients', text: ""
+  end
+
  protected
 
   def json_request?

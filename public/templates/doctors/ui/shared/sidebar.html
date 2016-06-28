@@ -11,10 +11,16 @@
 			<li>
 				<a ui-sref="availability" class="with-arrow">
 					Доступность
-					<i class="counter">0</i>
+					<i class="counter">
+						
+						<ng-pluralize count="security.current_user.availability"
+														 when="{'60': '1 час', '120': '2 часа', '180': '3 часа', '1440': '1 день'}">
+						</ng-pluralize>
+
+					</i>
 				</a>
 			</li>
-			<li><a href="#">Профиль</a></li>
+			<li><a ui-sref="profile">Профиль</a></li>
 		</ul>
 
 		<ul class="sidebar-menu">

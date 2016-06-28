@@ -13,37 +13,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require ui/main
-//= require inobounce
-//= require angular.min
-//= require angular-resource.min
-//= require angular-route.min
-//= require angular-sanitize.min
-//= require angular-ui-router.min
-//= require angular/app
-//= require_tree ./angular
-
-var $document = $($document);
-
-$(document).ready(function(){
-  SwipedPatientsPanels.initialize();
-});
-
-
-var reloadFunction = function() {
-	$('pre code').each(function(i, block) {
-    hljs.highlightBlock(block);
-  });
-
-  Page.onResize();
-  HeadersFilters.initialize();
-  floatedOptions.initialize();
-  $('.scrollable').scroll(function(){
-		Page.checkScroll();
-	})
-}
-
-$(reloadFunction);
-$(document).on('ngready', reloadFunction);
-
-
-$(window).on('resize', Page.onResize);

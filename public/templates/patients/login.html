@@ -1,0 +1,32 @@
+<div class="text-center gutter-top-100">
+	<img src="/images/login_logo.png" alt="ID4MD Logo" title="ID4MD Logo" width="92" height="92">
+</div>
+
+
+<div class="container scrollable">
+  <div class="container form-container gutter-top-65">
+
+    <form ng-submit="login()" novalidate name="$root.loginForm" autocomplete="nope">
+
+  		<div class="floated-labels inversed input-block gutter-top-0">
+        <div class="floated-wrapper">
+          <label>Ваш ID</label>
+          <input name="name" type="text" ng-model="user.email" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="floated-labels inversed input-block">
+        <div class="floated-wrapper">
+          <label>Пароль</label>
+          <input name="password" type="password" ng-model="user.password" autocomplete="off">
+        </div>
+      </div>
+
+      
+      <button class="btn-login gutter-top-40" type="submit">Войти</button>
+    </form>
+
+	</div>
+</div>
+
+<div class="bg-blue bg-abs"></div>

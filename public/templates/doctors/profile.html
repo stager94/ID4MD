@@ -1,0 +1,38 @@
+<div class="fixed-header">
+	
+	<header  class="gutter-bottom-10">
+		<a href="#" class="action action-left">
+			<i class="id4md-left-l"></i>
+		</a>
+
+		<span>
+			Профиль
+			<small>
+				<img  src='/ui/logo@2x.png' class="logo2"> ID {{security.current_user.identifier}}
+			</small>
+		</span>
+
+		<a href="#" class="action action-right" ng-click="logout()">
+			<i class="id4md-signout-s"></i>
+		</a>
+	</header>
+
+</div>
+
+<div class="container scrollable">
+	<form ng-submit="update()" class="gutter-bottom-10">
+		<div class="form-block with-delimiter gutter-top--15">
+			<div class="form-container">
+				<div ng-repeat="field in doctorFields">
+					<ng-include src="field.templateUrl"></ng-include>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<input type="submit" name="submit" value="Сохранить" class="btn btn-blue gutter-top-20">
+		</div>
+		
+	</form>
+
+</div>

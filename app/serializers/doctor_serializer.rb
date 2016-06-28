@@ -1,18 +1,7 @@
 class DoctorSerializer < ActiveModel::Serializer
-	attributes :id, :email, :availability, :availability_human
+	attributes :id, :email, :availability, :speciality, :first_name, :last_name, :gender, :phone, :identifier
 
-	def availability_human
-		case object.availability
-		when 60
-			"1 часа"
-		when 120
-			"2 часов"
-		when 180
-			"3 часов"
-		when 1440
-			"1 дня"
-		else
-			"undefined"
-		end
+	def identifier
+		object.id.to_s.rjust(5, "0")
 	end
 end

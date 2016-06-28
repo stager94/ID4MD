@@ -1,7 +1,7 @@
 <div class="fixed-header">
 	<header>
 			<a ui-sref="dashboard" class="action action-left">
-				<img src='/ui/icons/back@2x.png' >
+				<i class="id4md-left-l"></i>
 			</a>
 
 			<span>Доступность</span>
@@ -16,7 +16,12 @@
 	<div class="panel panel-green-grad">
 		<img src="/images/doctor_availability.png">
 		<div class="availability-title">Ваша скорость ответа</div>
-		<div class="availability-value">В течении {{security.current_user.availability_human}}</div>
+		<div class="availability-value">
+			В течении
+			<ng-pluralize count="security.current_user.availability"
+											 when="{'60': '1 часа', '120': '2 часов', '180': '3 часов', '1440': '1 дня'}">
+			</ng-pluralize>
+		</div>
 	</div>
 	
 	<div class="patient-menu-wrapper white">
