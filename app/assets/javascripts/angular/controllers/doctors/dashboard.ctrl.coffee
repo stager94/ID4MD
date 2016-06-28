@@ -1,4 +1,4 @@
-App.controller('Doctors.ProfileCtrl', ['$scope', '$rootScope', 'security', '$state', '$http', ($scope, $rootScope, security, $state, $http) ->
+App.controller('Doctors.DashboardCtrl', ['$scope', '$rootScope', 'security', '$state', '$http', ($scope, $rootScope, security, $state, $http) ->
 	$scope.patients = []
 
 	$http.get("/api/v1/doctors/patients.json").success((response) ->

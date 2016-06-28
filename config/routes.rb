@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # get '/application' => 'assets#application'
 
   get '/doctors' => 'application#doctors'
+  get '/patients' => 'application#patients'
 end
 
 load Rails.root.join 'config/routes/api/doctors.rb'

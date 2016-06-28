@@ -115,69 +115,6 @@
 
 	.patient-menu {
 		display: none;
-		margin: 15px 0 -15px;
-		padding: 0;
-		list-style-type: none;
-		li {
-			margin: -1px -15px 0;
-			a {
-				position: relative;
-				line-height: 58px;
-				height: 60px;
-				display: block;
-				color: #2b313e;
-				text-decoration: none;
-				font-size: 14px;
-				font-weight: 300;
-				padding: 0 15px;
-
-				.icon {
-					display: inline-block;
-					width: 40px;
-					line-height: 58px;
-					text-align: center;
-					font-size: 22px;
-					vertical-align: top;
-					color: #9aa1b2;
-					float: left;
-					padding-right: 10px;
-				}
-
-				.counter {
-					float: right;
-					display: block;
-					margin-right: 20px;
-					font-style: normal;
-					color: #95989e;
-				}
-
-				&::before {
-					display: block;
-					content: " ";
-					height: 1px;
-					background: #f4f4f5;
-					margin-left: 40px;
-				}
-
-				&.with-arrow {
-					&::after {
-						position: absolute;
-						right: 7px;
-						top: 0;
-						font-family: 'id4md';
-						font-size: 24px;
-						display: block;
-						content: "\e901";
-						color: #9aa1b2;
-						line-height: 61px;
-					}
-				}
-
-				&:active {
-					background: #f4f4f5;
-				}
-			}
-		}
 	}
 
 	&.opened {
@@ -207,5 +144,180 @@
 		color: $light_text_color;
 		font-size: 11px;
 		font-weight: 400;
+	}
+}
+
+
+.patient-menu {
+	margin: 15px 0 -15px;
+	padding: 0;
+	list-style-type: none;
+
+	&.lines-before {
+		li {
+			a {
+				&::before {
+					display: block;
+					content: " ";
+					height: 1px;
+					background: #f4f4f5;
+				}
+
+				&.with-arrow {
+					&::after {
+						position: absolute;
+						right: 7px;
+						top: 0;
+						font-family: 'id4md';
+						font-size: 24px;
+						display: block;
+						content: "\e901";
+						color: #9aa1b2;
+						line-height: 61px;
+					}
+				}
+			}
+		}
+	}
+
+	&.lines-after {
+		li {
+			a {
+				&::after {
+					display: block;
+					content: " ";
+					height: 1px;
+					background: #f4f4f5;
+				}
+				&.with-arrow {
+					&::before {
+						position: absolute;
+						right: 7px;
+						top: 0;
+						font-family: 'id4md';
+						font-size: 24px;
+						display: block;
+						content: "\e901";
+						color: #9aa1b2;
+						line-height: 61px;
+					}
+				}
+			}
+		}
+	}
+
+	li {
+		margin: -1px -15px 0;
+		a {
+			position: relative;
+			line-height: 59px;
+			height: 60px;
+			display: block;
+			color: #2b313e;
+			text-decoration: none;
+			font-size: 14px;
+			font-weight: 300;
+			padding: 0 15px;
+
+			.icon {
+				display: inline-block;
+				width: 40px;
+				line-height: 59px;
+				text-align: center;
+				font-size: 22px;
+				vertical-align: top;
+				color: #9aa1b2;
+				float: left;
+				padding-right: 10px;
+			}
+
+			.counter {
+				float: right;
+				display: block;
+				margin-right: 20px;
+				font-style: normal;
+				color: #95989e;
+			}
+
+			&.with-icon {
+				&::before, &::after {
+					margin-left: 40px;
+				}				
+			}
+
+			&:active {
+				background: #f4f4f5;
+			}
+		}
+	}
+
+	&.light {
+		li {
+			a {
+				color: white;
+			}
+		}
+
+		&.lines-after {
+			li {
+				a {
+					&::after {
+						background: rgba(255, 255, 255, .05) !important;
+					}		
+				}
+			}
+		}
+
+		&.lines-before {
+			li {
+				a {
+					&::before {
+						background: rgba(255, 255, 255, .05) !important;
+					}		
+				}
+			}
+		}
+	}
+
+	&.patient-menu-select {
+		span {
+			margin-left: 45px;
+		}
+		
+		&.lines-after {
+			a {
+				&.active {
+					&::before {
+						font-family: 'id4md' !important;
+						speak: none;
+						font-style: normal;
+						font-weight: normal;
+						font-variant: normal;
+						text-transform: none;
+						line-height: 60px;
+						/* Better Font Rendering =========== */
+						-webkit-font-smoothing: antialiased;
+						-moz-osx-font-smoothing: grayscale;
+						float: left;
+						display: block;
+						content: "\e922";
+						font-size: 15px;
+						color: #4ee2a9;
+						position: absolute
+					}
+				}
+			}
+		}
+		&.lines-before {
+		}
+
+	}
+}
+
+.patient-menu-wrapper {
+	margin: 0 (-$horizontal-gutters);
+	padding: 0 $horizontal-gutters;
+	&.white {
+		background: #fff;
 	}
 }

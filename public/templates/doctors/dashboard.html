@@ -1,6 +1,6 @@
 <div class="fixed-header">
 	<header>
-		<a href="#" class="action action-left">
+		<a href="#" class="action action-left" ng-click="openSidebar()">
 			<i class="id4md-sandwich"></i>
 		</a>
 
@@ -24,14 +24,18 @@
 </div>
 
 <div class="container scrollable">
-	<div class="input-block">
-		<input type="text" name="search" class="search-input" placeholder="Искать по имени или по диагнозу" ng-model="query">
-		<span class="id4md-search-l"></span>
-	</div>
-	
-	<div ng-repeat="patient in patients | filter: search">
-		<ng-include src="'/templates/doctors/ui/patients/panel.html'"></ng-include>
-	</div>
-</div>
+	<ng-include src="'/templates/doctors/ui/shared/sidebar.html'"></ng-include>
+	<div class="content">
+		<div class="input-block">
+			<input type="text" name="search" class="search-input" placeholder="Искать по имени или по диагнозу" ng-model="query">
+			<span class="id4md-search-l"></span>
+		</div>
+		
+		<div ng-repeat="patient in patients | filter: search">
+			<ng-include src="'/templates/doctors/ui/patients/panel.html'"></ng-include>
+		</div>
 
-<div class="bg-gray bg-abs"></div>
+		<div class="bg-gray bg-abs"></div>
+	</div>	
+	
+</div>

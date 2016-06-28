@@ -15,15 +15,15 @@
 		<div class="message-time">{{ patient.last_message.created_at | date: "HH:mm" }}</div>
 	</div>
 
-	<ul class="patient-menu">
+	<ul class="patient-menu lines-before">
 		<li>
-			<a ui-sref="patients_show({id: patient.id})" class="with-arrow">
+			<a ui-sref="patients_show({id: patient.id})" class="with-arrow with-icon">
 				<span class="icon id4md-flag-s"></span>
 				Профиль
 			</a>
 		</li>
 		<li>
-			<a ui-sref="patients_chat({id: patient.id})" class="messages-link">
+			<a ui-sref="patients_chat({id: patient.id})" class="messages-link with-icon">
 				<span class="icon id4md-message-s"></span>
 
 				<div class="message-flex">
@@ -35,21 +35,21 @@
 				</a>
 		</li>
 		<li>
-			<a ui-sref="patients_appointments({id: patient.id})" class="with-arrow">
+			<a ui-sref="patients_appointments({id: patient.id})" class="with-arrow with-icon">
 				<span class="icon id4md-flag-s"></span>
 				Назначения
 				<i class="counter">{{ patient.appointments_count }}</i>
 				</a>
 		</li>
 		<li>
-			<a ui-sref="patients_diagnosises({id: patient.id})" class="with-arrow">
+			<a ui-sref="patients_diagnosises({id: patient.id})" class="with-arrow with-icon">
 				<span class="icon id4md-research-s"></span>
 				Направления
 				<i class="counter">{{ patient.diagnosises_count }}</i>
 			</a>
 		</li>
 		<li>
-			<a ui-sref="patients_visits({id: patient.id})" class="with-arrow">
+			<a ui-sref="patients_visits({id: patient.id})" class="with-arrow with-icon">
 				<span class="icon id4md-pin-s"></span>
 				Визит
 				<i class="counter">{{ patient.next_visit_date | date: "dd.MM.yyyy" }}</i>

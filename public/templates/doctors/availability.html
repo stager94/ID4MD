@@ -1,0 +1,41 @@
+<div class="fixed-header">
+	<header>
+			<a ui-sref="dashboard" class="action action-left">
+				<img src='/ui/icons/back@2x.png' >
+			</a>
+
+			<span>Доступность</span>
+
+			<div class="action action-left"></div>
+			
+	</header>	
+</div>
+
+<div class="container scrollable">
+	
+	<div class="panel panel-green-grad">
+		<img src="/images/doctor_availability.png">
+		<div class="availability-title">Ваша скорость ответа</div>
+		<div class="availability-value">В течении {{security.current_user.availability_human}}</div>
+	</div>
+	
+	<div class="patient-menu-wrapper white">
+		<ul class="patient-menu lines-after gutter-top-0 patient-menu-select">
+			<li>
+				<a href="javascript:void(0)" ng-class="{'active': security.current_user.availability == 60}" ng-click="setAvailability(60)"><span>1 час</span></a>
+			</li>
+			<li>
+				<a href="javascript:void(0)" ng-class="{'active': security.current_user.availability == 120}" ng-click="setAvailability(120)"><span>2 часа</span></a>
+			</li>
+			<li>
+				<a href="javascript:void(0)" ng-class="{'active': security.current_user.availability == 180}" ng-click="setAvailability(180)"><span>3 часа</span></a>
+			</li>
+			<li>
+				<a href="javascript:void(0)" ng-class="{'active': security.current_user.availability == 1440}" ng-click="setAvailability(1440)"><span>День</span></a>
+			</li>
+		</ul>
+	</div>
+
+</div>
+
+<div class="bg-gray bg-abs"></div>

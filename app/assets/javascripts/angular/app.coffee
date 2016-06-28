@@ -10,19 +10,25 @@ window.App = angular.module("pdmapp", [
 ])
 
 App.config ($stateProvider, $urlRouterProvider, $locationProvider) ->
-  $urlRouterProvider.otherwise '/profile'
-  $stateProvider.state('profile',
-    url: '/profile',
-    templateUrl: '/templates/doctors/profile.html',
-    controller: 'Doctors.ProfileCtrl',
-    data:
-      needDoctor: true
-  ).state('login',
+  $urlRouterProvider.otherwise '/dashboard'
+  $stateProvider.state('login',
     url: '/login',
     templateUrl: 'templates/doctors/login.html',
     controller: 'HomeCtrl',
     data:
       needNoUser: true
+  ).state('dashboard',
+    url: '/dashboard',
+    templateUrl: '/templates/doctors/dashboard.html',
+    controller: 'Doctors.DashboardCtrl',
+    data:
+      needDoctor: true
+  ).state('availability',
+    url: '/availability',
+    templateUrl: 'templates/doctors/availability.html',
+    controller: 'Doctors.AvailabilityCtrl',
+    data:
+      needDoctor: true
   ).state('patients_new',
     url: '/patients/new',
     templateUrl: 'templates/doctors/patients/new.html',
@@ -72,25 +78,20 @@ App.config ["$httpProvider", ($httpProvider) ->
 ]
 
 angular.module("pdmapp").run (security, $rootScope, $state) ->
-  # Get the current user when the application starts
-  # (in case they are still logged in from a previous session)
 
-  # TODO: 
-  # 1) Make API request for fetching current_user
-  # 2) Show APP loader
-  # 
-
-  us = security.requestCurrentUser()
   $rootScope.$on '$stateChangeStart', (e, to) ->
-    setTimeout ->
-      reloadFunction()
-      if (to.data && to.data.needDoctor && !security.isAuthenticated())
-        e.preventDefault()
-        $state.go "login"
-      if (to.data && to.data.needNoUser && security.isAuthenticated())
-        e.preventDefault()
-        $state.go "profile"
-    , 100
+    success = ->
+      if (to.data && to.data.needNoUser)
+        setTimeout ->
+          $state.go "dashboard"
+        , 1
+    error = ->
+      if (to.data && to.data.needDoctor)
+        setTimeout ->
+          $state.go "login"
+        , 1
+    
+    security.requestCurrentUser success, error
 
   $rootScope.$on '$stateChangeSuccess', (e, to) ->
     setTimeout ->

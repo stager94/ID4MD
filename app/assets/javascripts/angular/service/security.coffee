@@ -53,18 +53,26 @@ angular.module("security.service", []).factory "security", [
 			#	).success (data, status, header, config) ->
 			#		profile.user = null
 
-			requestCurrentUser: ->
+			requestCurrentUser: (successCallback, errorCallback) ->
 				if service.isAuthenticated()
+					successCallback() if typeof successCallback is 'function'
 					return service.current_user
 				else
-					service.reloadCurrentUser()
+					service.reloadCurrentUser successCallback, errorCallback
 
-			reloadCurrentUser: ->
-				$http.get("/api/v1/doctors/current_user.json").then (response) ->
-					service.current_user = response.data.doctor
+			reloadCurrentUser: (successCallback, errorCallback) ->
+				$http.get("/api/v1/doctors/current_user.json").success((data, status) ->
+					service.current_user = data.doctor
+					console.log data, status
+					
+					successCallback() if typeof successCallback is 'function'
+					
 					#tokenHandler.set response.data.auth_token
 					# service.current_user.about = $.simpleFormat(service.current_user.about)
 					return service.current_user
+				).error (response) ->
+					errorCallback() if typeof errorCallback is 'function'
+					console.log response
 
 			current_user: null
 

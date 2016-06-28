@@ -3,10 +3,10 @@ window.Page =
 	onResize: ->
 		console.log "resize"
 		documentHeight = $(window).height()
-		headerHeight   = $('.fixed-header').innerHeight()
+		headerHeight   = $('.fixed-header:visible').innerHeight() || 0
 
 		wrapperHeight = documentHeight - headerHeight
-
+		console.log "Page resize, header height is ", headerHeight
 		$(".scrollable").css
 			'margin-top': headerHeight + 'px'
 		return
