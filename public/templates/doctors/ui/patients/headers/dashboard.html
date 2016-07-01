@@ -14,9 +14,9 @@
 <div class="header-tabs">
 	<ul>
 		<li ui-sref-active="active"><a ui-sref='patients_show({id: patient.id})' >Профиль</a></li>
-		<li ui-sref-active="active"><a ui-sref='patients_chat({id: patient.id})'>Чат<span class="badge badge-green">{{ patient.unread_messages_count }}</span></a></li>
-		<li ui-sref-active="active"><a ui-sref='patients_appointments({id: patient.id})'>Назначения<span class="badge badge-grey">{{ patient.appointments_count }}</span></a></li>
-		<li ui-sref-active="active"><a ui-sref='patients_diagnosises({id: patient.id})'>Направления<span class="badge badge-grey">{{ patient.diagnosises_count }}</span></a></li>
-		<li ui-sref-active="active"><a ui-sref='patients_visits({id: patient.id})'>Визиты<span class="badge badge-grey">{{ patient.visits_count }}</span></a></li>
+		<li ui-sref-active="active"><a ui-sref='patients_chat({id: patient.id})'>Чат<span class="badge badge-green" ng-if="medical_profile.unread_messages_count > 0">{{ medical_profile.unread_messages_count }}</span></a></li>
+		<li ui-sref-active="active"><a ui-sref='patients_appointments({id: patient.id})'>Назначения<span class="badge badge-grey" ng-if="medical_profile.appointments_count > 0">{{ medical_profile.appointments_count }}</span></a></li>
+		<li ui-sref-active="active"><a ui-sref='patients_diagnosises({id: patient.id})'>Направления<span class="badge badge-grey" ng-if="medical_profile.diagnosises_count > 0">{{ medical_profile.diagnosises_count }}</span></a></li>
+		<li ui-sref-active="active"><a ui-sref='patients_visits({id: patient.id})'>Визиты<span class="badge badge-grey" ng-if="medical_profile.visits_count > 0">{{ medical_profile.visits_count }}</span></a></li>
 	</ul>
 </div>

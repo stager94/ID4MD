@@ -6,7 +6,7 @@
 	<ul class="list">
 		<li ng-repeat="visit in visits">
 			<span class="label gutter-bottom-5">Дата</span>
-			<div>{{ visit.date }}</div>
+			<div class="text-big">{{ visit.date | date: "dd.MM.yyyy" }}</div>
 
 			<span class="label gutter-bottom-5 gutter-top-20">Место</span>
 			<div>{{ visit.address }}</div>
@@ -20,3 +20,5 @@
 		</li>
 	</ul>
 </div>
+
+<div class="bg-gray bg-abs"></div>

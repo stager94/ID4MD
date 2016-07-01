@@ -14,4 +14,8 @@ class MedicalProfileSerializer < ActiveModel::Serializer
 	def diagnosises_count
 		object.diagnosises.following.count
 	end	
+
+	def unread_messages_count
+		0
+	end
 end

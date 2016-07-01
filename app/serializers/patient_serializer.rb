@@ -11,7 +11,7 @@ class PatientSerializer < ActiveModel::Serializer
 	end
 
 	def unread_messages_count
-		1
+		0
 	end
 
 	def appointments_count

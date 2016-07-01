@@ -1,9 +1,16 @@
 App.controller('Doctors.PatientsVisitsCtrl', ['$scope', '$rootScope', '$state', '$http', ($scope, $rootScope, $state, $http) ->
+
 	$scope.visits = []
 
-	$http.get("/api/v1/patients/dashboard/#{$state.params.id}/visits").success((data, status, header, config) ->
-		$scope.visits = data.visits
-	).error (data, state) ->
-		alert data.message
+	loadVisits = ->
+		$http.get("/api/v1/patients/dashboard/medical_profiles/#{$rootScope.patient.medical_profiles_attributes[0].id}/visits.json").success((data, status, header, config) ->
+			$scope.visits = data.visits
+			setTimeout ->
+				Page.onResize()
+			, 1
+		).error (data, state) ->
+			alert data.message
+
+	$scope.retrievePatient loadVisits
 
 ])
