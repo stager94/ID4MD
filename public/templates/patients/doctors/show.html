@@ -1,0 +1,47 @@
+<header>
+	<a ui-sref="chat" class="action action-left">
+		<i class="id4md-left-l"></i>
+	</a>
+
+	<span>
+		Профиль врача
+	</span>
+
+	<div class="action action-right"></div>
+</header>
+
+<div class="container scrollable">
+	<div class="pseudo-avatar"></div>
+	<div class="profile-name">{{doctor.name}}</div>
+
+	<div class="list">
+		<li>
+			<span class="label gutter-bottom-5">Специальность</span>
+			<div>Акушер-гинеколог / Врач УЗД</div>
+		</li>
+
+		<li class="fake">
+			<span class="label">Рабочее время</span>
+		</li>
+		<li class="light" ng-repeat="time in doctor.work_times">
+			<div>
+				<div class="row">
+					<div class="text-big col-xs-2">{{ time.title }}</div>
+					<div class="text-big col-xs-4">{{ time.time_range }}</div>
+				</div>
+			</div>
+		</li>
+
+
+		<li class="fake">
+			<span class="label">Адреса приемов</span>
+		</li>
+		<li class="light with-icon" ng-repeat="job in doctor.jobs">
+			<div>
+				<span class="pull-right icon id4md-location-s"></span>
+				{{ job.address }}
+
+			</div>
+		</li>
+	</div>
+</div>

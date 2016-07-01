@@ -1,0 +1,38 @@
+<header>
+	<a ui-sref="chat" class="action action-left">
+		<i class="id4md-left-l"></i>
+	</a>
+
+	<span>
+		Личный профиль
+	</span>
+
+	<div class="action action-right"></div>
+</header>
+
+<div class="container scrollable">
+	<div class="pseudo-avatar"></div>
+	<div class="profile-name">{{security.current_user.name}}</div>
+
+	<div class="list">
+		<li>
+			<span class="label gutter-bottom-5">Телефон</span>
+			<div>{{ security.current_user.phone }}</div>
+		</li>
+
+		<li class="with-icon">
+			<span class="pull-right icon id4md-right-l"></span>
+			Добавить e-mail
+		</li>
+		<li class="with-icon">
+			<span class="pull-right icon id4md-right-l"></span>
+			Изменить пароль
+		</li>
+
+		<li>
+			<span class="label gutter-bottom-5">Подписка</span>
+			<div>500 руб/мес</div>
+		</li>
+
+	</div>
+</div>

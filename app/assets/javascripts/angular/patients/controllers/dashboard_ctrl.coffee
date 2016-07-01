@@ -1,7 +1,6 @@
 App.controller('DashboardCtrl', ['$scope', '$rootScope', 'security', '$http', ($scope, $rootScope, security, $http) ->
   $scope.doctor = {}
   $scope.medical_profile = {}
-
   
   loadMedicalProfile = ->
 	  $http.get("/api/v1/patients/dashboard/medical_profiles/#{security.medical_profiles[0].id}.json").success((data, status) ->

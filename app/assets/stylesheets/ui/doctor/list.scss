@@ -44,4 +44,22 @@
 	.text-big {
 		font-size: 16px;
 	}
+	.light {
+		padding: 10px 0;
+	}
+	.fake {
+		border: none;
+		padding: 15px 0 0;
+		margin-bottom: -7px;
+	}
+	.with-icon {
+		.icon {
+			&::before {
+				font-size: 20px;
+				margin-right: -5px;
+				margin-top: -2px;
+				display: block
+			}
+		}
+	}
 }

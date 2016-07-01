@@ -24,8 +24,12 @@ class DoctorSerializer < ActiveModel::Serializer
 	def work_times
 		[
 			{
-				title: "ПН-ПТ",
+				title: "пн-пт",
 				time_range: "9:00-19:00"
+			},
+			{
+				title: "сб",
+				time_range: "10:00-15:00"
 			}
 		]
 	end

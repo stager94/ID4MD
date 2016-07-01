@@ -46,6 +46,18 @@ App.config ($stateProvider, $urlRouterProvider, $locationProvider) ->
     controller: 'DashboardCtrl'
     data:
       needPatient: true
+  ).state('doctors_show',
+    url: '/doctors/:id',
+    templateUrl: 'templates/patients/doctors/show.html',
+    controller: 'Doctors.ProfileCtrl'
+    data:
+      needPatient: true
+  ).state('profile',
+    url: '/profile',
+    templateUrl: 'templates/patients/dashboard/profile.html',
+    controller: 'Patients.ProfileCtrl'
+    data:
+      needPatient: true
   )
 
   $locationProvider.html5Mode
