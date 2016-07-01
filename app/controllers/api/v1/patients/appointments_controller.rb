@@ -1,9 +1,7 @@
 class API::V1::Patients::AppointmentsController < API::V1::BaseController
-
-	before_action :find_patient, only: [:index]
 	
 	def index
-		list = medical_profile.appointments.where("date >= ?", Date.today)
+		list = medical_profile.appointments.following
 		render json_success("Appointments list", { 
 			appointments: ActiveModel::Serializer::ArraySerializer.new(list, each_serializer: AppointmentSerializer) 
 			})
@@ -11,12 +9,8 @@ class API::V1::Patients::AppointmentsController < API::V1::BaseController
 
 private
 
-	def find_patient
-		@patient = Patient.find params[:id]
-	end
-
 	def medical_profile
-		@patient.medical_profile_for(current_doctor)
+		@_medical_profile ||= MedicalProfile.find params[:id]
 	end
 
 end

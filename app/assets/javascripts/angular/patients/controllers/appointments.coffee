@@ -2,7 +2,7 @@ App.controller('AppointmentsCtrl', ['$scope', '$rootScope', '$state', '$http', '
 	$scope.appointments = []
 
 	loadAppointments = ->
-		$http.get("/api/v1/patients/dashboard/#{security.medical_profiles[0].id}/appointments").success((data, status, header, config) ->
+		$http.get("/api/v1/patients/dashboard/medical_profiles/#{security.medical_profiles[0].id}/appointments").success((data, status, header, config) ->
 			$scope.appointments = data.appointments
 			setTimeout ->
 				Page.onResize()

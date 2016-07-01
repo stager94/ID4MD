@@ -10,7 +10,8 @@
 		color: #95989e;
 		text-transform: uppercase;
 		display: block;
-		// margin-bottom: 5px;
+		font-size: 10px;
+		margin-bottom: 2px;
 	}
 
 	.info {
@@ -34,6 +35,13 @@
 		}
 		&.action {
 			line-height: 29px;
+			font-size: 14px;
+			.info {
+				font-size: 12px; 
+			}
 		}
+	}
+	.text-big {
+		font-size: 16px;
 	}
 }

@@ -2,7 +2,7 @@ class MedicalProfile < ApplicationRecord
   belongs_to :patient
   belongs_to :doctor
   
-  # has_many :diagnosises
+  has_many :diagnosises, class_name: "Diagnosis"
   has_many :visits
   has_many :appointments
 

@@ -220,6 +220,8 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
+    russian (0.6.0)
+      i18n (>= 0.5.0)
     rvm-capistrano (1.4.1)
       capistrano (>= 2.0.0)
     safe_yaml (1.0.4)
@@ -289,6 +291,7 @@ DEPENDENCIES
   rails (= 5.0.0.rc1)
   rspec-core
   rspec-rails (= 3.1.0)
+  russian (~> 0.6.0)
   rvm-capistrano (= 1.4.1)
   sass-rails (= 6.0.0.beta1)
   sdoc (~> 0.4.0)

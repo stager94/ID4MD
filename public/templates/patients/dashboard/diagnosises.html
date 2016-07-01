@@ -3,5 +3,27 @@
 </div>
 
 <div class="container scrollable" ng-controller="DiagnosisesCtrl">
-	Diagnosises will be here soon..
+	<ul class="list">
+		<li ng-repeat="diagnosis in diagnosises">
+			<span class="label gutter-bottom-5">Дата</span>
+			<div class="text-big">{{ diagnosis.date | date: "dd.MM.yyyy" }}</div>
+
+			<span class="label gutter-bottom-5 gutter-top-20">Адрес</span>
+			<div>{{ diagnosis.address }}</div>
+
+			<span class="label gutter-bottom-5 gutter-top-20">Лаборатория</span>
+			<div>{{ diagnosis.laboratory }}</div>
+		</li>
+
+		<li class="action">
+			<i class="id4md-archive-s" style="margin-top:-3px;"></i>
+			Архив
+			<span class="info">
+				Пусто
+			</span>
+		</li>
+	</ul>
 </div>
+
+
+<div class="bg-gray bg-abs"></div>

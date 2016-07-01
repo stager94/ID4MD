@@ -21,12 +21,14 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :patients do
         resources :patients, path: "dashboard" do
-          member do
-            resources :appointments, only: :index
-            resources :visits, only: :index
-          end
           collection do
-            resources :medical_profiles, only: :index
+            resources :medical_profiles, only: :index do
+              member do
+                resources :appointments, only: :index
+                resources :visits, only: :index
+                resources :diagnosises, only: :index
+              end
+            end
           end
         end
       end
