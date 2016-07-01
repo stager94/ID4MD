@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         }
         devise_scope :patient do
           get '/current_user' => 'api/v1/patients/sessions#get_current_user'
+          get '/invitations/info/:token' => 'api/v1/patients/invitations#get_user_info'
         end
 
       end
@@ -23,6 +24,9 @@ Rails.application.routes.draw do
           member do
             resources :appointments, only: :index
             resources :visits, only: :index
+          end
+          collection do
+            resources :medical_profiles, only: :index
           end
         end
       end

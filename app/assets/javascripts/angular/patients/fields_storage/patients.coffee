@@ -42,3 +42,39 @@ window.newPatientFields = [
 		label: 'Телефон'
 	}
 ]
+
+window.acceptPatientFields = [
+	{
+		name: 'phone'
+		templateUrl: 'templates/doctors/ui/forms/string.html'
+		ngModel: 'patient.phone'
+		label: 'Телефон'
+	}
+	{
+		name: 'password'
+		templateUrl: 'templates/doctors/ui/forms/password.html'
+		ngModel: 'patient.password'
+		label: 'Пароль'
+	}
+	{
+		name: 'invitation_token'
+		templateUrl: 'templates/doctors/ui/forms/hidden.html'
+		ngModel: 'patient.invitation_token'
+		label: 'Token'
+	}
+]
+
+window.updatePatientFields = [
+	{
+		name: 'first_name'
+		templateUrl: 'templates/doctors/ui/forms/string.html'
+		ngModel: 'patient.first_name'
+		label: 'Имя'
+	}
+	{
+		name: 'last_name'
+		templateUrl: 'templates/doctors/ui/forms/string.html'
+		ngModel: 'patient.last_name'
+		label: 'Фамилия'
+	}
+]

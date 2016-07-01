@@ -5,4 +5,8 @@ class Doctor < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :medical_profiles
+
+  def name
+  	[last_name, first_name].join " "
+  end
 end

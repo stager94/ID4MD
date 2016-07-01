@@ -1,0 +1,22 @@
+<div class="fixed-header">
+	<ng-include src="'templates/patients/ui/headers/dashboard.html'"></ng-include>
+</div>
+
+<div class="container scrollable" ng-controller="VisitsCtrl">
+	<ul class="list">
+		<li ng-repeat="visit in visits">
+			<span class="label gutter-bottom-5">Дата</span>
+			<div>{{ visit.date }}</div>
+
+			<span class="label gutter-bottom-5 gutter-top-20">Место</span>
+			<div>{{ visit.address }}</div>
+		</li>
+		<li class="action">
+			<i class="id4md-clock-s" style="margin-top:-3px;"></i>
+			История визитов
+			<span class="info">
+				Пусто
+			</span>
+		</li>
+	</ul>
+</div>

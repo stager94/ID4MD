@@ -9,13 +9,43 @@ window.App = angular.module("pdmapp", [
 ])
 
 App.config ($stateProvider, $urlRouterProvider, $locationProvider) ->
-  $urlRouterProvider.otherwise '/dashboard'
+  $urlRouterProvider.otherwise '/login'
   $stateProvider.state('login',
     url: '/login',
     templateUrl: 'templates/patients/login.html',
     controller: 'HomeCtrl',
     data:
       needNoUser: true
+  ).state('invitation',
+    url: '/invitation/:token/:secret/accept',
+    templateUrl: 'templates/patients/accept_invitation.html',
+    controller: 'Patients.InvitationCtrl',
+    data:
+      needNoUser: true
+  ).state('chat',
+    url: '/dashboard/chat',
+    templateUrl: 'templates/patients/dashboard/chat.html',
+    controller: 'DashboardCtrl'
+    data:
+      needPatient: true
+  ).state('appointments',
+    url: '/dashboard/appointments',
+    templateUrl: 'templates/patients/dashboard/appointments.html',
+    controller: 'DashboardCtrl'
+    data:
+      needPatient: true
+  ).state('diagnosises',
+    url: '/dashboard/diagnosises',
+    templateUrl: 'templates/patients/dashboard/diagnosises.html',
+    controller: 'DashboardCtrl'
+    data:
+      needPatient: true
+  ).state('visits',
+    url: '/dashboard/visits',
+    templateUrl: 'templates/patients/dashboard/visits.html',
+    controller: 'DashboardCtrl'
+    data:
+      needPatient: true
   )
 
   $locationProvider.html5Mode
@@ -32,22 +62,30 @@ angular.module("pdmapp").run (security, $rootScope, $state) ->
 
   $rootScope.$on '$stateChangeStart', (e, to) ->
     success = ->
+      $rootScope.$broadcast "loaded-current-patient"
       if (to.data && to.data.needNoUser)
         setTimeout ->
-          $state.go "dashboard"
+          $state.go "chat"
+          $("body").removeClass "hidden"
         , 1
+      setTimeout ->
+        $("body").removeClass "hidden"
+      , 2
     error = ->
-      if (to.data && to.data.needDoctor)
+      if (to.data && to.data.needPatient)
         setTimeout ->
           $state.go "login"
         , 1
+      setTimeout ->
+        $("body").removeClass "hidden"
+      , 2
     
     security.requestCurrentUser success, error
 
   $rootScope.$on '$stateChangeSuccess', (e, to) ->
     setTimeout ->
       $(document).trigger "ngready"
-    , 1
+    , 100
 
 
 App.directive 'ngBindModel', ($compile) ->

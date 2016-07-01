@@ -23,13 +23,22 @@ class API::V1::Patients::InvitationsController < Devise::InvitationsController
     patient = Patient.accept_invitation!(accept_invitation_params)
     
     if patient.valid?
-    	render json_success('Doctor updated.')
+    	render json_success('Patient updated.')
     else
     	if patient.new_record?
-	    	render json_failed('Invalid invitation token', 422)
+	    	render json_failed('Invalid invitation token', 422, { errors: ["Invalid invitation token"] })
 	    else
 	    	render json_failed('An error occured', 422, { errors: patient.errors.full_messages })
 	    end
+    end
+  end
+
+  def get_user_info
+    patient = Patient.find_by(invitation_token: params[:token])
+    if patient
+      render json_success('Patient info', patient: PatientSerializer.new(patient))
+    else
+      render json_failed('Not found', 404, {})
     end
   end
 
@@ -40,7 +49,7 @@ private
   end
 
   def accept_invitation_params
-    params.permit(:password, :password_confirmation, :invitation_token)
+    params[:patient].permit(:password, :password_confirmation, :invitation_token)
   end
 
 end

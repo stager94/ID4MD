@@ -28,4 +28,9 @@ App.controller('ApplicationCtrl', ['$scope', '$rootScope', 'security', '$state',
 			Page.onResize()
 		, 1
 		return
+
+	$rootScope.$on "loaded-current-patient", (event, data) ->
+		setTimeout ->
+			Page.onResize()
+		, 1
 ])

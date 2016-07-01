@@ -1,7 +1,7 @@
 !!!
 %html(ng-app="pdmapp")
 	%head
-		%title Doctors Dashboard
+		%title Patients Dashboard
 
 		%link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700italic,600,600italic,700,300italic&subset=latin,cyrillic' rel='stylesheet' type='text/css')
 		
@@ -36,7 +36,7 @@
 
 		= csrf_meta_tags
 	
-	%body.doctor(ng-controller="ApplicationCtrl")
+	%body.hidden.doctor(ng-controller="ApplicationCtrl")
 		%div(ui-view)
 		= javascript_include_tag 'patients'
 

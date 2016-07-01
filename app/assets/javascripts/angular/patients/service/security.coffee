@@ -19,11 +19,11 @@ angular.module("security.service", []).factory "security", [
 
 			login: (email, password) ->
 				$http.post("/api/v1/patients/sign_in.json",
-					doctor:
+					patient:
 						email: email,
 						password: password
 				).success((data, status, header, config) ->
-					service.current_user = data.doctor
+					service.current_user = data.patient
 					if service.isAuthenticated() then redirect()
 				).error (data, status) ->
 					alert(data.message)
@@ -38,6 +38,7 @@ angular.module("security.service", []).factory "security", [
 			logout: (newState) ->
 				$http.post("/api/v1/patients/sign_out.json").then (response) ->
 					service.current_user = null
+					service.medical_profiles = []
 					return
 
 			#update: (params, avatar_params) ->
@@ -59,7 +60,8 @@ angular.module("security.service", []).factory "security", [
 
 			reloadCurrentUser: (successCallback, errorCallback) ->
 				$http.get("/api/v1/patients/current_user.json").success((data, status) ->
-					service.current_user = data.doctor
+					service.current_user = data.patient
+					service.medical_profiles = data.patient.medical_profiles_attributes
 					
 					successCallback() if typeof successCallback is 'function'
 
@@ -73,6 +75,7 @@ angular.module("security.service", []).factory "security", [
 					console.log response
 
 			current_user: null
+			medical_profiles: []
 
 			isAuthenticated: ->
 				!!service.current_user

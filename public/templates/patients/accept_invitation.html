@@ -1,0 +1,57 @@
+<div class="invitable text-center" ng-show="step == 0">
+	<h1>
+		Регистрация
+		<small>Сервис, созданный для того, чтобы быть на связе со своим врачом, получать консультации и записываться на прием.</small>
+	</h1>
+
+	<p class="gutter-top-50">Чтобы начать вам необходимо пройти регистрацию.</p>
+
+	<a href="javascript:void(0)" ng-click="begin()" ng-if="loaded == true">начать</a>
+</div>
+
+<div class="invitable text-center" ng-show="step == 1">
+	<h1>
+		Регистрация
+		<small>Пожалуйста, введите полный номер и создайте пароль</small>
+	</h1>
+
+	<div class="form-block gutter-top--15">
+		<div class="form-container">
+			<div ng-repeat="field in acceptPatientFields">
+				<ng-include src="field.templateUrl"></ng-include>
+			</div>
+		</div>
+	</div>
+
+	<a href="javascript:void(0)" ng-click="accept()">продолжить</a>
+</div>
+
+<div class="invitable text-center" ng-show="step == 2">
+	<h1>
+		Регистрация
+		<small>Немного личной информации, чтобы доктор узнал Вас</small>
+	</h1>
+
+	<div class="form-block gutter-top--15">
+		<div class="form-container">
+			<div ng-repeat="field in updatePatientFields">
+				<ng-include src="field.templateUrl"></ng-include>
+			</div>
+		</div>
+	</div>
+
+
+	<a href="javascript:void(0)" ng-click="update()">продолжить</a>
+</div>
+
+<div class="invitable text-center" ng-show="step == 3">
+	<h1>
+		Все готово!
+	</h1>
+
+	<p>Теперь вы можете начать общение с вашим врачом.</p>
+
+	<p class="gutter-top-50 helper-text">Обратите внимание!<br />Консультация врача стоит определенной суммы. Вы можете выбрать удобный для вас способ оплаты и приемлимый вариант подписки в личном кабинете.</p>
+
+	<a ui-sref="profile()">начать общение</a>
+</div>

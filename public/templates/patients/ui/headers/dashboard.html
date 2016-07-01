@@ -1,0 +1,30 @@
+<header>
+	<a ui-sref="dashboard" class="action action-left">
+		<span class="profile-icon">P</span>
+	</a>
+
+	<span>
+		{{ doctor.name }}
+		<small>
+			отвечает в течении 
+			<ng-pluralize count="doctor.availability"
+										when="{'60': '1 часа', '120': '2 часов', '180': '3 часов', '1440': '1 дня'}">
+			</ng-pluralize>
+		</small>
+	</span>
+
+	<div class="action action-right">
+		<a href="">
+			<span class="profile-icon">D</span>
+		</a>
+	</div>
+</header>
+
+<div class="header-tabs">
+	<ul>
+		<li ui-sref-active="active"><a ui-sref='chat()'>Чат<span class="badge badge-green">{{ patient.unread_messages_count }}</span></a></li>
+		<li ui-sref-active="active"><a ui-sref='appointments()'>Назначения<span class="badge badge-grey">{{ patient.appointments_count }}</span></a></li>
+		<li ui-sref-active="active"><a ui-sref='diagnosises()'>Направления<span class="badge badge-grey">{{ patient.diagnosises_count }}</span></a></li>
+		<li ui-sref-active="active"><a ui-sref='visits()'>Визиты<span class="badge badge-grey">{{ patient.visits_count }}</span></a></li>
+	</ul>
+</div>
