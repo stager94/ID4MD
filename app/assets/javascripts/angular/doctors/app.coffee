@@ -82,7 +82,7 @@ App.config ["$httpProvider", ($httpProvider) ->
   $httpProvider.defaults.headers.common['Accept'] = "application/json"
 ]
 
-###angular.module("pdmapp").run (security, $rootScope, $state) ->
+angular.module("pdmapp").run ['security', '$rootScope', '$state', (security, $rootScope, $state) ->
 
   $rootScope.$on '$stateChangeStart', (e, to) ->
     success = ->
@@ -102,7 +102,7 @@ App.config ["$httpProvider", ($httpProvider) ->
     setTimeout ->
       $(document).trigger "ngready"
     , 1
-###
+]
 
 App.directive 'ngBindModel', ($compile) ->
   { compile: (tEl, tAtr) ->
