@@ -20,8 +20,7 @@
 //= require angular-sanitize.min
 //= require angular-ui-router.min
 //= require angular/doctors/app
-//= require_tree ./angular/doctors/fields_storage
-//= require_tree ./angular/doctors/service
+//= require_tree ./angular/doctors
 
 var $document = $($document);
 
