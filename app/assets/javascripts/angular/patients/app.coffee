@@ -8,7 +8,7 @@ window.App = angular.module("pdmapp", [
   "ui.router"
 ])
 
-App.config ($stateProvider, $urlRouterProvider, $locationProvider) ->
+App.config ['$stateProvider', '$urlRouterProvider', '$locationProvider', ($stateProvider, $urlRouterProvider, $locationProvider) ->
   $urlRouterProvider.otherwise '/login'
   $stateProvider.state('login',
     url: '/login',
@@ -63,14 +63,14 @@ App.config ($stateProvider, $urlRouterProvider, $locationProvider) ->
   $locationProvider.html5Mode
     enabled: false
     requireBase: false
-
+]
 
 App.config ["$httpProvider", ($httpProvider) ->
   $httpProvider.defaults.headers.common["X-CSRF-Token"] = document.getElementsByName("csrf-token")[0].content
   $httpProvider.defaults.headers.common['Accept'] = "application/json"
 ]
 
-angular.module("pdmapp").run (security, $rootScope, $state) ->
+angular.module("pdmapp").run ['security', '$rootScope', '$state', (security, $rootScope, $state) ->
 
   $rootScope.$on '$stateChangeStart', (e, to) ->
     success = ->
@@ -98,7 +98,7 @@ angular.module("pdmapp").run (security, $rootScope, $state) ->
     setTimeout ->
       $(document).trigger "ngready"
     , 100
-
+]
 
 App.directive 'ngBindModel', ($compile) ->
   { compile: (tEl, tAtr) ->
