@@ -8,7 +8,7 @@ window.App = angular.module("pdmapp", [
   "ui.router"
 ])
 
-###App.config ($stateProvider, $urlRouterProvider, $locationProvider) ->
+App.config ['$stateProvider', '$urlRouterProvider', '$locationProvider', ($stateProvider, $urlRouterProvider, $locationProvider) ->
   $urlRouterProvider.otherwise '/dashboard'
   $stateProvider.state('login',
     url: '/login',
@@ -75,7 +75,7 @@ window.App = angular.module("pdmapp", [
   $locationProvider.html5Mode
     enabled: false
     requireBase: false
-###
+]
 
 App.config ["$httpProvider", ($httpProvider) ->
   $httpProvider.defaults.headers.common["X-CSRF-Token"] = document.getElementsByName("csrf-token")[0].content
