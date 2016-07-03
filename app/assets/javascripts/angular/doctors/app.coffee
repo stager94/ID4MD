@@ -105,11 +105,11 @@ angular.module("pdmapp").run ['security', '$rootScope', '$state', (security, $ro
 ]
 
 App.directive 'ngBindModel', ['$compile', ($compile) ->
-  { compile: (tEl, tAtr) ->
+  compile: (tEl, tAtr) ->
     tEl[0].removeAttribute 'ng-bind-model'
-    (scope) ->
+    ['scope', (scope) ->
       tEl[0].setAttribute 'ng-model', scope.$eval(tAtr.ngBindModel)
       $compile(tEl[0]) scope
       return
- }
+    ]
 ]
