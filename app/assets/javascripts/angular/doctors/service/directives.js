@@ -1,4 +1,4 @@
-App.directive('ngBindModel', function($compile) {
+App.directive('ngBindModel', ['$compile', function($compile) {
   return {
     compile: function(tEl, tAtr) {
       tEl[0].removeAttribute('ng-bind-model');
@@ -8,4 +8,4 @@ App.directive('ngBindModel', function($compile) {
       };
     }
   };
-});
+}]);
