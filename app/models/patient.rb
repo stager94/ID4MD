@@ -14,4 +14,8 @@ class Patient < ActiveRecord::Base
   def medical_profile_for(doctor)
   	self.medical_profiles.by_doctor(doctor.id).first
   end
+
+  def to_s
+    self.id
+  end
 end

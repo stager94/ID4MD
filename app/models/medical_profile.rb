@@ -9,4 +9,8 @@ class MedicalProfile < ApplicationRecord
   validates_presence_of :diagnosis
 
   scope :by_doctor, ->(id) { where doctor_id: id }
+
+  def to_s
+  	[patient.email, doctor.email].join " from "
+  end
 end

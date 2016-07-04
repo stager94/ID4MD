@@ -34,6 +34,16 @@ gem 'devise_invitable', '1.6.0'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'paperclip'
 gem 'russian', '~> 0.6.0'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'ransack',    github: 'activerecord-hackery/ransack'
+gem 'kaminari',   github: 'amatsuda/kaminari', branch: '0-17-stable'
+gem 'formtastic', github: 'justinfrench/formtastic'
+gem 'draper',     github: 'audionerd/draper', branch: 'rails5', ref: 'e816e0e587'
+gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
+gem 'rack-mini-profiler',          github: 'MiniProfiler/rack-mini-profiler'
+
+gem 'activeadmin', github: 'activeadmin'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

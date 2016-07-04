@@ -9,4 +9,8 @@ class Doctor < ActiveRecord::Base
   def name
   	[last_name, first_name].join " "
   end
+
+  def to_s
+  	email
+  end
 end
