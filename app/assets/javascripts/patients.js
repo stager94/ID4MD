@@ -30,10 +30,6 @@ $(document).ready(function(){
 
 
 var reloadFunction = function() {
-	$('pre code').each(function(i, block) {
-    hljs.highlightBlock(block);
-  });
-
   Page.onResize();
   HeadersFilters.initialize();
   floatedOptions.initialize();
