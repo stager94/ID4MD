@@ -16,8 +16,6 @@ ActiveAdmin.register Patient do
   form do |f|
     f.inputs "General" do
       f.input :email
-      f.input :password
-      f.input :password_confirmation
       f.input :first_name
       f.input :last_name
       f.input :gender
