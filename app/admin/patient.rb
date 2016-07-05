@@ -13,5 +13,28 @@ ActiveAdmin.register Patient do
 #   permitted
 # end
 
+  form do |f|
+    f.inputs "General" do
+      f.input :email
+      f.input :password
+      f.input :password_confirmation
+      f.input :first_name
+      f.input :last_name
+      f.input :gender
+      f.input :phone
+    end
+    f.actions
+  end
+
+  index do
+    selectable_column
+    id_column
+    column :phone
+    column :email
+    column :first_name
+    column :last_name
+    column :created_at
+    actions
+  end
 
 end
