@@ -80,6 +80,7 @@
 	color: white;
 	padding: 0;
 	@include transition(background-color 200ms ease-out);
+	@include appearance(button);
 	cursor: pointer;
 
 	&:hover, &:active, &:focus {
