@@ -3,6 +3,8 @@ require 'devise/version'
 module DeviseInvitable
   module Mailer
 
+  	require 'pdm_app/notifications/sms'
+
     # Deliver an invitation email
     def invitation_instructions(record, token, opts={})
       @token = token
