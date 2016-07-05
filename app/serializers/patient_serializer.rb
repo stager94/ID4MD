@@ -1,7 +1,8 @@
 class PatientSerializer < ActiveModel::Serializer
 	attributes :id, :email, :first_name, :last_name, :gender, :phone, :diagnosis,
 						 :name, :last_message, :unread_messages_count, :visits_count,
-						 :appointments_count, :diagnosises_count, :next_visit_date, :medical_profiles_attributes
+						 :appointments_count, :diagnosises_count, :next_visit_date, :medical_profiles_attributes,
+						 :invitation_accepted
 
 	def last_message
 		{
@@ -40,6 +41,10 @@ class PatientSerializer < ActiveModel::Serializer
 
 	def medical_profiles_attributes
 		ActiveModel::Serializer::ArraySerializer.new(object.medical_profiles, each_serializer: MedicalProfileSerializer)
+	end
+
+	def invitation_accepted
+		object.invitation_accepted?
 	end
 
 end

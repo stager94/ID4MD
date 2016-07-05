@@ -1,6 +1,6 @@
 class Doctor < ActiveRecord::Base
 
-  include Authenticable
+  include Member::Authenticable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

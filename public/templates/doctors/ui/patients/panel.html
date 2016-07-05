@@ -1,4 +1,4 @@
-<div class="patients-panel">
+<div class="patients-panel" ng-class="{'not-accepted': patient.invitation_accepted == false}">
 	<div class="patient-information">
 		<div class="avatar online"><img src="/demo/avatar.jpg"></div>
 		<h4>{{ patient.name }}<small>{{ patient.diagnosis }}</small></h4>
