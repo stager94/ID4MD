@@ -41,9 +41,9 @@ gem 'formtastic', github: 'justinfrench/formtastic'
 gem 'draper',     github: 'audionerd/draper', branch: 'rails5', ref: 'e816e0e587'
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 gem 'rack-mini-profiler',          github: 'MiniProfiler/rack-mini-profiler'
-
 gem 'activeadmin', github: 'activeadmin'
 
+gem 'plivo'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
