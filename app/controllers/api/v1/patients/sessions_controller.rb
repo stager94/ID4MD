@@ -1,7 +1,7 @@
-class API::V1::Patients::SessionsController < Devise::SessionsController
+class Api::V1::Patients::SessionsController < Devise::SessionsController
   include Api::RequestHelper
-  include API::ExceptionsTriggering
-  include API::RequestRestrictions
+  include Api::ExceptionsTriggering
+  include Api::RequestRestrictions
 
   respond_to :json
 

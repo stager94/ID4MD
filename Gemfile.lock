@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/MiniProfiler/rack-mini-profiler.git
-  revision: 48c5b09d6640811d1171daed9639d929179c42e9
-  specs:
-    rack-mini-profiler (0.10.1)
-      rack (>= 1.2.0)
-
-GIT
   remote: git://github.com/activeadmin/activeadmin.git
   revision: 81c7813244b2c8c15ed91df9f0190f219f7d0b3f
   specs:
@@ -422,7 +415,6 @@ DEPENDENCIES
   plivo
   pry
   puma (~> 3.0)
-  rack-mini-profiler!
   rails (= 5.0.0.rc1)
   ransack!
   rspec-core

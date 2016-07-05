@@ -1,4 +1,4 @@
-module API::ExceptionsTriggering
+module Api::ExceptionsTriggering
 	extend ActiveSupport::Concern
 
 	include Api::RequestHelper

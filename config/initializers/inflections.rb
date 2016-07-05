@@ -1,3 +1,3 @@
-ActiveSupport::Inflector.inflections do |inflect|
-  inflect.acronym 'API' 
-end
+# ActiveSupport::Inflector.inflections do |inflect|
+#   inflect.acronym 'API' 
+# end

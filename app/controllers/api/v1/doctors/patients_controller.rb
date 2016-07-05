@@ -1,4 +1,4 @@
-class API::V1::Doctors::PatientsController < API::V1::BaseController
+class Api::V1::Doctors::PatientsController < Api::V1::BaseController
 
 	before_action :find_patient, only: [:show, :update]
 

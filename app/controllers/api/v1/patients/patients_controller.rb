@@ -1,4 +1,4 @@
-class API::V1::Patients::PatientsController < API::V1::BaseController
+class Api::V1::Patients::PatientsController < Api::V1::BaseController
 
 	before_filter :find_patient
 

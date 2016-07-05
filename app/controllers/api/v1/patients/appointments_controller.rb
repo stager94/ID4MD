@@ -1,4 +1,4 @@
-class API::V1::Patients::AppointmentsController < API::V1::BaseController
+class Api::V1::Patients::AppointmentsController < Api::V1::BaseController
 	
 	def index
 		list = medical_profile.appointments.following

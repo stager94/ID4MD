@@ -1,7 +1,7 @@
 require 'rails_helper'
 include Api::RequestHelper
 
-RSpec.describe API::V1::Patients::SessionsController, type: :controller do
+RSpec.describe Api::V1::Patients::SessionsController, type: :controller do
 
 	let!(:patient) { create(:patient, email: "test@pdmapp.com") }
 

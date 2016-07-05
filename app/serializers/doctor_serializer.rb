@@ -1,24 +1,13 @@
 class DoctorSerializer < ActiveModel::Serializer
 	attributes :id, :email, :availability, :speciality, :first_name, 
-						 :last_name, :gender, :phone, :identifier, :name,
-						 :jobs, :work_times
+						 :last_name, :gender, :phone, :identifier, :name, :work_times, :jobs
+
+	def jobs
+		object.jobs.map { |job| JobSerializer.new(job) }
+	end
 
 	def identifier
 		object.id.to_s.rjust(5, "0")
-	end
-
-	def jobs
-		[
-			{
-				address: "Москва, ул.Рябиновая, д.19, клиника «Будь Здоров!»"
-			},
-			{
-				address: "Москва, Ленинградский просп., д.28, клиника «Мед-Си»"
-			},
-			{
-				address: "Москва, ул.Ярцевская, д.2, корп.1, городская поликлиника №41."
-			}
-		]
 	end
 
 	def work_times

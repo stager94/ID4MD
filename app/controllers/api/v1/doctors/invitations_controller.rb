@@ -1,7 +1,7 @@
-class API::V1::Doctors::InvitationsController < Devise::InvitationsController
+class Api::V1::Doctors::InvitationsController < Devise::InvitationsController
 	include Api::RequestHelper
-  include API::ExceptionsTriggering
-  include API::RequestRestrictions
+  include Api::ExceptionsTriggering
+  include Api::RequestRestrictions
 
   prepend_before_action :require_doctor_authentication, only: :create
   before_action :require_no_authentication, only: :update

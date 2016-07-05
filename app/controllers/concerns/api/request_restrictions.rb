@@ -1,4 +1,4 @@
-module API::RequestRestrictions
+module Api::RequestRestrictions
 	extend ActiveSupport::Concern
 
 protected

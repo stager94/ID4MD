@@ -1,4 +1,4 @@
-class API::V1::Patients::MedicalProfilesController < API::V1::BaseController
+class Api::V1::Patients::MedicalProfilesController < Api::V1::BaseController
 	
 	before_action :find_medical_profile
 
@@ -9,7 +9,7 @@ class API::V1::Patients::MedicalProfilesController < API::V1::BaseController
 private
 
 	def find_medical_profile
-		@medical_profile = MedicalProfile.find params[:id]
+		@medical_profile = MedicalProfile.includes(doctor: :jobs).find(params[:id])
 	end
 
 end
