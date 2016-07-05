@@ -1,5 +1,5 @@
 class API::V1::Doctors::SessionsController < Devise::SessionsController
-  include API::RequestHelper
+  include Api::RequestHelper
   include API::ExceptionsTriggering
   include API::RequestRestrictions
 

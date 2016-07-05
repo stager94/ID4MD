@@ -1,4 +1,4 @@
-module API::RequestHelper
+module Api::RequestHelper
 	
 	def json_success(message, additional_hash = {})
 		{

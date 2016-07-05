@@ -1,5 +1,5 @@
 class API::V1::Doctors::InvitationsController < Devise::InvitationsController
-	include API::RequestHelper
+	include Api::RequestHelper
   include API::ExceptionsTriggering
   include API::RequestRestrictions
 

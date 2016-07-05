@@ -1,7 +1,7 @@
 module API::ExceptionsTriggering
 	extend ActiveSupport::Concern
 
-	include API::RequestHelper
+	include Api::RequestHelper
 
 	included do
 		rescue_from ::StandardError do |exception|

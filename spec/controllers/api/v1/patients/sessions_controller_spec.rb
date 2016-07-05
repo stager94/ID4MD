@@ -1,5 +1,5 @@
 require 'rails_helper'
-include API::RequestHelper
+include Api::RequestHelper
 
 RSpec.describe API::V1::Patients::SessionsController, type: :controller do
 
