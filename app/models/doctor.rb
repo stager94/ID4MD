@@ -1,4 +1,7 @@
 class Doctor < ActiveRecord::Base
+
+  include Authenticable
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
@@ -13,4 +16,5 @@ class Doctor < ActiveRecord::Base
   def to_s
   	email
   end
+
 end

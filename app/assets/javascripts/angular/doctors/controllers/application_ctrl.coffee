@@ -9,7 +9,7 @@ App.controller('ApplicationCtrl', ['$scope', '$rootScope', 'security', '$state',
 
 	$scope.login = ->
 		console.log "login"
-		security.login $scope.user.email, $scope.user.password
+		security.login $scope.user.login, $scope.user.password
 
 	$rootScope.openSidebar = ->
 		$("#sidebar").show()

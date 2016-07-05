@@ -17,10 +17,10 @@ angular.module("security.service", []).factory "security", [
 			hideLogin: ->
 				redirect "/"
 
-			login: (email, password) ->
+			login: (login, password) ->
 				$http.post("/api/v1/patients/sign_in.json",
 					patient:
-						email: email,
+						login: login,
 						password: password
 				).success((data, status, header, config) ->
 					service.current_user = data.patient
