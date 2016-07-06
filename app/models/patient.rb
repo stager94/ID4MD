@@ -8,6 +8,7 @@ class Patient < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:login]
 
   validates_presence_of :first_name, :last_name, :gender, :phone
+  validates_uniqueness_of :phone
   has_many :medical_profiles, dependent: :destroy
   accepts_nested_attributes_for :medical_profiles
 
