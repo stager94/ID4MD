@@ -7,6 +7,9 @@ class Doctor < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:login]
 
+  validates_uniqueness_of :phone
+  validates_presence_of :phone
+  
   has_many :medical_profiles
   has_many :jobs
 
