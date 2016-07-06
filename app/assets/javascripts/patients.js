@@ -19,6 +19,7 @@
 //= require angular-route.min
 //= require angular-sanitize.min
 //= require angular-ui-router.min
+//= require angular-simple-format
 //= require angular/patients/app
 //= require_tree ./angular/patients
 

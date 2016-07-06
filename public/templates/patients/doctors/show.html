@@ -39,7 +39,7 @@
 		<li class="light with-icon" ng-repeat="job in doctor.jobs">
 			<div>
 				<span class="pull-right icon id4md-location-s"></span>
-				{{ job.address }}
+				<span ng-bind-html="job.address"></span>
 
 			</div>
 		</li>
