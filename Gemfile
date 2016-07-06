@@ -46,6 +46,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'plivo'
 gem 'twilio-ruby'
 gem 'phony_rails'
+gem 'googl'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
