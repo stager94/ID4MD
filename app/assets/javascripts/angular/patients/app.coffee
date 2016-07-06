@@ -70,32 +70,25 @@ App.config ["$httpProvider", ($httpProvider) ->
   $httpProvider.defaults.headers.common['Accept'] = "application/json"
 ]
 
+
 angular.module("pdmapp").run ['security', '$rootScope', '$state', (security, $rootScope, $state) ->
 
   $rootScope.$on '$stateChangeStart', (e, to) ->
     success = ->
-      $rootScope.$broadcast "loaded-current-patient"
       if (to.data && to.data.needNoUser)
         setTimeout ->
           $state.go "chat"
-          $("body").removeClass "hidden"
         , 1
-      setTimeout ->
-        $("body").removeClass "hidden"
-      , 2
     error = ->
       if (to.data && to.data.needPatient)
         setTimeout ->
           $state.go "login"
         , 1
-      setTimeout ->
-        $("body").removeClass "hidden"
-      , 2
     
     security.requestCurrentUser success, error
 
   $rootScope.$on '$stateChangeSuccess', (e, to) ->
     setTimeout ->
       $(document).trigger "ngready"
-    , 100
+    , 1
 ]

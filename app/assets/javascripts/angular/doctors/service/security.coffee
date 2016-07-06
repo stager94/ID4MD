@@ -4,6 +4,7 @@ angular.module("security.service", []).factory "security", [
 	"$location",
 	"$http",
 	"$q",
+	"$state",
 	($location, $http, $q, $state) ->
 		redirect = (url) ->
 			url = url or "/"

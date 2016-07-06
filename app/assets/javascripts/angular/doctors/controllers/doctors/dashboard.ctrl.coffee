@@ -4,7 +4,7 @@ App.controller('Doctors.DashboardCtrl', ['$scope', '$rootScope', 'security', '$s
 	$http.get("/api/v1/doctors/patients.json").success((response) ->
 		$scope.patients = response.patients
 	).error (data, status) ->
-		alert(data)
+		console.log data, status
 
 	$scope.search = (item) ->
 		if !$scope.query || (item.name.toLowerCase().indexOf($scope.query) != -1) || (item.diagnosis.toLowerCase().indexOf($scope.query.toLowerCase()) != -1)

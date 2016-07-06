@@ -4,11 +4,10 @@ angular.module("security.service", []).factory "security", [
 	"$location",
 	"$http",
 	"$q",
+	"$state",
 	($location, $http, $q, $state) ->
 		redirect = (url) ->
-			url = url or "/"
-			$location.path url
-			return
+			$state.go url
 
 		service = 
 			showLogin: ->
@@ -24,7 +23,8 @@ angular.module("security.service", []).factory "security", [
 						password: password
 				).success((data, status, header, config) ->
 					service.current_user = data.patient
-					if service.isAuthenticated() then redirect()
+					service.medical_profiles = data.patient.medical_profiles_attributes
+					if service.isAuthenticated() then redirect('chat')
 				).error (data, status) ->
 					alert(data.message)
 
@@ -33,7 +33,8 @@ angular.module("security.service", []).factory "security", [
 					user: params
 				).success (data, status, header, config) ->
 					service.current_user = data.user
-					if service.isAuthenticated() then redirect()
+					service.medical_profiles = data.user.medical_profiles_attributes
+					if service.isAuthenticated() then redirect('chat')
 
 			logout: (newState) ->
 				$http.post("/api/v1/patients/sign_out.json").then (response) ->
