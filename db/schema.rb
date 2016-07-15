@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704220245) do
+ActiveRecord::Schema.define(version: 20160713194456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,18 @@ ActiveRecord::Schema.define(version: 20160704220245) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.index ["medical_profile_id"], name: "index_appointments_on_medical_profile_id", using: :btree
+  end
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "objectable_id"
+    t.string   "objectable_type"
+    t.integer  "medical_profile_id"
+    t.integer  "sender_id"
+    t.string   "sender_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["medical_profile_id"], name: "index_chat_messages_on_medical_profile_id", using: :btree
   end
 
   create_table "diagnoses", force: :cascade do |t|
@@ -166,6 +178,7 @@ ActiveRecord::Schema.define(version: 20160704220245) do
   end
 
   add_foreign_key "appointments", "medical_profiles"
+  add_foreign_key "chat_messages", "medical_profiles"
   add_foreign_key "diagnoses", "medical_profiles"
   add_foreign_key "jobs", "doctors"
   add_foreign_key "medical_profiles", "doctors"

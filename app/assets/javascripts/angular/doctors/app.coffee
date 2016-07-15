@@ -5,7 +5,9 @@ window.App = angular.module("pdmapp", [
   "ngRoute",
   "ngSanitize",
   "security",
-  "ui.router"
+  "ui.router",
+  "simpleFormat",
+  "angular.filter"
 ])
 
 App.config ['$stateProvider', '$urlRouterProvider', '$locationProvider', ($stateProvider, $urlRouterProvider, $locationProvider) ->
@@ -102,4 +104,22 @@ angular.module("pdmapp").run ['security', '$rootScope', '$state', (security, $ro
     setTimeout ->
       $(document).trigger "ngready"
     , 1
+]
+
+angular.module("pdmapp").directive 'whenScrolled', [
+  '$timeout'
+  ($timeout) ->
+    (scope, elm, attr) ->
+      raw = elm[0]
+      $timeout ->
+        raw.scrollTop = raw.scrollHeight
+        return
+      elm.bind 'scroll', ->
+        if raw.scrollTop <= 50
+          # load more items before you hit the top
+          sh = raw.scrollHeight
+          scope.$apply attr.whenScrolled
+          raw.scrollTop = raw.scrollHeight - sh
+        return
+      return
 ]

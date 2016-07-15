@@ -1,5 +1,6 @@
 class Patient < ActiveRecord::Base
 
+  include Chat::Senderable
   include Member::Authenticable
 
   # Include default devise modules. Others available are:

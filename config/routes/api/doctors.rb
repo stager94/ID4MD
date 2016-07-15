@@ -20,6 +20,16 @@ Rails.application.routes.draw do
       namespace :doctors do
         resources :doctors, path: 'profile', only: [:show, :update]
         resources :patients, only: [:index, :show, :update]
+
+        resources :medical_profiles, only: [:show] do
+
+          namespace :chat do
+            resources :messages, only: [:index, :create]
+          end
+
+        end
+
+
       end
     end
   end

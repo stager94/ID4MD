@@ -6,7 +6,8 @@ window.App = angular.module("pdmapp", [
   "ngSanitize",
   "security",
   "ui.router",
-  "simpleFormat"
+  "simpleFormat",
+  "angular.filter"
 ])
 
 App.config ['$stateProvider', '$urlRouterProvider', '$locationProvider', ($stateProvider, $urlRouterProvider, $locationProvider) ->

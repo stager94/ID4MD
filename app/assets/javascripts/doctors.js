@@ -20,6 +20,7 @@
 //= require angular-sanitize.min
 //= require angular-ui-router.min
 //= require angular-simple-format
+//= require angular-filter
 //= require angular/doctors/app
 //= require_tree ./angular/doctors
 

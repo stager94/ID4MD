@@ -9,6 +9,12 @@ window.Page =
 		console.log "Page resize, header height is ", headerHeight
 		$(".scrollable").css
 			'margin-top': headerHeight + 'px'
+
+		if $("#chat-form").length > 0
+			footerHeight = $("#chat-form").innerHeight() || 0
+
+			$(".scrollable").css
+				'margin-bottom': footerHeight + 'px'			
 		return
 
 	checkScroll: ->
