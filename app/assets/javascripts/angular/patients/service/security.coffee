@@ -42,16 +42,6 @@ angular.module("security.service", []).factory "security", [
 					service.medical_profiles = []
 					return
 
-			#update: (params, avatar_params) ->
-			#	console.log "params:", params
-			#	$http.post("api/v1/update_profile.json",
-			#		avatar_params
-			#		transformRequest: angular.identity,
-			#		headers:
-			#			"Content-Type": `undefined`
-			#	).success (data, status, header, config) ->
-			#		profile.user = null
-
 			requestCurrentUser: (successCallback, errorCallback) ->
 				if service.isAuthenticated()
 					successCallback() if typeof successCallback is 'function'

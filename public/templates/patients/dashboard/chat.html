@@ -4,66 +4,29 @@
 
 <div class="container scrollable" ng-controller="ChatCtrl">
 	
-	<div class="message incoming">
-		<div class="text-wrapper">
-			<div class="text">Incomming message</div>
+	<a href="javascript:void(0)" ng-if="needLoad" ng-click="loadMessages()">Load more..</a>
+
+	<div ng-repeat="(date, messagesList) in messages | orderBy: 'id' | groupBy: 'date'">
+		
+		<div class="chat-date-separator">{{date}}</div>
+
+		<div class="message {{ message.type }}" ng-repeat="message in messagesList" ng-class="{'incoming': message.sender_type != 'Patient', 'outcome': message.sender_type == 'Patient'}">
+			<div class="time" ng-if="message.sender_type == 'Patient'">{{ message.created_at | date: "HH:mm" }}</div>
+			<div class="text-wrapper">
+				<div class="text">{{ message.body }}</div>
+			</div>
+			<div class="time" ng-if="message.sender_type != 'Patient'">{{ message.created_at | date: "HH:mm" }}</div>
 		</div>
-		<div class="time">hh:mm</div>
+
 	</div>
 
-	<div class="message incoming">
-		<div class="text-wrapper">
-			<div class="text">Box placed with 10 pt margins, 13pt cerning, 20pt line spacing for Incomming message</div>
-		</div>
-		<div class="time">hh:mm</div>
-	</div>
-
-	<div class="chat-date-separator">Среда 18 Мая 2016</div>
-
-	<div class="message outcome">
-		<div class="time">hh:mm</div>
-		<div class="text-wrapper">
-			<div class="text">Box placed with 10 pt margins, 13pt cerning, 20pt line spacing for outcomming message</div>
+	<div id="chat-form">
+		<textarea placeholder="Сообщение" rows="1" ng-model="message.text"></textarea>
+		<div class="action-button">
+			<a href="javascript:void(0)" ng-click="sendMessage()">
+				<i class="id4md-send"></i>
+			</a>	
 		</div>
 	</div>
-
-	<div class="message outcome appointment">
-		<div class="time">hh:mm</div>
-		<div class="text-wrapper">
-			<div class="text">иммунокорректоры ( виферон) и нестероиды, с целью профилактики осложнений.</div>
-		</div>
-	</div>
-
-	<div class="message outcome visit">
-		<div class="time">hh:mm</div>
-		<div class="text-wrapper">
-			<div class="text">Визит 12 мая по адресу Москва, ул. Рябиновая, дом 19</div>
-		</div>
-	</div>
-
-	<div class="message outcome diagnosis">
-		<div class="time">hh:mm</div>
-		<div class="text-wrapper">
-			<div class="text">повторно обратиться к гинекологу и повторить УЗИ на 5- 7 день цикла.</div>
-		</div>
-	</div>
-
-	<div class="chat-date-separator">Четверг 19 Мая 2016</div>
-
-	<div class="message incoming">
-		<div class="text-wrapper">
-			<div class="text">Box placed with 10 pt margins, 13pt cerning, 20pt line spacing for Incomming message</div>
-		</div>
-		<div class="time">hh:mm</div>
-	</div>
-	
-	<div class="message outcome">
-		<div class="time">hh:mm</div>
-		<div class="text-wrapper">
-			<div class="text">Box placed with 10 pt margins, 13pt cerning, 20pt line spacing for outcomming message</div>
-		</div>
-	</div>
-
-
 
 </div>
