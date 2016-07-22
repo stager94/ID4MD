@@ -1,3 +1,5 @@
+# include "pdm_app/chat/sending_message"
+
 class Api::V1::Doctors::Chat::MessagesController < Api::V1::BaseController
 	
 	def index
