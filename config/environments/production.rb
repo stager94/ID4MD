@@ -78,7 +78,9 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_cable.allowed_request_origins = ["http://146.185.148.161"]
+  # config.action_cable.allowed_request_origins = ["http://146.185.148.161"]
+  config.action_cable.disable_request_forgery_protection = true
+
 
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true

@@ -43,8 +43,6 @@ gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 # gem 'rack-mini-profiler',          github: 'MiniProfiler/rack-mini-profiler'
 gem 'activeadmin', github: 'activeadmin'
 
-gem 'plivo'
-gem 'twilio-ruby'
 gem 'phony_rails'
 gem 'googl'
 
