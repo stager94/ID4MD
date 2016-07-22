@@ -29,6 +29,7 @@ module Id4md
 
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.autoload_paths += Dir["#{config.root}/lib/"]
+    config.action_cable.mount_path = '/cable'
 
   end
 end
