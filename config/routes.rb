@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get '/doctors' => 'application#doctors'
   get '/patients' => 'application#patients'
+
+  mount ActionCable.server => '/cable'
 end
 
 load Rails.root.join 'config/routes/api/doctors.rb'

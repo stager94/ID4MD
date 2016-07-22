@@ -7,6 +7,7 @@
 		
 		= stylesheet_link_tag 'application', media: 'all'
 		= javascript_include_tag 'doctors'
+		= action_cable_meta_tag
 
 		%meta(name='apple-mobile-web-app-capable' content='yes')
 		%meta(name='apple-mobile-web-app-status-bar-style' content='white')
@@ -39,7 +40,3 @@
 	
 	%body.doctor(ng-controller="ApplicationCtrl")
 		%div(ui-view)
-
-		/:javascript
-		/	$(document).bind("mobileinit", function(){$.extend(  $.mobile , {autoInitializePage: false})});
-		/= javascript_include_tag 'jquery.mobile'

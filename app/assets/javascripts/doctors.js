@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require cable
 //= require ui/main
 //= require inobounce
 //= require angular.min

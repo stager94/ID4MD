@@ -8,12 +8,27 @@ App.controller('Doctors.PatientsChatCtrl', ['$scope', '$rootScope', '$state', '$
 	$scope.busy = false
 	$scope.message = {}
 
+	initialize = ->
+		PdmApp.cable.subscriptions.create {
+				channel: "ChatChannel",
+				chat_room_id: $rootScope.patient.medical_profiles_attributes[0].id
+			},
+			received: (data) ->
+				$scope.messages.push JSON.parse(data.message)
+				$scope.$apply()
+
+				setTimeout ->
+					Page.onResize()
+					$(".scrollable").scrollTop(1000);
+
+		$scope.loadMessages()
+
 	$scope.sendMessage = ->
 		$http.post("/api/v1/doctors/medical_profiles/#{$rootScope.patient.medical_profiles_attributes[0].id}/chat/messages.json",
 			body: $scope.message.text
 		).success((data, status, header, config) ->
 			console.log data, status, header, config
-			$scope.messages.push data.message
+			# $scope.messages.push data.message
 			$scope.message = {}
 
 			setTimeout ->
@@ -49,6 +64,6 @@ App.controller('Doctors.PatientsChatCtrl', ['$scope', '$rootScope', '$state', '$
 			console.log data, status
 			$scope.busy = false
 
-	$scope.retrievePatient $scope.loadMessages
+	$scope.retrievePatient initialize
 
 ])

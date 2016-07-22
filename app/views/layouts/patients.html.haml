@@ -6,6 +6,7 @@
 		%link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700italic,600,600italic,700,300italic&subset=latin,cyrillic' rel='stylesheet' type='text/css')
 		
 		= stylesheet_link_tag 'application', media: 'all'
+		= action_cable_meta_tag
 
 		%meta(name='apple-mobile-web-app-capable' content='yes')
 		%meta(name='apple-mobile-web-app-status-bar-style' content='white')
@@ -39,7 +40,3 @@
 	%body.doctor(ng-controller="ApplicationCtrl")
 		%div(ui-view)
 		= javascript_include_tag 'patients'
-
-		/:javascript
-		/	$(document).bind("mobileinit", function(){$.extend(  $.mobile , {autoInitializePage: false})});
-		/= javascript_include_tag 'jquery.mobile'
