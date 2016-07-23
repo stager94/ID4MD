@@ -64,3 +64,24 @@ namespace :deploy do
     end
   end
 end
+
+
+set :sync_pid, -> { "#{deploy_to}/shared/pids/sync.pid" }
+
+namespace :sync do
+  desc "Start sync server"
+  task :start, :roles => :app do
+    run "cd #{deploy_to}/current; RAILS_ENV=#{rails_env} bundle exec rackup sync.ru -s thin -E production -D -P #{sync_pid}"
+  end
+ 
+  desc "Stop sync server"
+  task :stop, :roles => :app do
+    run "cd #{deploy_to}/current; if [ -f #{sync_pid} ] && [ -e /proc/$(cat #{sync_pid}) ]; then kill -QUIT `cat #{sync_pid}`; fi"
+  end
+ 
+  desc "Restart sync server"
+  task :restart, :roles => :app do
+    run "cd #{deploy_to}/current; if [ -f #{sync_pid} ] && [ -e /proc/$(cat #{sync_pid}) ]; then kill -QUIT `cat #{sync_pid}`; fi"
+    run "cd #{deploy_to}/current; RAILS_ENV=#{rails_env} bundle exec rackup sync.ru -s thin -E production -D -P #{sync_pid}"
+  end
+end
