@@ -9,17 +9,14 @@ App.controller('Doctors.PatientsChatCtrl', ['$scope', '$rootScope', '$state', '$
 	$scope.message = {}
 
 	initialize = ->
-		PdmApp.cable.subscriptions.create {
-				channel: "ChatChannel",
-				chat_room_id: $rootScope.patient.medical_profiles_attributes[0].id
-			},
-			received: (data) ->
-				$scope.messages.push JSON.parse(data.message)
-				$scope.$apply()
+		client = new Faye.Client Settings.faye_path
+		client.subscribe "/messages/#{$rootScope.patient.medical_profiles_attributes[0].id}", (response) ->
+			$scope.messages.push response.data.message
+			$scope.$apply()
 
-				setTimeout ->
-					Page.onResize()
-					$(".scrollable").scrollTop(1000);
+			setTimeout ->
+				Page.onResize()
+				$(".scrollable").scrollTop(1000);
 
 		$scope.loadMessages()
 

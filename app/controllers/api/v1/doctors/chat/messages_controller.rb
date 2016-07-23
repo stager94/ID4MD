@@ -12,7 +12,8 @@ class Api::V1::Doctors::Chat::MessagesController < Api::V1::BaseController
 		message  = use_case.run medical_profile, current_doctor, params[:body]
 		serialized_message = ::Chat::MessageSerializer.new(message)
 
-		ActionCable.server.broadcast "messages_#{medical_profile.id}_channel", message: serialized_message.to_json
+		# ActionCable.server.broadcast "messages_#{medical_profile.id}_channel", message: serialized_message.to_json
+		PdmApp::SocketManager.broadcast "/messages/#{medical_profile.id}", message: serialized_message.as_json
 
 		render json_success("Message created successfull", message: serialized_message)
 	end
