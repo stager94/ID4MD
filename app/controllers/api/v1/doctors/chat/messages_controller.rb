@@ -1,4 +1,5 @@
 require "pdm_app/chat/sending_message"
+require "pdm_app/socket_manager"
 
 class Api::V1::Doctors::Chat::MessagesController < Api::V1::BaseController
 	

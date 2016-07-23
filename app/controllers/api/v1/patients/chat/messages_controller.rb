@@ -1,3 +1,6 @@
+require "pdm_app/chat/sending_message"
+require "pdm_app/socket_manager"
+
 class Api::V1::Patients::Chat::MessagesController < Api::V1::BaseController
 	
 	def index
