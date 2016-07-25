@@ -9,7 +9,7 @@ App.controller('Doctors.PatientsChatFormCtrl', ['$scope', '$rootScope', '$state'
 			body: $scope.message.text
 		).success((data, status, header, config) ->
 			console.log data, status, header, config
-
+			$scope.message = {}
 			setTimeout ->
 				Page.onResize()
 				$(".scrollable").scrollTop(1000);
