@@ -124,10 +124,19 @@
 		color: #666;
 	}
 }
-.visit-form {
-	background: rgba(#f43f76, .2);
+.visit-form, .appointment-form, .diagnosis-form {
 	padding: 10px;
 	border-radius: 5px;
 	font-size: 13px;
 	line-height: 20px;
+}
+
+.visit-form {
+	background: rgba(#f43f76, .2);
+}
+.appointment-form {
+	background: rgba(#42d7e6, .2);
+}
+.diagnosis-form {
+	background: rgba(#4e58e2, .2);
 }

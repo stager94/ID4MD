@@ -27,21 +27,21 @@ App.controller('Doctors.PatientsChatFormCtrl', ['$scope', '$rootScope', '$state'
 		).error (data, status) ->
 			console.log data, status
 
-	$scope.addVisitForm = ->
+
+	$scope.addCustomForm = (type) ->
 		$rootScope.messages.push
 			id: generateCustomId()
-			custom_type: "visit-form"
+			custom_type: "#{type}-form"
 			date: capitalizeFirstLetter(moment().format('dddd DD MMMM YYYY'))
 			created_at: new Date()
 			custom: true
 			object:
-				type: "Visit"
+				type: capitalizeFirstLetter(type)
 				secret: generateSecretId(10)
 
 		setTimeout ->
 				Page.onResize()
 				$(".scrollable").scrollTop(1000);
-
 
 	#
 	# Private methods

@@ -2,3 +2,5 @@ ru:
   chat:
     custom_messages:
       visit: "Визит %{date} по адресу %{address}"
+      appointment: "%{date} принимать %{text}"
+      diagnosis: "Направление на %{laboratory}, %{date} по адресу %{address}"

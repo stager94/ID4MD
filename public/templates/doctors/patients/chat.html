@@ -24,9 +24,28 @@
 				<div ng-if="message.custom_type == 'visit-form'" class="custom-message-form {{message.custom_type}}">
 					<span>Назначение нового визита</span>
 					<div class="form-inputs">
-						<input type="text" name="visit-date" ng-model="message.object.details.date" placeholder="Дата">
-						<input type="text" name="visit-date" ng-model="message.object.details.address" placeholder="Адрес">
+						<input type="text" name="date" ng-model="message.object.details.date" placeholder="Дата">
+						<input type="text" name="address" ng-model="message.object.details.address" placeholder="Адрес">
 						<button ng-click="sendCustomMessage(message)">Назначить визить</button>
+					</div>
+				</div>
+
+				<div ng-if="message.custom_type == 'appointment-form'" class="custom-message-form {{message.custom_type}}">
+					<span>Добавление нового назначение</span>
+					<div class="form-inputs">
+						<input type="text" name="date" ng-model="message.object.details.date" placeholder="Дата">
+						<input type="text" name="text" ng-model="message.object.details.text" placeholder="Назначение">
+						<button ng-click="sendCustomMessage(message)">Добавить назначение</button>
+					</div>
+				</div>
+
+				<div ng-if="message.custom_type == 'diagnosis-form'" class="custom-message-form {{message.custom_type}}">
+					<span>Выписать новое направление</span>
+					<div class="form-inputs">
+						<input type="text" name="date" ng-model="message.object.details.date" placeholder="Дата">
+						<input type="text" name="laboratory" ng-model="message.object.details.laboratory" placeholder="Лаборатория">
+						<input type="text" name="address" ng-model="message.object.details.address" placeholder="Адрес">
+						<button ng-click="sendCustomMessage(message)">Выписать направление</button>
 					</div>
 				</div>
 			</div>
@@ -44,8 +63,19 @@
 			<i class="id4md-send"></i>
 		</a>
 	</div>
+	
 	<div class="action-button">
-		<a href="javascript:void(0)" ng-click="addVisitForm()">
+		<a href="javascript:void(0)" ng-click="addCustomForm('visit')">
+			<i class="id4md-send"></i>
+		</a>
+	</div>
+	<div class="action-button">
+		<a href="javascript:void(0)" ng-click="addCustomForm('appointment')">
+			<i class="id4md-send"></i>
+		</a>
+	</div>
+	<div class="action-button">
+		<a href="javascript:void(0)" ng-click="addCustomForm('diagnosis')">
 			<i class="id4md-send"></i>
 		</a>
 	</div>
