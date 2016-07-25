@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require sync
+//= require moment-with-locales
 //= require ui/main
 //= require inobounce
 //= require angular.min

@@ -16,7 +16,7 @@ gem 'therubyracer', platforms: :ruby
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 
-gem 'redis'
+# gem 'redis'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.1.1'

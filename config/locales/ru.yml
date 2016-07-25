@@ -1,0 +1,4 @@
+ru:
+  chat:
+    custom_messages:
+      visit: "Визит %{date} по адресу %{address}"

@@ -1,39 +1,22 @@
-App.controller('Doctors.PatientsChatCtrl', ['$scope', '$rootScope', '$state', '$http', ($scope, $rootScope, $state, $http) ->
+App.controller('Doctors.PatientsChatCtrl', ['$scope', '$rootScope', '$state', '$http', '$controller', ($scope, $rootScope, $state, $http, $controller) ->
 	
+	$controller('Doctors.PatientsChatFormCtrl', { $scope: $scope })
+
+	#
+	# Initial variables
+	#
+
 	$scope.loaded = false
-	$scope.messages = []
+	$rootScope.messages = []
 	$scope.offset = 0
 	$scope.page = 1
 	$scope.needLoad = true
 	$scope.busy = false
 	$scope.message = {}
 
-	initialize = ->
-		client = new Faye.Client Settings.faye_path
-		client.subscribe "/messages/#{$rootScope.patient.medical_profiles_attributes[0].id}", (response) ->
-			$scope.messages.push response.data.message
-			$scope.$apply()
-
-			setTimeout ->
-				Page.onResize()
-				$(".scrollable").scrollTop(1000);
-
-		$scope.loadMessages()
-
-	$scope.sendMessage = ->
-		$http.post("/api/v1/doctors/medical_profiles/#{$rootScope.patient.medical_profiles_attributes[0].id}/chat/messages.json",
-			body: $scope.message.text
-		).success((data, status, header, config) ->
-			console.log data, status, header, config
-			# $scope.messages.push data.message
-			$scope.message = {}
-
-			setTimeout ->
-				Page.onResize()
-				$(".scrollable").scrollTop(1000);
-		).error (data, status) ->
-			console.log data, status
-
+	#
+	# Public methods
+	#
 	$scope.loadMessages = ->
 		if $scope.needLoad == false or $scope.busy == true
 			return
@@ -44,7 +27,7 @@ App.controller('Doctors.PatientsChatCtrl', ['$scope', '$rootScope', '$state', '$
 			console.log data, status, header, config
 			
 			if data.messages.length > 0
-				Array.prototype.unshift.apply $scope.messages, data.messages
+				Array.prototype.unshift.apply $rootScope.messages, data.messages
 			else
 				$scope.needLoad = false
 
@@ -60,6 +43,26 @@ App.controller('Doctors.PatientsChatCtrl', ['$scope', '$rootScope', '$state', '$
 		).error (data, status) ->
 			console.log data, status
 			$scope.busy = false
+
+	#
+	# Private methods
+	#
+	initialize = ->
+		client = new Faye.Client Settings.faye_path
+		client.subscribe "/messages/#{$rootScope.patient.medical_profiles_attributes[0].id}", (response) ->
+			$rootScope.messages.push response.data.message
+			$scope.$apply()
+
+			setTimeout ->
+				Page.onResize()
+				$(".scrollable").scrollTop(1000);
+
+		$scope.loadMessages()
+
+
+	#
+	# Other
+	#
 
 	$scope.retrievePatient initialize
 

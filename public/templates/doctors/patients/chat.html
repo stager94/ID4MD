@@ -10,23 +10,43 @@
 		
 		<div class="chat-date-separator">{{date}}</div>
 
-		<div class="message {{ message.type }}" ng-repeat="message in messagesList" ng-class="{'incoming': message.sender_type == 'Patient', 'outcome': message.sender_type == 'Doctor'}">
-			<div class="time" ng-if="message.sender_type == 'Doctor'">{{ message.created_at | date: "HH:mm" }}</div>
-			<div class="text-wrapper">
-				<div class="text">{{ message.body }}</div>
+		<div class="message {{message.type}}" ng-repeat="message in messagesList" ng-class="{'incoming': message.sender_type == 'Patient', 'outcome': message.sender_type == 'Doctor'}" ng-hide="message.hidden">
+
+			<div ng-if="message.custom != true">
+				<div class="time" ng-if="message.sender_type == 'Doctor'">{{ message.created_at | date: "HH:mm" }}</div>
+				<div class="text-wrapper">
+					<div class="text">{{ message.body }}</div>
+				</div>
+				<div class="time" ng-if="message.sender_type != 'Doctor'">{{ message.created_at | date: "HH:mm" }}</div>
 			</div>
-			<div class="time" ng-if="message.sender_type != 'Doctor'">{{ message.created_at | date: "HH:mm" }}</div>
+			
+			<div ng-if="message.custom == true">
+				<div ng-if="message.custom_type == 'visit-form'" class="custom-message-form {{message.custom_type}}">
+					<span>Назначение нового визита</span>
+					<div class="form-inputs">
+						<input type="text" name="visit-date" ng-model="message.object.details.date" placeholder="Дата">
+						<input type="text" name="visit-date" ng-model="message.object.details.address" placeholder="Адрес">
+						<button ng-click="sendCustomMessage(message)">Назначить визить</button>
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 	</div>
 
 </div>
 
-<div id="chat-form" ng-controller="Doctors.PatientsChatCtrl">
+<div id="chat-form" ng-controller="Doctors.PatientsChatFormCtrl">
 	<textarea placeholder="Сообщение" rows="1" ng-model="message.text"></textarea>
 	<div class="action-button">
 		<a href="javascript:void(0)" ng-click="sendMessage()">
 			<i class="id4md-send"></i>
-		</a>	
+		</a>
+	</div>
+	<div class="action-button">
+		<a href="javascript:void(0)" ng-click="addVisitForm()">
+			<i class="id4md-send"></i>
+		</a>
 	</div>
 </div>

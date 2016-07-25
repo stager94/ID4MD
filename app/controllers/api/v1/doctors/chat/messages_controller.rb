@@ -1,5 +1,5 @@
-require "pdm_app/chat/sending_message"
-require "pdm_app/socket_manager"
+# require "pdm_app/chat/sending_message"
+# require "pdm_app/socket_manager"
 
 class Api::V1::Doctors::Chat::MessagesController < Api::V1::BaseController
 	
@@ -10,13 +10,21 @@ class Api::V1::Doctors::Chat::MessagesController < Api::V1::BaseController
 
 	def create
 		use_case = ::PdmApp::Chat::SendingMessage.new
-		message  = use_case.run medical_profile, current_doctor, params[:body]
-		serialized_message = ::Chat::MessageSerializer.new(message)
 
-		# ActionCable.server.broadcast "messages_#{medical_profile.id}_channel", message: serialized_message.to_json
-		::PdmApp::SocketManager.broadcast "/messages/#{medical_profile.id}", message: serialized_message.as_json
+		if params[:custom].present?
+			message  = use_case.send_custom! medical_profile, current_doctor, params[:object]
+		else
+			message  = use_case.send! medical_profile, current_doctor, params[:body]
+		end
+		
+		if message.valid?
+			serialized_message = ::Chat::MessageSerializer.new(message)
+			::PdmApp::SocketManager.broadcast "/messages/#{medical_profile.id}", message: serialized_message.as_json
 
-		render json_success("Message created successfull", message: serialized_message)
+			render json_success("Message created successfull", message: serialized_message)
+		else
+			render json_failed("An error occured", 422, { errors: message.errors })
+		end
 	end
 
 private

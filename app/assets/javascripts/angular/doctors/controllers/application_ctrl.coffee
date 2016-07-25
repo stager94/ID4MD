@@ -1,5 +1,5 @@
 App.controller('ApplicationCtrl', ['$scope', '$rootScope', 'security', '$state', ($scope, $rootScope, security, $state) ->
-	console.log "In AppCtrl"
+	moment.locale 'ru'
 	$scope.security = security
 	$scope.user = {}
 
