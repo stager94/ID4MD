@@ -59,16 +59,10 @@
 <div id="chat-form" ng-controller="Doctors.PatientsChatFormCtrl">
 	<textarea placeholder="Сообщение" rows="1" ng-model="message.text"></textarea>
 	<div class="action-button">
-		<a href="javascript:void(0)" ng-click="sendMessage()" on-long-press="openContextMenu('messageTypeSelector')">
+		<div href="javascript:void(0)" ng-click="sendMessage()" on-long-press="openContextMenu('messageTypeSelector')">
 			<i class="id4md-send"></i>
-		</a>
+		</div>
 	</div>
-	
-<!-- 	<div class="action-button">
-		<a href="javascript:void(0)" ng-click="openContextMenu('messageTypeSelector')">
-			<i class="id4md-send"></i>
-		</a>
-	</div> -->
 </div>
 
 <div class="context-menu" ng-show="activeContextMenu == 'messageTypeSelector'"  ng-controller="Doctors.PatientsChatFormCtrl">
