@@ -39,6 +39,8 @@ App.controller('Doctors.PatientsChatFormCtrl', ['$scope', '$rootScope', '$state'
 				type: capitalizeFirstLetter(type)
 				secret: generateSecretId(10)
 
+		$scope.hideContextMenu()
+
 		setTimeout ->
 				Page.onResize()
 				$(".scrollable").scrollTop(1000);

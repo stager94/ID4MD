@@ -59,24 +59,31 @@
 <div id="chat-form" ng-controller="Doctors.PatientsChatFormCtrl">
 	<textarea placeholder="Сообщение" rows="1" ng-model="message.text"></textarea>
 	<div class="action-button">
-		<a href="javascript:void(0)" ng-click="sendMessage()">
+		<a href="javascript:void(0)" ng-click="sendMessage()" on-long-press="openContextMenu('messageTypeSelector')">
 			<i class="id4md-send"></i>
 		</a>
 	</div>
 	
-	<div class="action-button">
-		<a href="javascript:void(0)" ng-click="addCustomForm('visit')">
+<!-- 	<div class="action-button">
+		<a href="javascript:void(0)" ng-click="openContextMenu('messageTypeSelector')">
 			<i class="id4md-send"></i>
 		</a>
-	</div>
-	<div class="action-button">
-		<a href="javascript:void(0)" ng-click="addCustomForm('appointment')">
-			<i class="id4md-send"></i>
-		</a>
-	</div>
-	<div class="action-button">
-		<a href="javascript:void(0)" ng-click="addCustomForm('diagnosis')">
-			<i class="id4md-send"></i>
-		</a>
-	</div>
+	</div> -->
 </div>
+
+<div class="context-menu" ng-show="activeContextMenu == 'messageTypeSelector'"  ng-controller="Doctors.PatientsChatFormCtrl">
+	<ul>
+		<li>
+			<a href="javascript:void(0)" ng-click="addCustomForm('visit')"><i class="id4md-pin-s"></i>Новый визит</a>
+		</li>
+		<li>
+			<a href="javascript:void(0)" ng-click="addCustomForm('diagnosis')"><i class="id4md-research-s"></i>Новое направление</a>
+		</li>
+		<li>
+			<a href="javascript:void(0)" ng-click="addCustomForm('appointment')"><i class="id4md-flag-s"></i>Новое назначение</a>
+		</li>
+	</ul>
+</div>
+
+
+<div class="black-overlay" ng-click="hideContextMenu()" ng-show="showOverlay == true"></div>
