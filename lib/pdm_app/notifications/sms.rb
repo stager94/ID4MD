@@ -24,19 +24,18 @@ module PdmApp
 			end
 
 			def api
-				@_api ||= Twilio::REST::Client.new Rails.application.secrets.twilio_sid, Rails.application.secrets.twilio_token
+				@_api ||= ::Websms::Client.new Rails.application.secrets.websms_username, Rails.application.secrets.websms_password
 			end
 
 			def params(message)
 				{
-					from: Rails.application.secrets.twilio_number,
 					to: number,
-					body: message
+					text: message
 				}
 			end
 
 			def notify_user_with(message)
-				api.messages.create params(message)
+				api.send! params(message)
 			end
 
 		end

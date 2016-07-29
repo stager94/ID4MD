@@ -54,6 +54,10 @@ gem 'faye', '1.1.0'
 gem 'thin', '1.5.0', require: false
 gem 'sync', '0.3.0'
 
+gem 'rest_client', '1.7.3'
+gem 'curb'
+gem 'iconv'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '9.0.0'
