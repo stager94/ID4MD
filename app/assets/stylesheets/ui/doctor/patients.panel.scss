@@ -13,11 +13,25 @@
 
 	@include transition(transform $animation-duration $animation-type);
 
+	.header {
+		font-size: 12px;
+		color: #2b313e;
+		font-weight: 100;
+		margin-bottom: 15px;
+		a {
+			text-decoration: none;
+			font-size: 20px;
+			float: right;
+			margin-top: -5px;
+			color: rgb(61, 164, 244);
+		}
+	}
+
 	h5 {
     font-family: 'Open Sans';
     font-weight: 100;
     font-size: 14px;
-    line-height: 1;
+    line-height: 20px;
     margin: 5px 0 0;
     color: #2b313e;
 	}
@@ -25,8 +39,9 @@
 		font-size: 12px;
     color: #2b313e;
     opacity: .5;
-    line-height: 40px;
-    margin-bottom: -10px;
+    margin: 10px 0 0;
+    line-height: 20px;
+    // margin-bottom: -10px;
 	}
 
 	.patient-information {

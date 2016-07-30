@@ -86,9 +86,7 @@
     z-index: 3;
     // @include transition('transform 200ms ease-in, font-size 200mss ease-in');
 }
-// .floated-labels.focused .floated-wrapper:after, .floated-labels.focused .floated-wrapper:before {
-//     background: #FAAB2B !important;
-// }
+
 
 .floated-labels .floated-wrapper:after {
     left: 50%;
@@ -174,4 +172,8 @@
             color: white;
         }
     }
+}
+
+.floated-labels.focused .floated-wrapper:after, .floated-labels.focused .floated-wrapper:before {
+    width: 50% !important;
 }

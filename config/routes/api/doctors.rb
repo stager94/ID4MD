@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       namespace :doctors do
-        resources :doctors, path: 'profile', only: [:show, :update]
+        resources :doctors, path: 'profile', only: [:show, :update] do
+          collection do
+            resources :jobs, only: [:create, :destroy]
+          end
+        end
         resources :patients, only: [:index, :show, :update]
 
         resources :medical_profiles, only: [:show] do

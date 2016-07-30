@@ -1,6 +1,6 @@
 <div class="fixed-header">
 	<header>
-			<a ui-sref="dashboard" class="action action-left">
+			<a ui-sref="profile" class="action action-left">
 				<i class="id4md-left-l"></i>
 			</a>
 
@@ -14,26 +14,30 @@
 <div class="container scrollable">
 	<div class="content">
 		<div ng-repeat="job in jobs">
-			<div class="patients-panel" ng-if="job.id > 0">
+			<div class="patients-panel" ng-if="job.id > 0 && job.hidden != true">
 				<h5>{{job.name}}</h5>
 				<div class="address">{{job.address}}</div>
 				<div class="actions">
-					<a href="#" onclick="alert('Works!')" class="danger"><span class="id4md-trash-"></span></a>
+					<a href="javascript:void(0)" ng-click="destroyJob(job)" class="danger"><span class="id4md-trash-"></span></a>
 				</div>
 			</div>
-			<div class="patients-panel" ng-if="job.id == -1">
-				<div class="header">Новое место работы</div>
+			
+			<div class="patients-panel" ng-if="job.id == -1 && job.hidden == false">
+				<div class="header">
+					Новое место работы
+					<a href="javascript:void(0)" ng-click="createJob(job)"><span class="id4md-done-l"></span></a>
+				</div>
 
 				<div class="floated-labels gutter-top-0 input-block">
 					<div class="floated-wrapper">
 						<label>Название</label>
-						<input type="text" name="name" ng-model="job.name">
+						<input type="text" name="name" ng-model="job.object.name">
 					</div>
 				</div>
 				<div class="floated-labels input-block">
 					<div class="floated-wrapper">
 						<label>Укажите адрес</label>
-						<input type="text" name="address" ng-model="job.address">
+						<input type="text" name="address" ng-model="job.object.address">
 					</div>
 				</div>
 				
