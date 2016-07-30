@@ -36,6 +36,12 @@ App.config ['$stateProvider', '$urlRouterProvider', '$locationProvider', ($state
     controller: 'Doctors.AvailabilityCtrl',
     data:
       needDoctor: true
+  ).state('jobs',
+    url: '/profile/jobs',
+    templateUrl: '/templates/doctors/jobs.html',
+    controller: 'Doctors.JobsCtrl',
+    data:
+      needDoctor: true
   ).state('patients_new',
     url: '/patients/new',
     templateUrl: 'templates/doctors/patients/new.html',

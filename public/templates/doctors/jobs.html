@@ -1,0 +1,51 @@
+<div class="fixed-header">
+	<header>
+			<a ui-sref="dashboard" class="action action-left">
+				<i class="id4md-left-l"></i>
+			</a>
+
+			<span>Место работы</span>
+
+			<div class="action action-left"></div>
+			
+	</header>	
+</div>
+
+<div class="container scrollable">
+	<div class="content">
+		<div ng-repeat="job in jobs">
+			<div class="patients-panel" ng-if="job.id > 0">
+				<h5>{{job.name}}</h5>
+				<div class="address">{{job.address}}</div>
+				<div class="actions">
+					<a href="#" onclick="alert('Works!')" class="danger"><span class="id4md-trash-"></span></a>
+				</div>
+			</div>
+			<div class="patients-panel" ng-if="job.id == -1">
+				<div class="header">Новое место работы</div>
+
+				<div class="floated-labels gutter-top-0 input-block">
+					<div class="floated-wrapper">
+						<label>Название</label>
+						<input type="text" name="name" ng-model="job.name">
+					</div>
+				</div>
+				<div class="floated-labels input-block">
+					<div class="floated-wrapper">
+						<label>Укажите адрес</label>
+						<input type="text" name="address" ng-model="job.address">
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="patients-panel-button" ng-click="newJob()">
+			Добавить место работы
+			<span class="id4md-addcircle-s"></span>
+		</div>
+	</div>
+
+	<div class="bg-gray bg-abs"></div>
+	
+</div>

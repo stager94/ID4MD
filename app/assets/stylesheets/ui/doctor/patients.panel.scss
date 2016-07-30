@@ -13,6 +13,22 @@
 
 	@include transition(transform $animation-duration $animation-type);
 
+	h5 {
+    font-family: 'Open Sans';
+    font-weight: 100;
+    font-size: 14px;
+    line-height: 1;
+    margin: 5px 0 0;
+    color: #2b313e;
+	}
+	.address {
+		font-size: 12px;
+    color: #2b313e;
+    opacity: .5;
+    line-height: 40px;
+    margin-bottom: -10px;
+	}
+
 	.patient-information {
 		display: table;
 		width: 100%;
@@ -93,6 +109,9 @@
 			border-radius: 35px;
 			background: $blue_color;
 			color: white;
+			&.danger {
+				background: $red_color;
+			}
 		}
 	}
 
@@ -328,4 +347,28 @@
 
 .not-accepted {
 	opacity: .7;
+}
+
+
+.patients-panel-button {
+	padding: 15px;
+	margin-bottom: 5px;
+
+	border-radius: $border-radius;
+	background-color: $white_color;
+
+	cursor: pointer;
+
+	@include user-select(none);
+
+	@include transition(transform $animation-duration $animation-type);	
+
+	font-size: 14px;
+	font-weight: 100;
+
+	span {
+		float: right;
+		font-size: 20px;
+		color: #9aa1b2;
+	}
 }

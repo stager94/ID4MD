@@ -1,7 +1,7 @@
 class JobSerializer < ActiveModel::Serializer
-	attributes :id, :address
+	attributes :id, :address, :name, :full_address
 
-	def address
+	def full_address
 		object.full_address
 	end
 end
